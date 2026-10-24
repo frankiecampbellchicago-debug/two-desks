@@ -27,7 +27,12 @@ h1,h2,h3{font-family:var(--wide);font-stretch:118%;font-weight:750;line-height:1
 h2{font-size:clamp(30px,5vw,56px)}
 p{margin:0}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;font-weight:650;font-size:16px;border:2px solid var(--blue);transition:background .2s,border-color .2s,transform .2s}
-.btn:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn:hover{background:var(--blue-dark);border-color:var(--blue-dark);transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn[disabled]{opacity:.7;cursor:progress;transform:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:650}
+.skip:focus{top:12px}
 .btn.line{background:transparent;color:var(--ink);border-color:var(--ink)}
 .btn.line:hover{background:var(--ink);color:var(--paper)}
 
@@ -50,7 +55,6 @@ nav .btn{padding:10px 18px;font-size:15px}
 .hero .wrap>*{min-width:0}
 .hero h1{font-size:clamp(36px,4.2vw,66px)}
 @media (max-width:880px){.hero h1{font-size:clamp(36px,9vw,64px)}}
-.hero h1 span{color:var(--blue)}
 .hero .ctas{margin-top:34px}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .shot{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(30,25,15,.45)}
@@ -131,13 +135,21 @@ label{display:grid;gap:6px;font-size:14px;font-weight:650}
 label.full{grid-column:1/-1}
 input,select,textarea{font:16px var(--wide);color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;width:100%}
 textarea{min-height:130px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(106,63,210,.15)}
+input,select,textarea{transition:border-color .15s,box-shadow .15s}
+[aria-invalid="true"]{border-color:#c4231b}
 label small{font-weight:400;color:var(--muted)}
 .send{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 .send button{cursor:pointer;font-family:inherit}
 #msg{font-size:15px;color:var(--muted)}
 #msg.err{color:#b3261e}
-.done{grid-column:1/-1;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px}
+.done{grid-column:1/-1;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px;animation:pop .45s cubic-bezier(.2,.8,.2,1.2) both}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}}
+/* the headline settles into place once when the page opens */
+.hero h1 .w{display:inline-block;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 .w:nth-child(2){animation-delay:.08s}.hero h1 .w:nth-child(3){animation-delay:.16s}.hero h1 .w:nth-child(4){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(.45em)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 .done h3{font-size:28px;margin-bottom:8px}
 .done p{color:var(--muted)}
 @media (max-width:880px){.qwrap{grid-template-columns:1fr;gap:32px}}
@@ -148,6 +160,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <nav><div class="wrap">
   <a class="logo" href="#"><i aria-hidden="true"><b></b><b></b></i>Two Desks</a>
@@ -155,15 +168,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <a class="btn" href="#quote">Get a quote</a>
 </div></nav>
 
+<main id="main">
 <header class="hero"><div class="wrap">
   <div>
-    <h1>Websites for small businesses.</h1>
+    <h1><span class="w">Websites</span> <span class="w">for</span> <span class="w">small</span> <span class="w">businesses.</span></h1>
     <div class="ctas"><a class="btn" href="#quote">Get a quote</a><a class="btn line" href="#work">See our work</a></div>
   </div>
   <figure class="stack" aria-label="A few of our sites">
-    <div class="shot s2"><img src="images/meadow-sm.webp" alt="MeadowStone Landscaping sample site" width="800" height="500"></div>
-    <div class="shot s1"><div class="bar"><i></i><i></i><i></i><span>donandjohn.com</span></div><img src="images/donandjohn-sm.webp" alt="The Don &amp; John Exterior Cleaning website" width="800" height="500"></div>
-    <div class="shot s3"><img src="images/united-sm.webp" alt="United Revival Automotive redesign" width="800" height="500"></div>
+    <div class="shot s2"><img decoding="async" src="images/meadow-sm.webp" alt="MeadowStone Landscaping sample site" width="800" height="500"></div>
+    <div class="shot s1"><div class="bar"><i></i><i></i><i></i><span>donandjohn.com</span></div><img src="images/donandjohn-sm.webp" srcset="images/donandjohn-sm.webp 800w, images/donandjohn.webp 1200w" sizes="(min-width:881px) 45vw, 90vw" fetchpriority="high" alt="The Don &amp; John Exterior Cleaning website" width="800" height="500"></div>
+    <div class="shot s3"><img decoding="async" src="images/united-sm.webp" alt="United Revival Automotive redesign" width="800" height="500"></div>
   </figure>
 </div></header>
 
@@ -252,6 +266,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="send"><button class="btn" type="submit">Send</button><span id="msg" aria-live="polite"></span></div>
   </form>
 </div></section>
+</main>
 
 <footer><div class="wrap"><span>Two Desks · Websites by Frankie &amp; Leila</span><span>© <span id="yr">2026</span></span></div></footer>
 
@@ -266,7 +281,8 @@ if(!INBOX)msg.textContent="Preview: quote requests aren't being sent anywhere ye
 form.addEventListener("submit",e=>{
   e.preventDefault();
   const bad=[...form.querySelectorAll("[required]")].find(f=>!f.value.trim()||(f.type==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())));
-  if(bad){msg.className="err";msg.textContent=bad.type==="email"?"That email doesn't look right.":"Please fill in "+bad.closest("label").firstChild.textContent.trim().toLowerCase()+".";bad.focus();return}
+  form.querySelectorAll("[aria-invalid]").forEach(f=>f.removeAttribute("aria-invalid"));
+  if(bad){bad.setAttribute("aria-invalid","true");msg.className="err";msg.textContent=bad.type==="email"?"That email doesn't look right.":"Please fill in "+bad.closest("label").firstChild.textContent.trim().toLowerCase()+".";bad.focus();return}
   const data=Object.fromEntries(new FormData(form));
   const done=preview=>{form.innerHTML='<div class="done"><h3>Thanks, '+data.name.replace(/[<>&]/g,"")+'.</h3><p>'+(preview?"This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us.":"We got your request and will email you at "+data.email.replace(/[<>&]/g,"")+" soon.")+'</p></div>'};
   if(!INBOX){done(true);return}
