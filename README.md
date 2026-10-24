@@ -1,0 +1,18 @@
+# Two Desks
+
+Website for Frankie and Leila's web design studio. Plain HTML/CSS/JS in one
+`index.html`, no build step. Hosted on GitHub Pages.
+
+"Two Desks" is a working name. To change it, search `index.html` for
+`Two Desks` (title, nav, about section, footer).
+
+## Before launch
+
+- **Quote form inbox:** set `INBOX` in the script at the bottom of
+  `index.html` to the email address that should receive quote requests. Requests
+  go through [FormSubmit](https://formsubmit.co) (free, no account). The first
+  request sends an "Activate Form" email to that inbox; click it once and
+  requests start arriving. Until `INBOX` is set, the form only shows a preview
+  message and sends nothing.
+- **Screenshots** in `images/` are of the live sites as of October 2026. Retake
+  them if those sites change.
