@@ -10,9 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Visme scheme #19 "Minimal Yet Warm": eggshell, dark vanilla, taupe gray, jelly bean red */
-  --paper:#f0ead6;--card:#faf7ee;--ink:#2b2629;--muted:#66606a;--line:#d1bea8;
-  --blue:#c8503b;--blue-dark:#a8402e;--sand:#e4d8c2;--taupe:#8b8589;--jelly:#da614e;
+  /* cool white and gray base (Figma "Salt and pepper"), smoky black and electric blue (Visme #12
+     "Striking and Simple"), and a yellow-green pop used sparingly (Visme #27 "Gorgeous Contrast") */
+  --paper:#f5f6f8;--card:#ffffff;--ink:#121419;--muted:#5b6170;--line:#dde1e8;
+  --blue:#2f4bff;--blue-dark:#1f36d6;--sand:#eceef3;--lime:#c8f03c;
   --wide:"Archivo",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
@@ -30,7 +31,7 @@ p{margin:0}
 .btn.line:hover{background:var(--ink);color:var(--paper)}
 
 /* nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(240,234,214,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{position:sticky;top:0;z-index:10;background:rgba(245,246,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
 .logo{font-stretch:125%;font-weight:800;font-size:20px;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
 .logo i{display:inline-flex;gap:3px}
@@ -96,24 +97,24 @@ section{padding:88px 0}
 
 /* pricing */
 #pricing{background:var(--ink);color:var(--paper)}
-#pricing .head p{color:#c9c2c6}
-.price{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid #4a4347}
+#pricing .head p{color:#a9afbd}
+.price{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid #2c2f38}
 .price>div{padding:30px 28px 10px 0}
-.price>div+div{padding-left:28px;border-left:1px solid #4a4347}
-.big{font-stretch:112%;font-weight:800;font-size:clamp(42px,4.6vw,60px);white-space:nowrap;line-height:1;letter-spacing:-.03em}
-.price .sub{color:#c9c2c6;margin-top:10px}
+.price>div+div{padding-left:28px;border-left:1px solid #2c2f38}
+.big{color:var(--lime);font-stretch:112%;font-weight:800;font-size:clamp(42px,4.6vw,60px);white-space:nowrap;line-height:1;letter-spacing:-.03em}
+.price .sub{color:#a9afbd;margin-top:10px}
 .price h3{font-size:20px;font-stretch:110%;margin-bottom:14px}
-.price ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;color:#e8e1d2}
+.price ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;color:#dfe3ea}
 .price li{padding-left:22px;position:relative}
-.price li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--jelly)}
+.price li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--lime)}
 #pricing .btn{margin-top:26px}
 #pricing .btn:hover{background:#fff;color:var(--ink);border-color:#fff}
-@media (max-width:880px){.price{grid-template-columns:1fr}.price>div+div{padding-left:0;border-left:0;border-top:1px solid #4a4347}}
+@media (max-width:880px){.price{grid-template-columns:1fr}.price>div+div{padding-left:0;border-left:0;border-top:1px solid #2c2f38}}
 
 /* about */
 .people{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .person{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px}
-.person .init{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-stretch:125%;font-weight:800;font-size:22px;background:var(--sand);margin-bottom:18px}
+.person .init{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-stretch:125%;font-weight:800;font-size:22px;background:var(--lime);margin-bottom:18px}
 .person:nth-child(2) .init{background:var(--blue);color:#fff}
 .person h3{font-size:26px;margin-bottom:10px}
 .person p{color:var(--muted)}
