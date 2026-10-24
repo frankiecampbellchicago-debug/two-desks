@@ -16,7 +16,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--wide);font-stretch:100%;-webkit-font-smoothing:antialiased}
+body{overflow-x:clip;margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--wide);font-stretch:100%;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
@@ -55,10 +55,11 @@ nav .btn{padding:10px 18px;font-size:15px}
 .shot .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
 .shot .bar span{margin-left:10px}
 .stack{position:relative;margin:0;padding:0 0 18% 0}
-.stack .shot{width:78%}
+.stack .shot{width:84%}
 .stack .s1{position:relative;z-index:3;margin-left:0;margin-top:22%}
-.stack .s2{position:absolute;z-index:2;top:0;right:0;width:62%;transform:rotate(3deg)}
-.stack .s3{position:absolute;z-index:1;bottom:0;right:4%;width:56%;transform:rotate(-2.5deg)}
+.stack .s2{position:absolute;z-index:2;top:0;right:0;width:68%;transform:rotate(3deg)}
+.stack .s3{position:absolute;z-index:1;bottom:0;right:4%;width:62%;transform:rotate(-2.5deg)}
+@media (min-width:1600px){.stack{margin-right:-14%}}
 .stack figcaption{position:absolute;z-index:4;left:0;bottom:2%;font-size:14px;color:var(--muted);max-width:44%}
 @media (max-width:880px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:48px}}
 
