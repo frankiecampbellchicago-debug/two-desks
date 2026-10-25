@@ -1,10 +1,9 @@
-# Two Desks
+# F&L Studio
 
 Website for Frankie and Leila's web design studio. Plain HTML/CSS/JS in one
 `index.html`, no build step. Hosted on GitHub Pages.
 
-"Two Desks" is a working name. To change it, search `index.html` for
-`Two Desks` (title, nav, about section, footer).
+The name F&L Studio appears in `index.html` in the title, nav logo, about section, and footer.
 
 ## Before launch
 
