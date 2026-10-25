@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>F&amp;L Studio · Logo options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f3fb;--card:#fff;--ink:#1f1433;--muted:#5e5470;--line:#e2daf0;--blue:#6a3fd2;--lime:#cdb8ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:48px 24px}
+h1{font-weight:650;letter-spacing:-.035em;font-size:clamp(32px,5vw,48px);margin:0 0 8px;line-height:1.1}
+.wrap>p{color:var(--muted);margin:0 0 36px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.opt{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.big{display:grid;place-items:center;padding:40px 0}
+.big svg{width:140px;height:140px}
+.dark{background:var(--ink);display:flex;justify-content:center;gap:28px;padding:22px 0}
+.dark svg{width:44px;height:44px}
+.nav{display:flex;align-items:center;gap:10px;padding:16px 20px;border-top:1px solid var(--line);font-weight:750;font-size:20px;letter-spacing:-.02em}
+.nav svg{width:30px;height:30px}
+.nav span{color:var(--blue)}
+.cap{padding:16px 20px 22px;border-top:1px solid var(--line)}
+.cap b{font-size:20px}
+.cap p{color:var(--muted);margin:4px 0 0;font-size:15px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- A: F and L locked together; the F's top arm is a roof over the L -->
+  <symbol id="a" viewBox="0 0 32 32">
+    <rect width="32" height="32" rx="8" fill="#1f1433"/>
+    <path fill="#fff" d="M6 6h20v4.5H10.5v3.5H14v4h-3.5V26H6z"/>
+    <path fill="#cdb8ff" d="M15.5 13H20v8.5h6V26H15.5z"/>
+  </symbol>
+  <!-- B: two tiles, one letter each, overlapping like two people working side by side -->
+  <symbol id="b" viewBox="0 0 32 32">
+    <rect x="1" y="5" width="18" height="22" rx="5" fill="#1f1433"/>
+    <rect x="13" y="5" width="18" height="22" rx="5" fill="#6a3fd2"/>
+    <path fill="#fff" d="M5 10h8v3H8v2.5h4.5v3H8V22H5z"/>
+    <path fill="#fff" d="M19 10h3v9h6v3h-9z"/>
+  </symbol>
+  <!-- C: circle badge with the initials and ampersand -->
+  <symbol id="c" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="16" fill="#cdb8ff"/>
+    <text x="16" y="20.6" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12.5" font-weight="750" letter-spacing="-.4" fill="#1f1433">F&amp;L</text>
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <h1>Logo options</h1>
+  <p>Each one uses F and L. You'll see it large, on a dark background, and next to the name at nav size.</p>
+  <div class="opts">
+    <div class="opt"><div class="big"><svg><use href="#a"/></svg></div><div class="dark"><svg><use href="#a"/></svg></div><div class="nav"><svg><use href="#a"/></svg>F&amp;L <span>Studio</span></div><div class="cap"><b>A · Joined</b><p>The F and L lock together into one mark, with the F sheltering the L.</p></div></div>
+    <div class="opt"><div class="big"><svg><use href="#b"/></svg></div><div class="dark"><svg><use href="#b"/></svg></div><div class="nav"><svg><use href="#b"/></svg>F&amp;L <span>Studio</span></div><div class="cap"><b>B · Side by side</b><p>One tile each, overlapping. Two people, one studio.</p></div></div>
+    <div class="opt"><div class="big"><svg><use href="#c"/></svg></div><div class="dark"><svg><use href="#c"/></svg></div><div class="nav"><svg><use href="#c"/></svg>F&amp;L <span>Studio</span></div><div class="cap"><b>C · Badge</b><p>A simple round stamp with F&amp;L. Classic and easy to read.</p></div></div>
+  </div>
+</div>
+</body>
+</html>
