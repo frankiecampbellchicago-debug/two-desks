@@ -101,6 +101,17 @@ section{padding:88px 0}
 @media (max-width:880px){.feature{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.grid{grid-template-columns:1fr}}
 
+/* services */
+.svc{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);counter-reset:v}
+.svc li{display:grid;grid-template-columns:1fr 1.6fr;gap:16px 48px;padding:30px 0;border-bottom:1px solid var(--line);counter-increment:v}
+.svc h3{font-size:clamp(24px,2.6vw,32px);display:flex;align-items:baseline;gap:14px}
+.svc h3::before{content:"0" counter(v);font-size:15px;font-weight:650;letter-spacing:0;color:var(--blue)}
+.svc p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0;list-style:none}
+.tags span{font-size:14px;padding:5px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.svc-note{margin-top:28px;color:var(--muted);font-size:15px}
+@media (max-width:720px){.svc li{grid-template-columns:1fr}}
+
 /* how it works */
 #how{background:var(--sand)}
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
@@ -146,13 +157,20 @@ section{padding:88px 0}
 .qwrap .intro .small{font-size:15px;margin-top:22px}
 form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 label{display:grid;gap:6px;font-size:14px;font-weight:650}
-label.full{grid-column:1/-1}
+label.full,fieldset.full{grid-column:1/-1}
 input,select,textarea{font:16px var(--wide);color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;width:100%}
 textarea{min-height:130px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(106,63,210,.15)}
 input,select,textarea{transition:border-color .15s,box-shadow .15s}
 [aria-invalid="true"]{border-color:#c4231b}
 label small{font-weight:400;color:var(--muted)}
+.picks{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.picks legend{font-size:14px;font-weight:650;padding:0;margin-bottom:8px}
+.picks label{display:flex;align-items:center;gap:8px;font-weight:500;font-size:15px;padding:9px 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);cursor:pointer;transition:border-color .15s,background .15s}
+.picks label:hover{border-color:var(--blue)}
+.picks input{width:auto;margin:0;accent-color:var(--blue)}
+.picks label:has(input:checked){border-color:var(--blue);background:var(--sand)}
+.picks label:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:2px}
 .send{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 .send button{cursor:pointer;font-family:inherit}
 #msg{font-size:15px;color:var(--muted)}
@@ -181,7 +199,7 @@ footer a:hover{color:var(--ink)}
 
 <nav><div class="wrap">
   <a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="5" width="18" height="22" rx="5" fill="#1f1433"/><rect x="13" y="5" width="18" height="22" rx="5" fill="#6a3fd2"/><path fill="#fff" d="M5 10h8v3H8v2.5h4.5v3H8V22H5z"/><path fill="#fff" d="M19 10h3v9h6v3h-9z"/></svg><span>F&amp;L <span class="st">Studio</span></span></a>
-  <div class="links"><a href="#work">Work</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#about">About</a></div>
+  <div class="links"><a href="#work">Work</a><a href="#services">Services</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#about">About</a></div>
   <a class="btn" href="#quote">Get a quote</a>
 </div></nav>
 
@@ -227,6 +245,18 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></section>
 
+<section id="services"><div class="wrap">
+  <div class="head"><h2>More than a website</h2><p>The website is the start. We also set up the tools around it, so customers can find you, book you, pay you, and come back.</p></div>
+  <ol class="svc">
+    <li><h3>Get found</h3><div><p>Show up when people nearby search for what you do.</p><div class="tags"><span>Google Business Profile</span><span>Google reviews</span><span>Local search</span><span>Instagram &amp; Facebook links</span></div></div></li>
+    <li><h3>Get booked</h3><div><p>Let customers book a time, ask for a quote, or reserve a table without picking up the phone.</p><div class="tags"><span>Online booking</span><span>Quote forms</span><span>Reservations</span><span>Text reminders</span></div></div></li>
+    <li><h3>Get paid</h3><div><p>Take payments, deposits, and orders online.</p><div class="tags"><span>Online store</span><span>Deposits</span><span>Gift cards</span><span>Invoices</span></div></div></li>
+    <li><h3>Bring customers back</h3><div><p>Emails that go out on their own: a welcome for new customers, promotions and sales, reminders, and a request for a review after each job.</p><div class="tags"><span>Email promotions</span><span>Welcome emails</span><span>Reminders</span><span>Review requests</span></div></div></li>
+    <li><h3>Keep it running</h3><div><p>A monthly plan. We host your site, make your edits, and fix anything that breaks, so you never have to touch it.</p><div class="tags"><span>Hosting</span><span>Edits and updates</span><span>Monthly visitor report</span></div></div></li>
+  </ol>
+  <p class="svc-note">We set up tools you may already know, like Square, Shopify, Calendly, and Mailchimp, and connect them to your site. Pick what you need on the quote form.</p>
+</div></section>
+
 <section id="how"><div class="wrap">
   <div class="head"><h2>How it works</h2><p>Three steps from the first email to a live site.</p></div>
   <ol class="steps">
@@ -241,7 +271,7 @@ footer a:hover{color:var(--ink)}
   <div class="price">
     <div>
       <div class="big">$300–$700</div>
-      <p class="sub">for most small-business websites, paid once.</p>
+      <p class="sub">for most small-business websites, paid once. Services are added to your quote.</p>
       <a class="btn" href="#quote">Ask for a quote</a>
     </div>
     <div>
@@ -259,7 +289,7 @@ footer a:hover{color:var(--ink)}
       <ul>
         <li>How many pages you need</li>
         <li>Whether you have your own text and photos</li>
-        <li>Extras like booking, menus, or galleries</li>
+        <li>Services like booking, a store, or email marketing</li>
         <li>How soon you need it</li>
       </ul>
     </div>
@@ -286,6 +316,14 @@ footer a:hover{color:var(--ink)}
     <label>Email<input name="email" type="email" autocomplete="email" required></label>
     <label>Current website (optional)<input name="website" type="url" placeholder="https://"></label>
     <label class="full">What do you need?<textarea name="details" placeholder="What your business does, what pages you want, anything you like on other sites" required></textarea></label>
+    <fieldset class="full picks"><legend>What do you want help with?</legend>
+      <label><input type="checkbox" name="services" value="Website" checked>Website</label>
+      <label><input type="checkbox" name="services" value="Get found (Google, reviews)">Get found</label>
+      <label><input type="checkbox" name="services" value="Online booking">Online booking</label>
+      <label><input type="checkbox" name="services" value="Payments or online store">Payments or a store</label>
+      <label><input type="checkbox" name="services" value="Email marketing">Email marketing</label>
+      <label><input type="checkbox" name="services" value="Monthly care plan">Monthly care plan</label>
+    </fieldset>
     <label class="full">Budget<select name="budget">
       <option>Not sure yet</option><option>$300 to $500</option><option>$500 to $700</option><option>More than $700</option>
     </select></label>
@@ -314,7 +352,7 @@ form.addEventListener("submit",e=>{
   const bad=[...form.querySelectorAll("[required]")].find(f=>!f.value.trim()||(f.type==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())));
   form.querySelectorAll("[aria-invalid]").forEach(f=>f.removeAttribute("aria-invalid"));
   if(bad){bad.setAttribute("aria-invalid","true");msg.className="err";msg.textContent=bad.type==="email"?"That email doesn't look right.":"Please fill in "+bad.closest("label").firstChild.textContent.trim().toLowerCase()+".";bad.focus();return}
-  const data=Object.fromEntries(new FormData(form));
+  const fd=new FormData(form),data=Object.fromEntries(fd);data.services=fd.getAll("services").join(", ")||"Not sure yet";
   const done=preview=>{form.innerHTML='<div class="done"><h3>Thanks, '+data.name.replace(/[<>&]/g,"")+'.</h3><p>'+(preview?"This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us.":"We got your request and will email you at "+data.email.replace(/[<>&]/g,"")+" soon.")+'</p></div>'};
   if(!INBOX){done(true);return}
   const btn=form.querySelector("button");btn.disabled=true;msg.className="";msg.textContent="Sending…";
