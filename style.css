@@ -72,7 +72,10 @@ nav .btn{padding:13px 20px;font-size:11px}
 .hero h1{font-size:clamp(38px,4.8vw,76px)}
 @media (max-width:880px){.hero h1{font-size:clamp(36px,9vw,64px)}}
 .hero .ctas{margin-top:40px;display:flex;flex-wrap:wrap;gap:14px}
-.shot{background:var(--card);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.65);outline:1px solid rgba(255,255,255,.06)}
+.shot{background:var(--card);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.65)}
+/* hero screenshots: no light edge around the tilted ones */
+.stack .shot{background:transparent}
+.stack .s2,.stack .s3{backface-visibility:hidden}
 .stack{position:relative;margin:0;padding:0 0 13% 0}
 .stack .shot{width:84%}
 .stack .s1{position:relative;z-index:3;margin-left:0;margin-top:16%}
