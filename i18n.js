@@ -84,7 +84,6 @@ es:{
 "Photo of Leila":"Foto de Leila",
 
 "Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Cuéntanos sobre tu negocio y lo que necesitas. Te responderemos por correo con un precio y las preguntas que tengamos.",
-"No commitment. If it's not a fit, we'll tell you.":"Sin compromiso. Si no encajamos, te lo diremos.",
 "Your name":"Tu nombre",
 "Business name":"Nombre del negocio",
 "Email":"Correo electrónico",
@@ -241,7 +240,6 @@ pt:{
 "Photo of Leila":"Fotografia de Leila",
 
 "Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Fale-nos do seu negócio e do que precisa. Respondemos por e-mail com um preço e com as perguntas que tivermos.",
-"No commitment. If it's not a fit, we'll tell you.":"Sem compromisso. Se não formos a escolha certa, dizemos-lhe.",
 "Your name":"O seu nome",
 "Business name":"Nome da empresa",
 "Email":"E-mail",
@@ -392,7 +390,6 @@ sv:{
 "Leila studies finance at Geneva Business School in Madrid. Leila is a dual citizen of Sweden and Mozambique and brings an international perspective to every project. As co-founder of F&L Studio, she leads the business side of the company.":"Leila studerar finans vid Geneva Business School i Madrid. Leila har dubbelt medborgarskap i Sverige och Moçambique och tillför ett internationellt perspektiv i varje projekt. Som medgrundare av F&L Studio leder hon företagets affärssida.",
 "Photo of Leila":"Foto på Leila",
 "Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Berätta om ditt företag och vad du behöver. Vi svarar via mejl med ett pris och eventuella frågor.",
-"No commitment. If it's not a fit, we'll tell you.":"Helt utan förpliktelser. Om vi inte passar ihop säger vi det.",
 "Your name":"Ditt namn",
 "Business name":"Företagsnamn",
 "Email":"E-post",
