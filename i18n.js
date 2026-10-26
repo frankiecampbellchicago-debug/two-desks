@@ -29,7 +29,7 @@ es:{
 "United Revival Automotive redesign":"Rediseño de United Revival Automotive",
 
 "Sites we've built":"Webs que hemos *creado*",
-"A live client site, a redesign, our own project, and a sample site.":"Una web de cliente publicada, un rediseño, un proyecto propio y una web de muestra.",
+"Two client sites, a redesign, and a sample site.":"Dos webs de clientes, un rediseño y una web de muestra.",
 "Don & John Exterior Cleaning website":"Web de Don & John Exterior Cleaning",
 "Client site":"Web de cliente",
 "Window cleaning, gutters, and pressure washing around Chicago. A full site with a page for every town they serve, their reviews, and an estimate form that goes straight to their inbox. It runs on their own domain.":"Limpieza de ventanas, canalones y limpieza a presión en la zona de Chicago. Una web completa con una página para cada ciudad donde trabajan, sus reseñas y un formulario de presupuesto que llega directo a su correo. Funciona con su propio dominio.",
@@ -39,7 +39,6 @@ es:{
 "Visit ↗":"Visitar ↗",
 "A new look for an auto repair shop in Rockford, Illinois, built around their real reviews, hours, and phone number.":"Una nueva imagen para un taller mecánico en Rockford, Illinois, construida en torno a sus reseñas reales, su horario y su teléfono.",
 "Love Is In The Air website":"Web de Love Is In The Air",
-"Our own project":"Proyecto propio",
 "A site for long-distance couples, with date ideas, a countdown to the next visit, trip planning, and articles.":"Una web para parejas a distancia, con ideas para citas, una cuenta atrás hasta la próxima visita, planificación de viajes y artículos.",
 "MeadowStone Landscaping sample website":"Web de muestra de MeadowStone Landscaping",
 "Sample site":"Web de muestra",
@@ -179,7 +178,7 @@ pt:{
 "United Revival Automotive redesign":"Novo design para a United Revival Automotive",
 
 "Sites we've built":"Sites que já *criámos*",
-"A live client site, a redesign, our own project, and a sample site.":"Um site de cliente já online, um redesign, um projeto nosso e um site de exemplo.",
+"Two client sites, a redesign, and a sample site.":"Dois sites de clientes, um redesign e um site de exemplo.",
 "Don & John Exterior Cleaning website":"Site da Don & John Exterior Cleaning",
 "Client site":"Site de cliente",
 "Window cleaning, gutters, and pressure washing around Chicago. A full site with a page for every town they serve, their reviews, and an estimate form that goes straight to their inbox. It runs on their own domain.":"Limpeza de janelas, caleiras e lavagem à pressão na zona de Chicago. Um site completo com uma página para cada localidade onde trabalham, as avaliações dos clientes e um formulário de orçamento que chega diretamente ao e-mail deles. Funciona com o domínio próprio da empresa.",
@@ -189,7 +188,6 @@ pt:{
 "Visit ↗":"Visitar ↗",
 "A new look for an auto repair shop in Rockford, Illinois, built around their real reviews, hours, and phone number.":"Uma nova imagem para uma oficina de automóveis em Rockford, no Illinois, construída à volta das avaliações reais, do horário e do telefone da oficina.",
 "Love Is In The Air website":"Site da Love Is In The Air",
-"Our own project":"Projeto próprio",
 "A site for long-distance couples, with date ideas, a countdown to the next visit, trip planning, and articles.":"Um site para casais à distância, com ideias para encontros, uma contagem decrescente até à próxima visita, planeamento de viagens e artigos.",
 "MeadowStone Landscaping sample website":"Site de exemplo da MeadowStone Landscaping",
 "Sample site":"Site de exemplo",
