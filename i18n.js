@@ -2,7 +2,7 @@
 // the English text. Any text without a translation simply stays in English.
 const T={
 es:{
-"Web design studio · Chicago & Madrid":"Estudio de diseño web · Chicago y Madrid",
+"Web design studio":"Estudio de diseño web",
 "Selected work":"Trabajos seleccionados",
 "The process":"El proceso",
 "One clear price, up front.":"Un precio claro, *desde el principio*.",
@@ -152,7 +152,7 @@ es:{
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Cuéntanos sobre tu negocio y te diremos qué vale la pena y qué no."
 },
 pt:{
-"Web design studio · Chicago & Madrid":"Estúdio de design web · Chicago e Madrid",
+"Web design studio":"Estúdio de design web",
 "Selected work":"Trabalhos selecionados",
 "The process":"O processo",
 "One clear price, up front.":"Um preço claro, *à partida*.",
