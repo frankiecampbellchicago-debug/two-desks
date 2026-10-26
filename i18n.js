@@ -2,7 +2,8 @@
 // the English text. Any text without a translation simply stays in English.
 const T={
 es:{
-"Every business is different, so every price is too. You'll receive the full price, in your currency, before any work begins.":"Cada negocio es distinto, y cada precio también. Recibirás el precio completo, en tu moneda, antes de empezar cualquier trabajo.",
+"Pricing that fits your business.":"Precios que se *adaptan* a tu negocio.",
+"Every business is different, so every price is too. You'll receive a full quote, in your currency, before any work begins. Pay up front or in instalments, with an optional monthly plan to keep everything running.":"Cada negocio es distinto, y cada precio también. Recibirás un presupuesto completo, en tu moneda, antes de empezar cualquier trabajo. Paga por adelantado o a plazos, con un plan mensual opcional para que todo siga funcionando.",
 "Included in every project":"Incluido en cada proyecto",
 "Bespoke design":"Diseño a medida",
 "Designed around your brand and your customers, never a template.":"Pensado para tu marca y tus clientes, nunca a partir de una plantilla.",
@@ -26,7 +27,6 @@ es:{
 "Web design studio":"Estudio de diseño web",
 "Selected work":"Trabajos seleccionados",
 "The process":"El proceso",
-"One clear price, up front.":"Un precio claro, *desde el principio*.",
 "The founders":"Los fundadores",
 "Start a project":"Empieza tu proyecto",
 "By industry":"Por sector",
@@ -159,7 +159,8 @@ es:{
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Cuéntanos sobre tu negocio y te diremos qué vale la pena y qué no."
 },
 pt:{
-"Every business is different, so every price is too. You'll receive the full price, in your currency, before any work begins.":"Cada negócio é diferente, e cada preço também. Recebe o preço completo, na sua moeda, antes de começarmos qualquer trabalho.",
+"Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
+"Every business is different, so every price is too. You'll receive a full quote, in your currency, before any work begins. Pay up front or in instalments, with an optional monthly plan to keep everything running.":"Cada negócio é diferente, e cada preço também. Recebe um orçamento completo, na sua moeda, antes de começarmos qualquer trabalho. Pague de uma só vez ou em prestações, com um plano mensal opcional para manter tudo a funcionar.",
 "Included in every project":"Incluído em todos os projetos",
 "Bespoke design":"Design à medida",
 "Designed around your brand and your customers, never a template.":"Pensado para a sua marca e os seus clientes, nunca a partir de um modelo.",
@@ -183,7 +184,6 @@ pt:{
 "Web design studio":"Estúdio de design web",
 "Selected work":"Trabalhos selecionados",
 "The process":"O processo",
-"One clear price, up front.":"Um preço claro, *à partida*.",
 "The founders":"Os fundadores",
 "Start a project":"Comece o seu projeto",
 "By industry":"Por setor",
@@ -316,7 +316,8 @@ pt:{
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Fale-nos do seu negócio e dizemos-lhe o que vale a pena e o que não vale."
 },
 sv:{
-"Every business is different, so every price is too. You'll receive the full price, in your currency, before any work begins.":"Varje företag är unikt, och det är varje pris också. Du får hela priset, i din valuta, innan något arbete påbörjas.",
+"Pricing that fits your business.":"Priser som *passar* ditt företag.",
+"Every business is different, so every price is too. You'll receive a full quote, in your currency, before any work begins. Pay up front or in instalments, with an optional monthly plan to keep everything running.":"Varje företag är unikt, och det är varje pris också. Du får en komplett offert, i din valuta, innan något arbete påbörjas. Betala allt direkt eller delbetala, med ett valfritt månadsabonnemang som håller allt igång.",
 "Included in every project":"Ingår i varje projekt",
 "Bespoke design":"Skräddarsydd design",
 "Designed around your brand and your customers, never a template.":"Utformad efter ditt varumärke och dina kunder, aldrig en mall.",
@@ -340,7 +341,6 @@ sv:{
 "Web design studio":"Webbdesignstudio",
 "Selected work":"Utvalda projekt",
 "The process":"Processen",
-"One clear price, up front.":"Ett tydligt pris, *från början*.",
 "The founders":"Grundarna",
 "Start a project":"Starta ett projekt",
 "By industry":"Per bransch",
