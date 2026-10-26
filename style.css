@@ -46,12 +46,9 @@ p{margin:0}
 /* nav */
 nav{position:sticky;top:0;z-index:10;background:rgba(22,15,32,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--night-line);color:var(--night-text)}
 nav .wrap{display:flex;align-items:center;gap:30px;height:76px;max-width:1380px}
-/* logo: a wordmark, F&L with a gold ampersand over a spaced-out STUDIO */
-.logo{display:flex;align-items:center;text-decoration:none;flex:none}
-.logo .lk{display:flex;flex-direction:column;align-items:center;line-height:1}
-.logo .fl{font:750 25px var(--wide);letter-spacing:-.02em;color:var(--night-text)}
-.logo .fl em{font-style:normal;color:var(--gold);margin:0 1px}
-.logo .st{font:500 8.5px var(--wide);letter-spacing:.55em;margin:6px 0 0 .55em;color:var(--gold);text-transform:uppercase}
+.logo{font:750 20px var(--wide);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:12px}
+.logo svg{width:40px;height:40px;flex:none}
+.logo .st{color:var(--gold)}
 nav .links{display:flex;gap:30px;margin-left:auto;font:400 11.5px var(--wide);letter-spacing:.2em;text-transform:uppercase}
 nav .links a{text-decoration:none;color:var(--night-muted);transition:color .2s}
 nav .links a:hover,nav .links a[aria-current]{color:var(--gold)}
@@ -72,7 +69,7 @@ nav .btn{padding:13px 20px;font-size:11px}
 /* narrower screens: the menu links drop to a second row */
 @media (max-width:1180px){nav .wrap{flex-wrap:wrap;height:auto;padding-top:12px;padding-bottom:0;row-gap:4px;gap:14px}nav .btn{margin-left:auto}.lang{margin-left:0}nav .links{order:3;width:100%;margin:0;padding:8px 0 12px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}}
 @media (max-width:720px){nav .links{gap:14px;font-size:10.5px;letter-spacing:.14em;justify-content:space-between}}
-@media (max-width:480px){nav .wrap{gap:8px}nav .btn{padding:11px 12px;font-size:10px;letter-spacing:.14em}.lang-btn{font-size:10px;letter-spacing:.12em}nav .links{gap:10px;font-size:10px;letter-spacing:.1em}nav .links .wide{display:none}}
+@media (max-width:480px){.logo>span{display:none}nav .wrap{gap:8px}nav .btn{padding:11px 12px;font-size:10px;letter-spacing:.14em}.lang-btn{font-size:10px;letter-spacing:.12em}nav .links{gap:10px;font-size:10px;letter-spacing:.1em}nav .links .wide{display:none}}
 
 /* hero */
 .hero{position:relative;padding:72px 0 48px}
@@ -241,8 +238,8 @@ html.classic body{font-weight:300;line-height:1.75}
 html.classic h1,html.classic h2,html.classic h3{font-family:var(--serif);font-weight:500;letter-spacing:-.005em}
 html.classic h1 em,html.classic h2 em,html.classic h3 em{font-style:italic}
 html.classic h2{font-size:clamp(40px,5.4vw,68px)}
-html.classic .logo .fl{font:500 32px var(--serif);letter-spacing:.02em}
-html.classic .logo .fl em{font-style:italic}
+html.classic .logo{font:600 19px var(--wide);letter-spacing:-.01em}
+html.classic .logo .st{font:italic 500 23px var(--serif);letter-spacing:0}
 html.classic .hero h1{font-size:clamp(48px,5.6vw,96px);line-height:.98}
 html.classic .feature h3{font-size:clamp(34px,3.6vw,48px)}
 html.classic .card h3{font-size:28px}
