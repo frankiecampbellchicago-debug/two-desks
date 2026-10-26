@@ -103,8 +103,7 @@ section{padding:120px 0}
 .feature h3{font-size:clamp(28px,3.4vw,40px);margin:16px 0 18px}
 .feature p{color:var(--muted)}
 .feature .go{margin-top:30px}
-.label{display:inline-block;font:500 10.5px/1 var(--wide);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink)}
-.label.client{color:var(--violet)}
+.label{display:inline-block;font:500 10.5px/1 var(--wide);letter-spacing:.24em;text-transform:uppercase;color:var(--violet)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
 .card{text-decoration:none;display:block}
 /* a thin offset frame behind each screenshot; the image eases in on hover */
