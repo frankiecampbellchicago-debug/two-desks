@@ -1,6 +1,6 @@
 # F&L Studio
 
-Website for Frankie and Leila's web design studio. Plain HTML/CSS/JS, no build step:
+Website for Frank and Leila's web design studio. Plain HTML/CSS/JS, no build step:
 `index.html` (home), `services.html`, shared `style.css` and `site.js`. Hosted on GitHub Pages.
 
 The name F&L Studio appears in `index.html` in the title, nav logo, about section, and footer.

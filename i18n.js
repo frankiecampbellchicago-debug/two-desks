@@ -13,7 +13,7 @@ es:{
 "Pricing":"Precios",
 "About":"Nosotros",
 "Get a quote":"Pedir presupuesto",
-"F&L Studio · Websites by Frankie & Leila":"F&L Studio · Webs de Frankie y Leila",
+"F&L Studio · Websites by Frank & Leila":"F&L Studio · Webs de Frank y Leila",
 
 "See our work":"Ver nuestros trabajos",
 "A few of our sites":"Algunos de nuestros sitios",
@@ -64,10 +64,10 @@ es:{
 
 "Meet the team":"Conoce al equipo",
 "Just the two of us. You talk to the people building your site, not a sales team.":"Solo nosotros dos. Hablas con quienes crean tu web, no con un equipo de ventas.",
-"Photo of Frankie":"Foto de Frankie",
+"Photo of Frank":"Foto de Frank",
+"Frank has been designing and building websites for over a year. A U.S. citizen now expanding into international business, he co-founded F&L Studio with Leila to bring well-made websites, and the tools behind them, to businesses around the world.":"Frank lleva más de un año diseñando y desarrollando páginas web. Ciudadano estadounidense que ahora se abre a los negocios internacionales, cofundó F&L Studio junto a Leila para ofrecer webs bien hechas, y las herramientas que las acompañan, a empresas de todo el mundo.",
+"Leila studies business at Geneva Business School in Madrid. Half Swedish and half Mozambican, she brings an international perspective to every project. As co-founder of F&L Studio, she leads the business side of the company.":"Leila estudia Administración de Empresas en Geneva Business School, en Madrid. Mitad sueca y mitad mozambiqueña, aporta una perspectiva internacional a cada proyecto. Como cofundadora de F&L Studio, dirige el área de negocio de la empresa.",
 "Photo of Leila":"Foto de Leila",
-"Frankie has been building websites for over a year, for local businesses and for side projects. F&L Studio is Frankie's own company, started together with Leila.":"Frankie lleva más de un año creando webs para negocios locales y proyectos propios. F&L Studio es la empresa de Frankie, fundada junto a Leila.",
-"Leila studies at Geneva Business School in Madrid, and brings the business side to F&L Studio.":"Leila estudia en Geneva Business School en Madrid y aporta la parte de negocio a F&L Studio.",
 
 "Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Cuéntanos sobre tu negocio y lo que necesitas. Te responderemos por correo con un precio y las preguntas que tengamos.",
 "No commitment. If it's not a fit, we'll tell you.":"Sin compromiso. Si no encajamos, te lo diremos.",
@@ -156,7 +156,7 @@ pt:{
 "Pricing":"Preços",
 "About":"Sobre nós",
 "Get a quote":"Pedir orçamento",
-"F&L Studio · Websites by Frankie & Leila":"F&L Studio · Sites por Frankie e Leila",
+"F&L Studio · Websites by Frank & Leila":"F&L Studio · Sites por Frank e Leila",
 
 "See our work":"Ver os nossos trabalhos",
 "A few of our sites":"Alguns dos nossos sites",
@@ -207,10 +207,10 @@ pt:{
 
 "Meet the team":"Conheça a equipa",
 "Just the two of us. You talk to the people building your site, not a sales team.":"Somos só nós os dois. Fala diretamente com quem cria o seu site, não com uma equipa comercial.",
-"Photo of Frankie":"Fotografia de Frankie",
+"Photo of Frank":"Fotografia de Frank",
+"Frank has been designing and building websites for over a year. A U.S. citizen now expanding into international business, he co-founded F&L Studio with Leila to bring well-made websites, and the tools behind them, to businesses around the world.":"O Frank desenha e desenvolve sites há mais de um ano. Cidadão norte-americano, agora a expandir a sua atividade para os negócios internacionais, cofundou a F&L Studio com a Leila para levar sites bem feitos, e as ferramentas que os acompanham, a empresas de todo o mundo.",
+"Leila studies business at Geneva Business School in Madrid. Half Swedish and half Mozambican, she brings an international perspective to every project. As co-founder of F&L Studio, she leads the business side of the company.":"A Leila estuda Gestão na Geneva Business School, em Madrid. Metade sueca e metade moçambicana, traz uma perspetiva internacional a cada projeto. Como cofundadora da F&L Studio, lidera a área de negócio da empresa.",
 "Photo of Leila":"Fotografia de Leila",
-"Frankie has been building websites for over a year, for local businesses and for side projects. F&L Studio is Frankie's own company, started together with Leila.":"Frankie cria sites há mais de um ano, para negócios locais e projetos próprios. A F&L Studio é a empresa de Frankie, fundada em conjunto com a Leila.",
-"Leila studies at Geneva Business School in Madrid, and brings the business side to F&L Studio.":"A Leila estuda na Geneva Business School, em Madrid, e trata da parte de negócio da F&L Studio.",
 
 "Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Fale-nos do seu negócio e do que precisa. Respondemos por e-mail com um preço e com as perguntas que tivermos.",
 "No commitment. If it's not a fit, we'll tell you.":"Sem compromisso. Se não formos a escolha certa, dizemos-lhe.",
