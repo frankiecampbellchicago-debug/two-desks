@@ -22,9 +22,8 @@ h1 em,h2 em,h3 em{font-style:normal;color:var(--gold-ink)}
 h2{font-size:clamp(32px,4.6vw,56px)}
 p{margin:0}
 
-/* small spaced label with a hairline on each side */
-.eyebrow{display:inline-flex;align-items:center;gap:14px;font:500 11.5px/1 var(--wide);letter-spacing:.32em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:22px}
-.eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+/* small spaced label above a heading */
+.eyebrow{display:inline-block;font:500 11.5px/1 var(--wide);letter-spacing:.32em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:22px}
 .dark .eyebrow{color:var(--gold)}
 
 /* dark ("night") sections */
@@ -149,7 +148,6 @@ section{padding:120px 0}
 @media (max-width:880px){.fit{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.fit{grid-template-columns:1fr}}
 .cta{text-align:center}
-.cta .eyebrow{justify-content:center}
 .cta p{margin:20px auto 36px;max-width:480px}
 
 /* how it works */
