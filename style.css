@@ -133,7 +133,7 @@ section{padding:88px 0}
 .price{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid #3a2d55}
 .price>div{padding:30px 28px 10px 0}
 .price>div+div{padding-left:28px;border-left:1px solid #3a2d55}
-.big{color:var(--lime);font-weight:800;font-size:clamp(42px,4.6vw,60px);white-space:nowrap;line-height:1;letter-spacing:-.03em}
+.big{color:var(--lime);font-weight:700;font-size:clamp(38px,4vw,52px);line-height:1.02;letter-spacing:-.035em}
 .price .sub{color:#b8acd0;margin-top:10px}
 .price h3{font-size:20px;margin-bottom:14px}
 .price ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;color:#e6defa}
