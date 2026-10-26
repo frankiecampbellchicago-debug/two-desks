@@ -167,21 +167,20 @@ section{padding:120px 0}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
-/* pricing: the quote on the left, a numbered spec sheet on the right */
-.price{display:grid;grid-template-columns:1fr 1.9fr;gap:72px;border-top:1px solid var(--night-line);padding-top:56px}
-.price>*{min-width:0}
+/* pricing */
+.price{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:0;border-top:1px solid var(--night-line)}
+.price>div{padding:44px 36px 10px 0;min-width:0}
+.price>div+div{padding-left:36px;border-left:1px solid var(--night-line)}
 .big{font:700 clamp(38px,4vw,52px)/1.02 var(--wide);letter-spacing:-.035em;color:var(--gold)}
-.pq .sub{margin-top:20px;max-width:360px}
+.price .sub{margin-top:18px}
+.price h3{font-size:20px;margin-bottom:18px;color:var(--night-text)}
+.price ul{list-style:none;margin:0;padding:0;display:grid;gap:16px;color:var(--night-text)}
+.price li{padding-left:24px;position:relative}
+.price li::before{content:"";position:absolute;left:0;top:.85em;width:12px;height:1px;background:var(--gold)}
+.price li b{display:block;font-weight:500}
+.price li span{display:block;font-size:15px;line-height:1.55;color:var(--night-muted);margin-top:2px}
 #pricing .btn{margin-top:32px}
-.plists{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.price .plabel{font:500 11px/1 var(--wide);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:6px 0 10px}
-.price ol{list-style:none;margin:0;padding:0;counter-reset:p}
-.price li{display:grid;grid-template-columns:36px 1fr;padding:20px 0;border-bottom:1px solid var(--night-line);counter-increment:p}
-.price li::before{content:"0" counter(p);grid-row:span 2;font:500 12px/1.9 var(--wide);letter-spacing:.08em;color:var(--gold)}
-.price li b{font-weight:500;font-size:17px;color:var(--night-text)}
-.price li span{font-size:15px;line-height:1.6;color:var(--night-muted);margin-top:4px}
-@media (max-width:980px){.price{grid-template-columns:1fr;gap:48px}}
-@media (max-width:640px){.plists{grid-template-columns:1fr;gap:40px}}
+@media (max-width:880px){.price{grid-template-columns:1fr}.price>div{padding:36px 0 10px}.price>div+div{padding-left:0;border-left:0;border-top:1px solid var(--night-line)}}
 
 /* team */
 .people{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -254,6 +253,7 @@ html.classic .fit h3{font-size:27px}
 html.classic .steps li::before{font:italic 500 56px/1 var(--serif);letter-spacing:0}
 html.classic .steps h3{font-size:29px}
 html.classic .big{font:italic 500 clamp(46px,4.6vw,64px)/1 var(--serif);letter-spacing:0}
+html.classic .price h3{font-size:26px}
 html.classic .person .photo{font:italic 500 72px var(--serif);letter-spacing:0}
 html.classic .person h3{font-size:38px}
 html.classic .done h3{font-size:38px}
