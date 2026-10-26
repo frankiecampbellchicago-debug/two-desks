@@ -15,3 +15,10 @@ The name F&L Studio appears in `index.html` in the title, nav logo, about sectio
   message and sends nothing.
 - **Screenshots** in `images/` are of the live sites as of October 2026. Retake
   them if those sites change.
+
+## Languages
+
+English, Spanish, and Portuguese. English is written in the HTML; the Spanish and Portuguese
+text lives in `i18n.js`, keyed by the English sentence. When you change or add English text,
+add the same sentence to both lists in `i18n.js`, or it stays in English for everyone.
+Link straight to a language with `?lang=es` or `?lang=pt`.
