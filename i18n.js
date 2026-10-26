@@ -2,7 +2,8 @@
 // the English text. Any text without a translation simply stays in English.
 const T={
 es:{
-"F&L Studio · Websites for small businesses":"F&L Studio · Páginas web para pequeñas empresas",
+"F&L Studio · Websites that grow your business":"F&L Studio · Webs que hacen crecer tu negocio",
+"Websites that grow your business.":"Webs que hacen crecer tu negocio.",
 "Services · F&L Studio":"Servicios · F&L Studio",
 "Skip to content":"Saltar al contenido",
 "Language":"Idioma",
@@ -14,10 +15,6 @@ es:{
 "Get a quote":"Pedir presupuesto",
 "F&L Studio · Websites by Frankie & Leila":"F&L Studio · Webs de Frankie y Leila",
 
-"Websites":"Páginas web",
-"for":"para",
-"small":"pequeñas",
-"businesses.":"empresas.",
 "See our work":"Ver nuestros trabajos",
 "A few of our sites":"Algunos de nuestros sitios",
 "MeadowStone Landscaping sample site":"Web de muestra de MeadowStone Landscaping",
@@ -148,7 +145,8 @@ es:{
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Cuéntanos sobre tu negocio y te diremos qué vale la pena y qué no."
 },
 pt:{
-"F&L Studio · Websites for small businesses":"F&L Studio · Sites para pequenas empresas",
+"F&L Studio · Websites that grow your business":"F&L Studio · Sites que fazem crescer o seu negócio",
+"Websites that grow your business.":"Sites que fazem crescer o seu negócio.",
 "Services · F&L Studio":"Serviços · F&L Studio",
 "Skip to content":"Saltar para o conteúdo",
 "Language":"Idioma",
@@ -160,10 +158,6 @@ pt:{
 "Get a quote":"Pedir orçamento",
 "F&L Studio · Websites by Frankie & Leila":"F&L Studio · Sites por Frankie e Leila",
 
-"Websites":"Sites",
-"for":"para",
-"small":"pequenas",
-"businesses.":"empresas.",
 "See our work":"Ver os nossos trabalhos",
 "A few of our sites":"Alguns dos nossos sites",
 "MeadowStone Landscaping sample site":"Site de exemplo da MeadowStone Landscaping",
@@ -305,7 +299,12 @@ function setLang(lang){
   LANG=T[lang]||lang==="en"?lang:"en";
   const d=T[LANG]||{},tr=k=>LANG==="en"?k:d[k];
   document.documentElement.lang=LANG;
-  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>SKIP.has(n.parentNode.nodeName)?2:1});
+  document.querySelectorAll("[data-words]").forEach(h=>{
+    h._en=h._en||h.textContent.replace(/\s+/g," ").trim();
+    const txt=tr(h._en)||h._en;
+    if(h.textContent.replace(/\s+/g," ").trim()!==txt)h.innerHTML=txt.split(" ").map(x=>'<span class="w">'+x.replace(/[<&]/g,"")+"</span>").join(" ");
+  });
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>SKIP.has(n.parentNode.nodeName)||n.parentNode.closest("[data-words]")?2:1});
   for(let n;(n=w.nextNode());){
     if(n._en===undefined)n._en=n.nodeValue;
     const k=n._en.trim(),v=k&&tr(k);
