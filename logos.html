@@ -5,59 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>F&amp;L Studio · Logo options</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f6f3fb;--card:#fff;--ink:#1f1433;--muted:#5e5470;--line:#e2daf0;--blue:#6a3fd2;--lime:#cdb8ff}
+:root{--night:#160f20;--cream:#f7f2ea;--ink:#1d1428;--muted:#625a6c;--line:#e1d6c4;--gold:#cfae72;--gold-ink:#7e5f2a;--text:#efe8dc}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Inter,system-ui,sans-serif}
-.wrap{max-width:1100px;margin:0 auto;padding:48px 24px}
-h1{font-weight:650;letter-spacing:-.035em;font-size:clamp(32px,5vw,48px);margin:0 0 8px;line-height:1.1}
-.wrap>p{color:var(--muted);margin:0 0 36px}
-.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.opt{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.big{display:grid;place-items:center;padding:40px 0}
-.big svg{width:140px;height:140px}
-.dark{background:var(--ink);display:flex;justify-content:center;gap:28px;padding:22px 0}
-.dark svg{width:44px;height:44px}
-.nav{display:flex;align-items:center;gap:10px;padding:16px 20px;border-top:1px solid var(--line);font-weight:750;font-size:20px;letter-spacing:-.02em}
-.nav svg{width:30px;height:30px}
-.nav span{color:var(--blue)}
-.cap{padding:16px 20px 22px;border-top:1px solid var(--line)}
-.cap b{font-size:20px}
+body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:56px 24px}
+h1{font-weight:650;letter-spacing:-.035em;font-size:clamp(32px,5vw,52px);margin:0 0 8px;line-height:1.05}
+.wrap>p{color:var(--muted);margin:0 0 40px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.opt{border:1px solid var(--line);background:#fffdf8}
+.nav{background:var(--night);display:flex;align-items:center;gap:12px;padding:16px 20px;min-height:76px;color:var(--text)}
+.big{background:var(--night);display:grid;place-items:center;padding:44px 0;border-top:1px solid rgba(207,174,114,.18)}
+.light{display:grid;place-items:center;padding:30px 0;background:var(--cream)}
+.tabs{display:flex;gap:14px;align-items:center;padding:14px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.cap{padding:18px 20px 24px;border-top:1px solid var(--line)}
+.cap b{font-size:20px;font-weight:650;letter-spacing:-.02em}
 .cap p{color:var(--muted);margin:4px 0 0;font-size:15px}
+/* shared pieces */
+.wm{font:750 19px Inter,sans-serif;letter-spacing:-.02em}.wm i{font-style:normal;color:var(--gold)}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.lockup{display:flex;flex-direction:column;align-items:center;line-height:1}
+.lockup .fl{font:500 34px "Cormorant Garamond",Georgia,serif;color:var(--text);letter-spacing:.02em}
+.lockup .fl em{font-style:italic;color:var(--gold);margin:0 2px}
+.lockup .st{font:500 8.5px Inter,sans-serif;letter-spacing:.62em;color:var(--gold);margin:6px 0 0 .62em}
+.light .lockup .fl{color:var(--ink)}.light .lockup .fl em,.light .lockup .st{color:var(--gold-ink)}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <!-- A: F and L locked together; the F's top arm is a roof over the L -->
-  <symbol id="a" viewBox="0 0 32 32">
-    <rect width="32" height="32" rx="8" fill="#1f1433"/>
-    <path fill="#fff" d="M6 6h20v4.5H10.5v3.5H14v4h-3.5V26H6z"/>
-    <path fill="#cdb8ff" d="M15.5 13H20v8.5h6V26H15.5z"/>
+  <!-- 1 Badge: thin gold ring with F&L, like Bel Piatto's seal -->
+  <symbol id="badge" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="22.5" fill="none" stroke="#cfae72" stroke-width="1.2"/>
+    <circle cx="24" cy="24" r="19.5" fill="none" stroke="#cfae72" stroke-width=".5" opacity=".6"/>
+    <text x="24" y="29.5" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="600" fill="#cfae72">F<tspan font-style="italic" font-weight="500">&amp;</tspan>L</text>
   </symbol>
-  <!-- B: two tiles, one letter each, overlapping like two people working side by side -->
-  <symbol id="b" viewBox="0 0 32 32">
-    <rect x="1" y="5" width="18" height="22" rx="5" fill="#1f1433"/>
-    <rect x="13" y="5" width="18" height="22" rx="5" fill="#6a3fd2"/>
-    <path fill="#fff" d="M5 10h8v3H8v2.5h4.5v3H8V22H5z"/>
-    <path fill="#fff" d="M19 10h3v9h6v3h-9z"/>
+  <!-- 3 Framed: F and L in a hairline square, split by a thin line -->
+  <symbol id="frame" viewBox="0 0 48 48">
+    <rect x="1.5" y="1.5" width="45" height="45" fill="none" stroke="#cfae72" stroke-width="1.2"/>
+    <line x1="24" y1="10" x2="24" y2="38" stroke="#cfae72" stroke-width=".8"/>
+    <text x="13.5" y="31" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" font-weight="650" fill="#efe8dc">F</text>
+    <text x="34.5" y="31" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" font-weight="650" fill="#cfae72">L</text>
   </symbol>
-  <!-- C: circle badge with the initials and ampersand -->
-  <symbol id="c" viewBox="0 0 32 32">
-    <circle cx="16" cy="16" r="16" fill="#cdb8ff"/>
-    <text x="16" y="20.6" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12.5" font-weight="750" letter-spacing="-.4" fill="#1f1433">F&amp;L</text>
+  <!-- 4 Ampersand: one italic & in a thin ring -->
+  <symbol id="amp" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="22.5" fill="none" stroke="#cfae72" stroke-width="1.2"/>
+    <text x="24" y="33" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="30" font-style="italic" font-weight="500" fill="#cfae72">&amp;</text>
   </symbol>
 </svg>
 
 <div class="wrap">
-  <h1>Logo options</h1>
-  <p>Each one uses F and L. You'll see it large, on a dark background, and next to the name at nav size.</p>
+  <h1>New logo options</h1>
+  <p>Each one is shown in the menu bar, large on the dark background, on the light background, and as the tiny browser-tab icon.</p>
   <div class="opts">
-    <div class="opt"><div class="big"><svg><use href="#a"/></svg></div><div class="dark"><svg><use href="#a"/></svg></div><div class="nav"><svg><use href="#a"/></svg>F&amp;L <span>Studio</span></div><div class="cap"><b>A · Joined</b><p>The F and L lock together into one mark, with the F sheltering the L.</p></div></div>
-    <div class="opt"><div class="big"><svg><use href="#b"/></svg></div><div class="dark"><svg><use href="#b"/></svg></div><div class="nav"><svg><use href="#b"/></svg>F&amp;L <span>Studio</span></div><div class="cap"><b>B · Side by side</b><p>One tile each, overlapping. Two people, one studio.</p></div></div>
-    <div class="opt"><div class="big"><svg><use href="#c"/></svg></div><div class="dark"><svg><use href="#c"/></svg></div><div class="nav"><svg><use href="#c"/></svg>F&amp;L <span>Studio</span></div><div class="cap"><b>C · Badge</b><p>A simple round stamp with F&amp;L. Classic and easy to read.</p></div></div>
+
+    <div class="opt">
+      <div class="nav"><svg width="40" height="40"><use href="#badge"/></svg><span class="wm">F&amp;L <i>Studio</i></span></div>
+      <div class="big"><svg width="130" height="130"><use href="#badge"/></svg></div>
+      <div class="tabs">Tab icon: <svg width="16" height="16" style="background:#160f20;border-radius:3px"><use href="#badge"/></svg><svg width="32" height="32" style="background:#160f20;border-radius:6px"><use href="#badge"/></svg></div>
+      <div class="cap"><b>1 · The seal</b><p>F&amp;L inside a fine double gold ring, like the round seal on Bel Piatto. Classic and high-end.</p></div>
+    </div>
+
+    <div class="opt">
+      <div class="nav"><span class="lockup"><span class="fl">F<em>&amp;</em>L</span><span class="st">STUDIO</span></span></div>
+      <div class="big"><span class="lockup" style="transform:scale(2.2);margin:24px 0"><span class="fl">F<em>&amp;</em>L</span><span class="st">STUDIO</span></span></div>
+      <div class="light"><span class="lockup" style="transform:scale(1.4);margin:8px 0"><span class="fl">F<em>&amp;</em>L</span><span class="st">STUDIO</span></span></div>
+      <div class="cap"><b>2 · The wordmark</b><p>No symbol, just the name: an elegant F&amp;L with a gold ampersand and STUDIO spaced out underneath, like the SALT logo.</p></div>
+    </div>
+
+    <div class="opt">
+      <div class="nav"><svg width="40" height="40"><use href="#frame"/></svg><span class="wm">F&amp;L <i>Studio</i></span></div>
+      <div class="big"><svg width="130" height="130"><use href="#frame"/></svg></div>
+      <div class="tabs">Tab icon: <svg width="16" height="16" style="background:#160f20"><use href="#frame"/></svg><svg width="32" height="32" style="background:#160f20"><use href="#frame"/></svg></div>
+      <div class="cap"><b>3 · The frame</b><p>F and L side by side in a thin gold square, split by a fine line: the two of you, one studio. Modern, in your Inter font.</p></div>
+    </div>
+
+    <div class="opt">
+      <div class="nav"><svg width="40" height="40"><use href="#amp"/></svg><span class="wm">F&amp;L <i>Studio</i></span></div>
+      <div class="big"><svg width="130" height="130"><use href="#amp"/></svg></div>
+      <div class="tabs">Tab icon: <svg width="16" height="16" style="background:#160f20;border-radius:3px"><use href="#amp"/></svg><svg width="32" height="32" style="background:#160f20;border-radius:6px"><use href="#amp"/></svg></div>
+      <div class="cap"><b>4 · The ampersand</b><p>A single italic gold "&amp;" in a ring. The "&amp;" is what joins Frank and Leila, so it becomes the symbol.</p></div>
+    </div>
+
   </div>
 </div>
 </body>
