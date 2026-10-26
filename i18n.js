@@ -1,4 +1,4 @@
-// Language switcher: English is written in the HTML; Spanish and European Portuguese live here, keyed by
+// Language menu: English is written in the HTML; Spanish, European Portuguese, and Swedish live here, keyed by
 // the English text. Any text without a translation simply stays in English.
 const T={
 es:{
@@ -298,6 +298,148 @@ pt:{
 "Appointment requests, service reminders like \"time for an oil change\", and reviews on Google.":"Pedidos de marcação, lembretes como \"está na hora de mudar o óleo\" e avaliações no Google.",
 "Not sure what you need?":"Não sabe bem do que *precisa*?",
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Fale-nos do seu negócio e dizemos-lhe o que vale a pena e o que não vale."
+},
+sv:{
+"Web design studio":"Webbdesignstudio",
+"Selected work":"Utvalda projekt",
+"The process":"Processen",
+"One clear price, up front.":"Ett tydligt pris, *från början*.",
+"The founders":"Grundarna",
+"Start a project":"Starta ett projekt",
+"By industry":"Per bransch",
+"F&L Studio · Websites that grow your business":"F&L Studio · Webbplatser som får ditt företag att växa",
+"Websites that grow your business.":"Webbplatser som får ditt företag att *växa*.",
+"Services · F&L Studio":"Tjänster · F&L Studio",
+"Skip to content":"Hoppa till innehållet",
+"Language":"Språk",
+"Work":"Projekt",
+"Services":"Tjänster",
+"How it works":"Så *fungerar* det",
+"Pricing":"Priser",
+"About":"Om oss",
+"Get a quote":"Begär *offert*",
+"F&L Studio · Websites by Frank & Leila":"F&L Studio · Webbplatser av Frank och Leila",
+"See our work":"Se våra projekt",
+"A few of our sites":"Några av våra webbplatser",
+"MeadowStone Landscaping sample site":"Exempelsajt för MeadowStone Landscaping",
+"The Don & John Exterior Cleaning website":"Webbplatsen för Don & John Exterior Cleaning",
+"United Revival Automotive redesign":"Ny design för United Revival Automotive",
+"Sites we've built":"Webbplatser vi har *byggt*",
+"Two client sites, a redesign, and a sample site.":"Två kundsajter, en omdesign och en exempelsajt.",
+"Don & John Exterior Cleaning website":"Webbplatsen för Don & John Exterior Cleaning",
+"Client site":"Kundsajt",
+"Window cleaning, gutters, and pressure washing around Chicago. A full site with a page for every town they serve, their reviews, and an estimate form that goes straight to their inbox. It runs on their own domain.":"Fönsterputs, takrännor och högtryckstvätt i Chicagoområdet. En komplett webbplats med en sida för varje ort de arbetar i, deras omdömen och ett offertformulär som går direkt till deras inkorg. Den ligger på deras egen domän.",
+"Visit donandjohn.com ↗":"Besök donandjohn.com ↗",
+"United Revival Automotive website":"Webbplatsen för United Revival Automotive",
+"Redesign":"Omdesign",
+"Visit ↗":"Besök ↗",
+"A new look for an auto repair shop in Rockford, Illinois, built around their real reviews, hours, and phone number.":"Ett nytt utseende för en bilverkstad i Rockford, Illinois, uppbyggt kring deras riktiga omdömen, öppettider och telefonnummer.",
+"Love Is In The Air website":"Webbplatsen för Love Is In The Air",
+"A site for long-distance couples, with date ideas, a countdown to the next visit, trip planning, and articles.":"En webbplats för par i distansförhållanden, med dejtidéer, en nedräkning till nästa besök, reseplanering och artiklar.",
+"MeadowStone Landscaping sample website":"Exempelsajt för MeadowStone Landscaping",
+"Sample site":"Exempelsajt",
+"A higher-end look for a landscaping company, with project photos and a quote request.":"Ett mer exklusivt utseende för ett trädgårdsföretag, med projektbilder och offertförfrågan.",
+"Three steps from the first email to a live site.":"Tre steg från första mejlet till en färdig webbplats.",
+"Tell us what you need":"Berätta vad du behöver",
+"Fill in the quote form. We email you back with a price and any questions we have.":"Fyll i offertformuläret. Vi svarar via mejl med ett pris och eventuella frågor.",
+"We build it":"Vi bygger den",
+"You see the site as it comes together and tell us what to change before it goes live.":"Du ser webbplatsen ta form och säger vad du vill ändra innan den publiceras.",
+"It goes live":"Den publiceras",
+"We put it on your domain and check that your contact form emails you.":"Vi lägger den på din domän och kontrollerar att kontaktformuläret skickar till din mejl.",
+"No packages and no fixed price list. We look at what your business needs and send you one clear price.":"Inga paket och ingen fast prislista. Vi ser vad ditt företag behöver och skickar ett tydligt pris.",
+"Quoted for you":"Anpassat för dig",
+"Every business is different, so every price is too. You get the full price, in your currency, before any work starts.":"Varje företag är unikt, och det är varje pris också. Du får hela priset, i din valuta, innan något arbete börjar.",
+"Ask for a quote":"Begär offert",
+"What you get":"Det här ingår",
+"A site designed around your business":"En webbplats designad för ditt företag",
+"Looks right on phones, tablets, and computers":"Ser bra ut på mobiler, surfplattor och datorer",
+"A contact or quote form that emails you":"Ett kontakt- eller offertformulär som skickar till din mejl",
+"Set up on your own domain name":"Uppsatt på ditt eget domännamn",
+"Built to load fast":"Byggd för att laddas snabbt",
+"What changes the price":"Det här påverkar priset",
+"How many pages you need":"Hur många sidor du behöver",
+"Whether you have your own text and photos":"Om du har egna texter och bilder",
+"Services like booking, a store, or email marketing":"Tjänster som bokning, webbutik eller e-postmarknadsföring",
+"How soon you need it":"Hur snart du behöver den",
+"Meet the team":"Möt *teamet*",
+"Just the two of us. You talk to the people building your site, not a sales team.":"Bara vi två. Du pratar direkt med dem som bygger din webbplats, inte med ett säljteam.",
+"Photo of Frank":"Foto på Frank",
+"Frank has been designing and building websites for over a year. A U.S. citizen now expanding into international business, he co-founded F&L Studio with Leila to bring well-made websites, and the tools behind them, to businesses around the world.":"Frank har designat och byggt webbplatser i över ett år. Som amerikansk medborgare som nu tar steget ut i internationella affärer grundade han F&L Studio tillsammans med Leila, för att ge företag runt om i världen välgjorda webbplatser och verktygen bakom dem.",
+"Leila studies business at Geneva Business School in Madrid. Half Swedish and half Mozambican, she brings an international perspective to every project. As co-founder of F&L Studio, she leads the business side of the company.":"Leila studerar ekonomi vid Geneva Business School i Madrid. Hon är halvt svensk och halvt moçambikisk och tillför ett internationellt perspektiv i varje projekt. Som medgrundare av F&L Studio leder hon företagets affärssida.",
+"Photo of Leila":"Foto på Leila",
+"Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Berätta om ditt företag och vad du behöver. Vi svarar via mejl med ett pris och eventuella frågor.",
+"No commitment. If it's not a fit, we'll tell you.":"Helt utan förpliktelser. Om vi inte passar ihop säger vi det.",
+"Your name":"Ditt namn",
+"Business name":"Företagsnamn",
+"Email":"E-post",
+"Country":"Land",
+"Current website (optional)":"Nuvarande webbplats (valfritt)",
+"What do you need?":"Vad behöver du?",
+"What your business does, what pages you want, anything you like on other sites":"Vad ditt företag gör, vilka sidor du vill ha, sådant du gillar på andra webbplatser",
+"What do you want help with?":"Vad vill du ha hjälp med?",
+"Website":"Webbplats",
+"Get found":"Bli hittad",
+"Online booking":"Onlinebokning",
+"Payments or a store":"Betalningar eller webbutik",
+"Email marketing":"E-postmarknadsföring",
+"Monthly care plan":"Månatligt underhåll",
+"Budget (optional)":"Budget (valfritt)",
+"A rough number in your currency, or leave blank":"En ungefärlig summa i din valuta, eller lämna tomt",
+"Send":"Skicka",
+"Preview: quote requests aren't being sent anywhere yet.":"Förhandsvisning: förfrågningar skickas inte någonstans än.",
+"That email doesn't look right.":"Den e-postadressen ser inte rätt ut.",
+"Please fill in {f}.":"Fyll i: {f}.",
+"Thanks, {n}.":"Tack, {n}.",
+"This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us.":"Det här är en förhandsvisning, så inget skickades. När inkorgen är kopplad kommer förfrågningar som den här direkt till oss.",
+"We got your request and will email you at {e} soon.":"Vi har tagit emot din förfrågan och mejlar dig snart på {e}.",
+"Sending…":"Skickar…",
+"Something went wrong. Please try again in a minute.":"Något gick fel. Försök igen om en minut.",
+"More than a website":"Mer än en *webbplats*",
+"The website is the start. We also set up the tools around it, so customers can find you, book you, pay you, and come back.":"Webbplatsen är bara början. Vi sätter också upp verktygen runt den, så att kunderna kan hitta dig, boka dig, betala dig och komma tillbaka.",
+"Show up when people nearby search for what you do.":"Synas när folk i närheten söker efter det du gör.",
+"Google Business Profile":"Google Företagsprofil",
+"Google reviews":"Google-omdömen",
+"Local search":"Lokal sökning",
+"Instagram & Facebook links":"Länkar till Instagram och Facebook",
+"Get booked":"Få bokningar",
+"Let customers book a time, ask for a quote, or reserve a table without picking up the phone.":"Låt kunderna boka en tid, begära offert eller reservera bord utan att ringa.",
+"Quote forms":"Offertformulär",
+"Reservations":"Bordsbokning",
+"Text reminders":"Påminnelser via sms",
+"Get paid":"Få betalt",
+"Take payments, deposits, and orders online.":"Ta emot betalningar, handpenning och beställningar online.",
+"Online store":"Webbutik",
+"Deposits":"Handpenning",
+"Gift cards":"Presentkort",
+"Invoices":"Fakturor",
+"Bring customers back":"Få kunderna att komma tillbaka",
+"Emails that go out on their own: a welcome for new customers, promotions and sales, reminders, and a request for a review after each job.":"Mejl som skickas automatiskt: välkomstmejl till nya kunder, kampanjer och rea, påminnelser och en förfrågan om omdöme efter varje uppdrag.",
+"Email promotions":"Kampanjer via mejl",
+"Welcome emails":"Välkomstmejl",
+"Reminders":"Påminnelser",
+"Review requests":"Förfrågningar om omdömen",
+"Keep it running":"Alltid igång",
+"A monthly plan. We host your site, make your edits, and fix anything that breaks, so you never have to touch it.":"Ett månadsabonnemang. Vi står för hosting, gör dina ändringar och fixar allt som slutar fungera, så att du aldrig behöver röra den.",
+"Hosting":"Hosting",
+"Edits and updates":"Ändringar och uppdateringar",
+"Monthly visitor report":"Månatlig besöksrapport",
+"We set up tools you may already know, like Square, Shopify, Calendly, and Mailchimp, and connect them to your site.":"Vi sätter upp verktyg du kanske redan känner till, som Square, Shopify, Calendly och Mailchimp, och kopplar dem till din webbplats.",
+"What it looks like for your business":"Så kan det se ut för *ditt företag*",
+"A few examples of what we'd set up, depending on what you do.":"Några exempel på vad vi skulle sätta upp, beroende på vad du gör.",
+"Salons, barbers, and spas":"Frisörer, barberare och spa",
+"Online booking with text reminders, deposits to cut down on no-shows, gift cards, and a review request after each visit.":"Onlinebokning med sms-påminnelser, handpenning för färre uteblivna besök, presentkort och en förfrågan om omdöme efter varje besök.",
+"Restaurants and cafés":"Restauranger och kaféer",
+"A menu with a QR code for the table, online ordering or reservations, a catering form, and emails for specials.":"En meny med QR-kod på bordet, beställning eller bordsbokning online, ett cateringformulär och mejl med erbjudanden.",
+"Cleaners, landscapers, and trades":"Städ, trädgård och hantverkare",
+"A quote form, a page for each area you serve, a review request after each job, and invoices you can pay online.":"Ett offertformulär, en sida för varje område du arbetar i, en förfrågan om omdöme efter varje uppdrag och fakturor som kan betalas online.",
+"Shops and boutiques":"Butiker och boutiquer",
+"An online store, sale and new-arrival emails, and a reminder email when someone leaves items in their cart.":"En webbutik, mejl om rea och nyheter, och en påminnelse när någon lämnar varor i varukorgen.",
+"Gyms, studios, and trainers":"Gym, studior och tränare",
+"A class schedule, memberships and payment plans, and a welcome email series for new members.":"Ett passchema, medlemskap och betalplaner, och en serie välkomstmejl till nya medlemmar.",
+"Auto and repair shops":"Bilverkstäder och reparationer",
+"Appointment requests, service reminders like \"time for an oil change\", and reviews on Google.":"Förfrågningar om tider, servicepåminnelser som \"dags för oljebyte\" och omdömen på Google.",
+"Not sure what you need?":"Osäker på vad du *behöver*?",
+"Tell us about your business and we'll suggest what's worth it and what isn't.":"Berätta om ditt företag så föreslår vi vad som är värt det och vad som inte är det."
 }
 };
 
@@ -334,12 +476,20 @@ function setLang(lang){
   });
   document._enTitle=document._enTitle||document.title;
   document.title=(tr(document._enTitle)||document._enTitle).replace(/\*/g,"");
-  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
+  document.querySelectorAll(".lang [data-lang]").forEach(b=>b.setAttribute("aria-current",b.dataset.lang===LANG));
   try{localStorage.setItem("lang",LANG)}catch(e){}
   document.dispatchEvent(new Event("langchange"));
 }
 
-document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+// the "Language" dropdown: opens on click, closes on a choice, an outside click, or Escape
+const menu=document.querySelector(".lang"),toggle=menu&&menu.querySelector(".lang-btn"),list=menu&&menu.querySelector(".lang-menu");
+const openMenu=o=>{if(!menu)return;toggle.setAttribute("aria-expanded",o);list.hidden=!o};
+if(menu){
+  toggle.addEventListener("click",()=>openMenu(list.hidden));
+  list.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{setLang(b.dataset.lang);openMenu(false);toggle.focus()}));
+  document.addEventListener("click",e=>{if(!menu.contains(e.target))openMenu(false)});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!list.hidden){openMenu(false);toggle.focus()}});
+}
 // first visit: a ?lang= link, then a saved choice, then the browser's own language
 let start=new URLSearchParams(location.search).get("lang");
 if(!start)try{start=localStorage.getItem("lang")}catch(e){}
