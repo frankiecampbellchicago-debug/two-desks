@@ -2,17 +2,24 @@
 // the English text. Any text without a translation simply stays in English.
 const T={
 es:{
+"Web design studio · Chicago & Madrid":"Estudio de diseño web · Chicago y Madrid",
+"Selected work":"Trabajos seleccionados",
+"The process":"El proceso",
+"One clear price, up front.":"Un precio claro, *desde el principio*.",
+"The founders":"Los fundadores",
+"Start a project":"Empieza tu proyecto",
+"By industry":"Por sector",
 "F&L Studio · Websites that grow your business":"F&L Studio · Webs que hacen crecer tu negocio",
-"Websites that grow your business.":"Webs que hacen crecer tu negocio.",
+"Websites that grow your business.":"Webs que hacen *crecer* tu negocio.",
 "Services · F&L Studio":"Servicios · F&L Studio",
 "Skip to content":"Saltar al contenido",
 "Language":"Idioma",
 "Work":"Trabajos",
 "Services":"Servicios",
-"How it works":"Cómo funciona",
+"How it works":"Cómo *funciona*",
 "Pricing":"Precios",
 "About":"Nosotros",
-"Get a quote":"Pedir presupuesto",
+"Get a quote":"Pedir *presupuesto*",
 "F&L Studio · Websites by Frank & Leila":"F&L Studio · Webs de Frank y Leila",
 
 "See our work":"Ver nuestros trabajos",
@@ -21,7 +28,7 @@ es:{
 "The Don & John Exterior Cleaning website":"La web de Don & John Exterior Cleaning",
 "United Revival Automotive redesign":"Rediseño de United Revival Automotive",
 
-"Sites we've built":"Webs que hemos creado",
+"Sites we've built":"Webs que hemos *creado*",
 "A live client site, a redesign, our own project, and a sample site.":"Una web de cliente publicada, un rediseño, un proyecto propio y una web de muestra.",
 "Don & John Exterior Cleaning website":"Web de Don & John Exterior Cleaning",
 "Client site":"Web de cliente",
@@ -62,7 +69,7 @@ es:{
 "Services like booking, a store, or email marketing":"Servicios como reservas, tienda online o email marketing",
 "How soon you need it":"Para cuándo la necesitas",
 
-"Meet the team":"Conoce al equipo",
+"Meet the team":"Conoce al *equipo*",
 "Just the two of us. You talk to the people building your site, not a sales team.":"Solo nosotros dos. Hablas con quienes crean tu web, no con un equipo de ventas.",
 "Photo of Frank":"Foto de Frank",
 "Frank has been designing and building websites for over a year. A U.S. citizen now expanding into international business, he co-founded F&L Studio with Leila to bring well-made websites, and the tools behind them, to businesses around the world.":"Frank lleva más de un año diseñando y desarrollando páginas web. Ciudadano estadounidense que ahora se abre a los negocios internacionales, cofundó F&L Studio junto a Leila para ofrecer webs bien hechas, y las herramientas que las acompañan, a empresas de todo el mundo.",
@@ -97,7 +104,7 @@ es:{
 "Sending…":"Enviando…",
 "Something went wrong. Please try again in a minute.":"Algo salió mal. Inténtalo de nuevo en un minuto.",
 
-"More than a website":"Más que una web",
+"More than a website":"Más que una *web*",
 "The website is the start. We also set up the tools around it, so customers can find you, book you, pay you, and come back.":"La web es solo el comienzo. También configuramos las herramientas a su alrededor para que los clientes te encuentren, reserven, te paguen y vuelvan.",
 "Show up when people nearby search for what you do.":"Aparece cuando la gente de tu zona busca lo que haces.",
 "Google Business Profile":"Perfil de Empresa de Google",
@@ -127,7 +134,7 @@ es:{
 "Edits and updates":"Cambios y actualizaciones",
 "Monthly visitor report":"Informe mensual de visitas",
 "We set up tools you may already know, like Square, Shopify, Calendly, and Mailchimp, and connect them to your site.":"Configuramos herramientas que quizá ya conoces, como Square, Shopify, Calendly y Mailchimp, y las conectamos a tu web.",
-"What it looks like for your business":"Cómo sería en tu negocio",
+"What it looks like for your business":"Cómo sería en *tu negocio*",
 "A few examples of what we'd set up, depending on what you do.":"Algunos ejemplos de lo que configuraríamos según a qué te dediques.",
 "Salons, barbers, and spas":"Peluquerías, barberías y spas",
 "Online booking with text reminders, deposits to cut down on no-shows, gift cards, and a review request after each visit.":"Reservas online con recordatorios por SMS, señales para reducir las ausencias, tarjetas regalo y una petición de reseña después de cada visita.",
@@ -141,21 +148,28 @@ es:{
 "A class schedule, memberships and payment plans, and a welcome email series for new members.":"Un horario de clases, membresías y planes de pago, y una serie de correos de bienvenida para nuevos socios.",
 "Auto and repair shops":"Talleres y reparaciones",
 "Appointment requests, service reminders like \"time for an oil change\", and reviews on Google.":"Solicitudes de cita, recordatorios como \"toca cambiar el aceite\" y reseñas en Google.",
-"Not sure what you need?":"¿No sabes qué necesitas?",
+"Not sure what you need?":"¿No sabes qué *necesitas*?",
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Cuéntanos sobre tu negocio y te diremos qué vale la pena y qué no."
 },
 pt:{
+"Web design studio · Chicago & Madrid":"Estúdio de design web · Chicago e Madrid",
+"Selected work":"Trabalhos selecionados",
+"The process":"O processo",
+"One clear price, up front.":"Um preço claro, *à partida*.",
+"The founders":"Os fundadores",
+"Start a project":"Comece o seu projeto",
+"By industry":"Por setor",
 "F&L Studio · Websites that grow your business":"F&L Studio · Sites que fazem crescer o seu negócio",
-"Websites that grow your business.":"Sites que fazem crescer o seu negócio.",
+"Websites that grow your business.":"Sites que fazem *crescer* o seu negócio.",
 "Services · F&L Studio":"Serviços · F&L Studio",
 "Skip to content":"Saltar para o conteúdo",
 "Language":"Idioma",
 "Work":"Trabalhos",
 "Services":"Serviços",
-"How it works":"Como funciona",
+"How it works":"Como *funciona*",
 "Pricing":"Preços",
 "About":"Sobre nós",
-"Get a quote":"Pedir orçamento",
+"Get a quote":"Pedir *orçamento*",
 "F&L Studio · Websites by Frank & Leila":"F&L Studio · Sites por Frank e Leila",
 
 "See our work":"Ver os nossos trabalhos",
@@ -164,7 +178,7 @@ pt:{
 "The Don & John Exterior Cleaning website":"O site da Don & John Exterior Cleaning",
 "United Revival Automotive redesign":"Novo design para a United Revival Automotive",
 
-"Sites we've built":"Sites que já criámos",
+"Sites we've built":"Sites que já *criámos*",
 "A live client site, a redesign, our own project, and a sample site.":"Um site de cliente já online, um redesign, um projeto nosso e um site de exemplo.",
 "Don & John Exterior Cleaning website":"Site da Don & John Exterior Cleaning",
 "Client site":"Site de cliente",
@@ -205,7 +219,7 @@ pt:{
 "Services like booking, a store, or email marketing":"Serviços como marcações, loja online ou e-mail marketing",
 "How soon you need it":"Para quando precisa",
 
-"Meet the team":"Conheça a equipa",
+"Meet the team":"Conheça a *equipa*",
 "Just the two of us. You talk to the people building your site, not a sales team.":"Somos só nós os dois. Fala diretamente com quem cria o seu site, não com uma equipa comercial.",
 "Photo of Frank":"Fotografia de Frank",
 "Frank has been designing and building websites for over a year. A U.S. citizen now expanding into international business, he co-founded F&L Studio with Leila to bring well-made websites, and the tools behind them, to businesses around the world.":"O Frank desenha e desenvolve sites há mais de um ano. Cidadão norte-americano, agora a expandir a sua atividade para os negócios internacionais, cofundou a F&L Studio com a Leila para levar sites bem feitos, e as ferramentas que os acompanham, a empresas de todo o mundo.",
@@ -240,7 +254,7 @@ pt:{
 "Sending…":"A enviar…",
 "Something went wrong. Please try again in a minute.":"Algo correu mal. Tente novamente daqui a um minuto.",
 
-"More than a website":"Mais do que um site",
+"More than a website":"Mais do que um *site*",
 "The website is the start. We also set up the tools around it, so customers can find you, book you, pay you, and come back.":"O site é só o começo. Também configuramos as ferramentas à volta dele, para que os clientes o encontrem, façam marcações, paguem e voltem.",
 "Show up when people nearby search for what you do.":"Apareça quando as pessoas da sua zona procuram aquilo que faz.",
 "Google Business Profile":"Perfil da Empresa no Google",
@@ -270,7 +284,7 @@ pt:{
 "Edits and updates":"Alterações e atualizações",
 "Monthly visitor report":"Relatório mensal de visitas",
 "We set up tools you may already know, like Square, Shopify, Calendly, and Mailchimp, and connect them to your site.":"Configuramos ferramentas que talvez já conheça, como Square, Shopify, Calendly e Mailchimp, e ligamo-las ao seu site.",
-"What it looks like for your business":"Como fica no seu negócio",
+"What it looks like for your business":"Como fica no *seu negócio*",
 "A few examples of what we'd set up, depending on what you do.":"Alguns exemplos do que configuraríamos, consoante aquilo que faz.",
 "Salons, barbers, and spas":"Cabeleireiros, barbearias e spas",
 "Online booking with text reminders, deposits to cut down on no-shows, gift cards, and a review request after each visit.":"Marcações online com lembretes por SMS, sinais para reduzir as faltas, cartões-oferta e um pedido de avaliação depois de cada visita.",
@@ -284,7 +298,7 @@ pt:{
 "A class schedule, memberships and payment plans, and a welcome email series for new members.":"Um horário de aulas, inscrições e planos de pagamento, e uma série de e-mails de boas-vindas para novos sócios.",
 "Auto and repair shops":"Oficinas e reparações",
 "Appointment requests, service reminders like \"time for an oil change\", and reviews on Google.":"Pedidos de marcação, lembretes como \"está na hora de mudar o óleo\" e avaliações no Google.",
-"Not sure what you need?":"Não sabe bem do que precisa?",
+"Not sure what you need?":"Não sabe bem do que *precisa*?",
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Fale-nos do seu negócio e dizemos-lhe o que vale a pena e o que não vale."
 }
 };
@@ -299,26 +313,29 @@ function setLang(lang){
   LANG=T[lang]||lang==="en"?lang:"en";
   const d=T[LANG]||{},tr=k=>LANG==="en"?k:d[k];
   document.documentElement.lang=LANG;
+  const esc=x=>x.replace(/&/g,"&amp;").replace(/</g,"&lt;"),
+        emph=x=>esc(x).replace(/\*(.+?)\*/g,"<em>$1</em>"),
+        pick=en=>LANG==="en"?en:(d[en.replace(/\*/g,"")]||en);
+  // headings carry their English (with *accent* marks) in data-em / data-words
+  document.querySelectorAll("[data-em]").forEach(h=>{h.innerHTML=emph(pick(h.dataset.em))});
   document.querySelectorAll("[data-words]").forEach(h=>{
-    h._en=h._en||h.textContent.replace(/\s+/g," ").trim();
-    const txt=tr(h._en)||h._en;
-    if(h.textContent.replace(/\s+/g," ").trim()!==txt)h.innerHTML=txt.split(" ").map(x=>'<span class="w">'+x.replace(/[<&]/g,"")+"</span>").join(" ");
+    h.innerHTML=pick(h.dataset.words).split(" ").map(x=>'<span class="w">'+emph(x)+"</span>").join(" ");
   });
-  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>SKIP.has(n.parentNode.nodeName)||n.parentNode.closest("[data-words]")?2:1});
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>SKIP.has(n.parentNode.nodeName)||n.parentNode.closest("[data-words],[data-em]")?2:1});
   for(let n;(n=w.nextNode());){
     if(n._en===undefined)n._en=n.nodeValue;
     const k=n._en.trim(),v=k&&tr(k);
-    n.nodeValue=v?n._en.replace(k,v):n._en;
+    n.nodeValue=v?n._en.replace(k,v.replace(/\*/g,"")):n._en;
   }
   document.querySelectorAll(ATTRS.map(a=>"["+a+"]").join(",")).forEach(el=>{
     el._en=el._en||{};
     for(const a of ATTRS)if(el.hasAttribute(a)){
       if(el._en[a]===undefined)el._en[a]=el.getAttribute(a);
-      el.setAttribute(a,tr(el._en[a])||el._en[a]);
+      el.setAttribute(a,(tr(el._en[a])||el._en[a]).replace(/\*/g,""));
     }
   });
   document._enTitle=document._enTitle||document.title;
-  document.title=tr(document._enTitle)||document._enTitle;
+  document.title=(tr(document._enTitle)||document._enTitle).replace(/\*/g,"");
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
   try{localStorage.setItem("lang",LANG)}catch(e){}
   document.dispatchEvent(new Event("langchange"));
