@@ -145,12 +145,14 @@ section{padding:88px 0}
 
 /* about */
 .people{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.person{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px}
-.person .init{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:22px;background:var(--lime);margin-bottom:18px}
-.person:nth-child(2) .init{background:var(--blue);color:#fff}
-.person h3{font-size:26px;margin-bottom:10px}
+.person{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}
+.person .photo{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;display:grid;place-items:center;font-weight:750;font-size:56px;letter-spacing:-.03em;background:var(--lime);color:var(--ink)}
+.person:nth-child(2) .photo{background:var(--blue);color:#fff}
+.person .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.person h3{font-size:26px;margin:4px 0 10px}
 .person p{color:var(--muted)}
 @media (max-width:720px){.people{grid-template-columns:1fr}}
+@media (max-width:520px){.person{grid-template-columns:1fr;gap:18px;padding:20px}.person .photo{width:150px}}
 
 /* quote */
 #quote{border-top:1px solid var(--line)}
