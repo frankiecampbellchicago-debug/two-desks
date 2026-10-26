@@ -22,8 +22,11 @@ h1 em,h2 em,h3 em{font-style:normal;color:var(--gold-ink)}
 h2{font-size:clamp(32px,4.6vw,56px)}
 p{margin:0}
 
-/* small spaced label above a heading */
-.eyebrow{display:inline-block;font:500 11.5px/1 var(--wide);letter-spacing:.32em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:22px}
+/* small spaced label above a heading, with a short line on each side (not in the hero) */
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font:500 11.5px/1 var(--wide);letter-spacing:.32em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:22px}
+.eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.hero .eyebrow::before,.hero .eyebrow::after{display:none}
+.cta .eyebrow{justify-content:center}
 .dark .eyebrow{color:var(--gold)}
 
 /* dark ("night") sections */
