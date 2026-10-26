@@ -47,8 +47,7 @@ p{margin:0}
 nav{position:sticky;top:0;z-index:10;background:rgba(22,15,32,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--night-line);color:var(--night-text)}
 nav .wrap{display:flex;align-items:center;gap:30px;height:76px;max-width:1380px}
 .logo{font:750 20px var(--wide);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:12px}
-.logo svg{width:38px;height:38px;flex:none}
-.logo svg rect:first-child{fill:#3a2b52}
+.logo svg{width:40px;height:40px;flex:none}
 .logo .st{color:var(--gold)}
 nav .links{display:flex;gap:30px;margin-left:auto;font:400 11.5px var(--wide);letter-spacing:.2em;text-transform:uppercase}
 nav .links a{text-decoration:none;color:var(--night-muted);transition:color .2s}
