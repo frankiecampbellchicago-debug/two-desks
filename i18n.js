@@ -2,7 +2,6 @@
 // the English text. Any text without a translation simply stays in English.
 const T={
 es:{
-"No packages, no fixed price list. Every project is scoped to your business and priced transparently.":"Sin paquetes ni lista de precios fija. Cada proyecto se define a la medida de tu negocio, con un precio transparente.",
 "Every business is different, so every price is too. You'll receive the full price, in your currency, before any work begins.":"Cada negocio es distinto, y cada precio también. Recibirás el precio completo, en tu moneda, antes de empezar cualquier trabajo.",
 "Included in every project":"Incluido en cada proyecto",
 "Bespoke design":"Diseño a medida",
@@ -160,7 +159,6 @@ es:{
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Cuéntanos sobre tu negocio y te diremos qué vale la pena y qué no."
 },
 pt:{
-"No packages, no fixed price list. Every project is scoped to your business and priced transparently.":"Sem pacotes nem tabela de preços fixa. Cada projeto é definido à medida do seu negócio, com um preço transparente.",
 "Every business is different, so every price is too. You'll receive the full price, in your currency, before any work begins.":"Cada negócio é diferente, e cada preço também. Recebe o preço completo, na sua moeda, antes de começarmos qualquer trabalho.",
 "Included in every project":"Incluído em todos os projetos",
 "Bespoke design":"Design à medida",
@@ -318,7 +316,6 @@ pt:{
 "Tell us about your business and we'll suggest what's worth it and what isn't.":"Fale-nos do seu negócio e dizemos-lhe o que vale a pena e o que não vale."
 },
 sv:{
-"No packages, no fixed price list. Every project is scoped to your business and priced transparently.":"Inga paket och ingen fast prislista. Varje projekt anpassas efter ditt företag och prissätts helt transparent.",
 "Every business is different, so every price is too. You'll receive the full price, in your currency, before any work begins.":"Varje företag är unikt, och det är varje pris också. Du får hela priset, i din valuta, innan något arbete påbörjas.",
 "Included in every project":"Ingår i varje projekt",
 "Bespoke design":"Skräddarsydd design",
