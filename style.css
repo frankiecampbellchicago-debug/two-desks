@@ -47,20 +47,20 @@ p{margin:0}
 nav{position:sticky;top:0;z-index:10;background:rgba(22,15,32,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--night-line);color:var(--night-text)}
 nav .wrap{display:flex;align-items:center;gap:30px;height:76px;max-width:1380px}
 .logo{font:750 20px var(--wide);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:12px}
-.logo svg{width:38px;height:38px;flex:none}
-.logo svg rect:first-child{fill:#3a2b52}
+.logo svg{width:40px;height:40px;flex:none}
 .logo .st{color:var(--gold)}
 nav .links{display:flex;gap:30px;margin-left:auto;font:400 11.5px var(--wide);letter-spacing:.2em;text-transform:uppercase}
 nav .links a{text-decoration:none;color:var(--night-muted);transition:color .2s}
 nav .links a:hover,nav .links a[aria-current]{color:var(--gold)}
 nav .btn{padding:13px 20px;font-size:11px}
-/* language menu */
-.lang{position:relative;margin-left:-14px;flex:none}
-.lang-btn{display:flex;align-items:center;gap:8px;font:500 11px var(--wide);letter-spacing:.2em;text-transform:uppercase;color:var(--night-muted);background:none;border:1px solid var(--night-line);padding:10px 12px;cursor:pointer;transition:color .2s,border-color .2s}
-.lang-btn:hover,.lang-btn[aria-expanded="true"]{color:var(--gold);border-color:rgba(207,174,114,.5)}
-.lang-btn svg{width:9px;height:6px;transition:transform .2s}
-.lang-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:20;list-style:none;margin:0;padding:6px;min-width:180px;background:var(--night);border:1px solid var(--night-line);box-shadow:0 24px 48px -20px rgba(0,0,0,.7);animation:drop .18s ease both}
+/* language menu: hover (or tap) "Language" to see the choices, click one to switch */
+.lang{position:relative;margin-left:-6px;flex:none}
+.lang-btn{font:400 11.5px var(--wide);letter-spacing:.2em;text-transform:uppercase;color:var(--night-muted);background:none;border:0;padding:10px 0;cursor:pointer;transition:color .2s}
+.lang:hover .lang-btn,.lang.open .lang-btn{color:var(--gold)}
+.lang-menu{display:none;position:absolute;right:-12px;top:100%;z-index:20;list-style:none;margin:8px 0 0;padding:6px;min-width:180px;background:var(--night);border:1px solid var(--night-line);box-shadow:0 24px 48px -20px rgba(0,0,0,.7);animation:drop .18s ease both}
+.lang-menu::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+.lang:hover .lang-menu,.lang.open .lang-menu{display:block}
+.lang.closed .lang-menu{display:none}
 @keyframes drop{from{opacity:0;transform:translateY(-4px)}}
 .lang-menu button{display:flex;align-items:center;justify-content:space-between;width:100%;font:400 14px var(--wide);color:var(--night-text);background:none;border:0;padding:10px 12px;text-align:left;cursor:pointer;transition:background .15s,color .15s}
 .lang-menu button:hover{background:rgba(207,174,114,.08);color:var(--gold)}
@@ -69,7 +69,7 @@ nav .btn{padding:13px 20px;font-size:11px}
 /* narrower screens: the menu links drop to a second row */
 @media (max-width:1180px){nav .wrap{flex-wrap:wrap;height:auto;padding-top:12px;padding-bottom:0;row-gap:4px;gap:14px}nav .btn{margin-left:auto}.lang{margin-left:0}nav .links{order:3;width:100%;margin:0;padding:8px 0 12px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}}
 @media (max-width:720px){nav .links{gap:14px;font-size:10.5px;letter-spacing:.14em;justify-content:space-between}}
-@media (max-width:480px){.logo>span{display:none}nav .wrap{gap:8px}nav .btn{padding:11px 12px;font-size:10px;letter-spacing:.14em}.lang-btn{padding:9px 8px;gap:6px;font-size:10px;letter-spacing:.12em}nav .links{gap:10px;font-size:10px;letter-spacing:.1em}nav .links .wide{display:none}}
+@media (max-width:480px){.logo>span{display:none}nav .wrap{gap:8px}nav .btn{padding:11px 12px;font-size:10px;letter-spacing:.14em}.lang-btn{font-size:10px;letter-spacing:.12em}nav .links{gap:10px;font-size:10px;letter-spacing:.1em}nav .links .wide{display:none}}
 
 /* hero */
 .hero{position:relative;padding:72px 0 48px}

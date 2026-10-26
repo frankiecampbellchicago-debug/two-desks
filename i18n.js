@@ -481,14 +481,17 @@ function setLang(lang){
   document.dispatchEvent(new Event("langchange"));
 }
 
-// the "Language" dropdown: opens on click, closes on a choice, an outside click, or Escape
-const menu=document.querySelector(".lang"),toggle=menu&&menu.querySelector(".lang-btn"),list=menu&&menu.querySelector(".lang-menu");
-const openMenu=o=>{if(!menu)return;toggle.setAttribute("aria-expanded",o);list.hidden=!o};
+// the "Language" menu: opens when the pointer is over it (or on a tap), and switches on a click
+const menu=document.querySelector(".lang"),toggle=menu&&menu.querySelector(".lang-btn");
+const openMenu=o=>{if(!menu)return;menu.classList.toggle("open",o);toggle.setAttribute("aria-expanded",o)};
 if(menu){
-  toggle.addEventListener("click",()=>openMenu(list.hidden));
-  list.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{setLang(b.dataset.lang);openMenu(false);toggle.focus()}));
+  menu.addEventListener("mouseenter",()=>{menu.classList.remove("closed");toggle.setAttribute("aria-expanded",true)});
+  menu.addEventListener("mouseleave",()=>{menu.classList.remove("closed");openMenu(false)});
+  toggle.addEventListener("click",()=>{menu.classList.remove("closed");openMenu(!menu.classList.contains("open"))});
+  menu.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{setLang(b.dataset.lang);openMenu(false);menu.classList.add("closed")}));
   document.addEventListener("click",e=>{if(!menu.contains(e.target))openMenu(false)});
-  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!list.hidden){openMenu(false);toggle.focus()}});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&menu.classList.contains("open")){openMenu(false);toggle.focus()}});
+  menu.addEventListener("focusout",e=>{if(!menu.contains(e.relatedTarget))openMenu(false)});
 }
 // first visit: a ?lang= link, then a saved choice, then the browser's own language
 let start=new URLSearchParams(location.search).get("lang");
