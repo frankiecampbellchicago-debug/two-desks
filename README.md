@@ -18,7 +18,7 @@ The name F&L Studio appears in `index.html` in the title, nav logo, about sectio
 
 ## Languages
 
-English, Spanish, and European Portuguese. English is written in the HTML; the Spanish and Portuguese
-text lives in `i18n.js`, keyed by the English sentence. When you change or add English text,
-add the same sentence to both lists in `i18n.js`, or it stays in English for everyone.
-Link straight to a language with `?lang=es` or `?lang=pt`.
+English, Spanish, European Portuguese, and Swedish, picked from the "Language" menu. English is written in the HTML; the other
+languages live in `i18n.js`, keyed by the English sentence. When you change or add English text,
+add the same sentence to every list in `i18n.js`, or it stays in English for everyone.
+Link straight to a language with `?lang=es`, `?lang=pt`, or `?lang=sv`.
