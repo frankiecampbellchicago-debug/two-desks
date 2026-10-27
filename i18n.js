@@ -180,7 +180,13 @@ es:{
 "Premium design":"Diseño premium",
 "Quote request":"Solicitud de presupuesto",
 "Want a site like these?":"¿Quieres una web *así*?",
-"Tell us about your business and we'll send you a quote.":"Cuéntanos sobre tu negocio y te enviaremos un presupuesto."
+"Tell us about your business and we'll send you a quote.":"Cuéntanos sobre tu negocio y te enviaremos un presupuesto.",
+"A sample site for a real estate agency. Buyers can search homes by neighborhood, type and price, step inside featured homes as they scroll, and book a viewing. Sellers can ask for a free valuation.":"Una web de muestra para una inmobiliaria. Los compradores pueden buscar viviendas por barrio, tipo y precio, entrar en las casas destacadas mientras recorren la página y reservar una visita. Los vendedores pueden pedir una valoración gratuita.",
+"Home Finder real estate sample website":"Web de muestra de la inmobiliaria Home Finder",
+"Home search":"Buscador de viviendas",
+"Listing pages":"Fichas de inmuebles",
+"Viewing requests":"Solicitudes de visita",
+"Free valuations":"Valoraciones gratuitas"
 },
 pt:{
 "Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
@@ -361,7 +367,13 @@ pt:{
 "Premium design":"Design premium",
 "Quote request":"Pedido de orçamento",
 "Want a site like these?":"Quer um site *assim*?",
-"Tell us about your business and we'll send you a quote.":"Fale-nos do seu negócio e enviamos-lhe um orçamento."
+"Tell us about your business and we'll send you a quote.":"Fale-nos do seu negócio e enviamos-lhe um orçamento.",
+"A sample site for a real estate agency. Buyers can search homes by neighborhood, type and price, step inside featured homes as they scroll, and book a viewing. Sellers can ask for a free valuation.":"Um site de exemplo para uma imobiliária. Os compradores podem pesquisar casas por bairro, tipo e preço, entrar nas casas em destaque à medida que percorrem a página e marcar uma visita. Os vendedores podem pedir uma avaliação gratuita.",
+"Home Finder real estate sample website":"Site de exemplo da imobiliária Home Finder",
+"Home search":"Pesquisa de casas",
+"Listing pages":"Páginas de imóveis",
+"Viewing requests":"Pedidos de visita",
+"Free valuations":"Avaliações gratuitas"
 },
 sv:{
 "Pricing that fits your business.":"Priser som *passar* ditt företag.",
@@ -535,7 +547,13 @@ sv:{
 "Premium design":"Exklusiv design",
 "Quote request":"Offertförfrågan",
 "Want a site like these?":"Vill du ha en webbplats som *dessa*?",
-"Tell us about your business and we'll send you a quote.":"Berätta om ditt företag så skickar vi en offert."
+"Tell us about your business and we'll send you a quote.":"Berätta om ditt företag så skickar vi en offert.",
+"A sample site for a real estate agency. Buyers can search homes by neighborhood, type and price, step inside featured homes as they scroll, and book a viewing. Sellers can ask for a free valuation.":"En exempelwebbplats för en fastighetsmäklare. Köpare kan söka bostäder efter område, bostadstyp och pris, kliva in i utvalda hem medan de scrollar och boka en visning. Säljare kan beställa en kostnadsfri värdering.",
+"Home Finder real estate sample website":"Exempelwebbplats för mäklarfirman Home Finder",
+"Home search":"Bostadssök",
+"Listing pages":"Objektsidor",
+"Viewing requests":"Visningsförfrågningar",
+"Free valuations":"Kostnadsfri värdering"
 }
 };
 
