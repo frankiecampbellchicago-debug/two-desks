@@ -186,7 +186,18 @@ es:{
 "Home search":"Buscador de viviendas",
 "Listing pages":"Fichas de inmuebles",
 "Viewing requests":"Solicitudes de visita",
-"Free valuations":"Valoraciones gratuitas"
+"Free valuations":"Valoraciones gratuitas",
+"A clothing brand's online store, built as an experience. A comet flies across a sky of stars to write the name, and the catalogue opens like a book, one drop per spread, with a shopping bag and checkout.":"La tienda online de una marca de ropa, pensada como una experiencia. Un cometa cruza un cielo de estrellas y escribe el nombre, y el catálogo se abre como un libro, una colección por página doble, con cesta y pago.",
+"A sample site for an upscale restaurant. Move the cursor left to open the food menu and right for drinks, then explore the spaces, private dining, and a table booking form.":"Una web de muestra para un restaurante de alto nivel. Mueve el cursor a la izquierda para abrir la carta de comida y a la derecha para la de bebidas, y luego descubre los espacios, los eventos privados y el formulario de reservas.",
+"Star Project clothing store website":"Web de la tienda de ropa Star Project",
+"Cendre restaurant sample website":"Web de muestra del restaurante Cendre",
+"Animated intro":"Intro animada",
+"Flip-book catalogue":"Catálogo tipo libro",
+"Shopping bag":"Cesta de compra",
+"Checkout":"Pago",
+"Split menu":"Carta dividida",
+"Private dining":"Eventos privados",
+"Table reservations":"Reservas de mesa"
 },
 pt:{
 "Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
@@ -373,7 +384,18 @@ pt:{
 "Home search":"Pesquisa de casas",
 "Listing pages":"Páginas de imóveis",
 "Viewing requests":"Pedidos de visita",
-"Free valuations":"Avaliações gratuitas"
+"Free valuations":"Avaliações gratuitas",
+"A clothing brand's online store, built as an experience. A comet flies across a sky of stars to write the name, and the catalogue opens like a book, one drop per spread, with a shopping bag and checkout.":"A loja online de uma marca de roupa, pensada como uma experiência. Um cometa atravessa um céu de estrelas e escreve o nome, e o catálogo abre-se como um livro, uma coleção por página dupla, com cesto e pagamento.",
+"A sample site for an upscale restaurant. Move the cursor left to open the food menu and right for drinks, then explore the spaces, private dining, and a table booking form.":"Um site de exemplo para um restaurante de gama alta. Mova o cursor para a esquerda para abrir a ementa de comida e para a direita para a de bebidas e depois descubra os espaços, os eventos privados e o formulário de reservas.",
+"Star Project clothing store website":"Site da loja de roupa Star Project",
+"Cendre restaurant sample website":"Site de exemplo do restaurante Cendre",
+"Animated intro":"Introdução animada",
+"Flip-book catalogue":"Catálogo em formato de livro",
+"Shopping bag":"Cesto de compras",
+"Checkout":"Pagamento",
+"Split menu":"Ementa dividida",
+"Private dining":"Eventos privados",
+"Table reservations":"Reservas de mesa"
 },
 sv:{
 "Pricing that fits your business.":"Priser som *passar* ditt företag.",
@@ -553,7 +575,18 @@ sv:{
 "Home search":"Bostadssök",
 "Listing pages":"Objektsidor",
 "Viewing requests":"Visningsförfrågningar",
-"Free valuations":"Kostnadsfri värdering"
+"Free valuations":"Kostnadsfri värdering",
+"A clothing brand's online store, built as an experience. A comet flies across a sky of stars to write the name, and the catalogue opens like a book, one drop per spread, with a shopping bag and checkout.":"En webbutik för ett klädmärke, byggd som en upplevelse. En komet flyger över en stjärnhimmel och skriver namnet, och katalogen öppnas som en bok, en kollektion per uppslag, med varukorg och kassa.",
+"A sample site for an upscale restaurant. Move the cursor left to open the food menu and right for drinks, then explore the spaces, private dining, and a table booking form.":"En exempelwebbplats för en exklusiv restaurang. För markören åt vänster för att öppna matmenyn och åt höger för dryckerna, och utforska sedan lokalerna, privata middagar och bordsbokningen.",
+"Star Project clothing store website":"Webbplats för klädbutiken Star Project",
+"Cendre restaurant sample website":"Exempelwebbplats för restaurangen Cendre",
+"Animated intro":"Animerat intro",
+"Flip-book catalogue":"Bläddringsbar katalog",
+"Shopping bag":"Varukorg",
+"Checkout":"Kassa",
+"Split menu":"Delad meny",
+"Private dining":"Privata middagar",
+"Table reservations":"Bordsbokning"
 }
 };
 
