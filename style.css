@@ -125,7 +125,7 @@ section{padding:120px 0}
 .card h3{font-size:21px;margin-top:8px}
 .card p{color:var(--muted);font-size:15.5px;margin-top:8px}
 .arrow{font:500 10.5px var(--wide);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
-.more{text-align:center;margin-top:80px}
+.more{text-align:center;margin-top:44px}
 /* work page: one project per row, alternating sides */
 .projects .feature{margin-bottom:140px}
 .projects .feature:last-child{margin-bottom:0}
