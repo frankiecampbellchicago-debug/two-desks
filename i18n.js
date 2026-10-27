@@ -50,7 +50,7 @@ es:{
 "United Revival Automotive redesign":"Rediseño de United Revival Automotive",
 
 "Sites we've built":"Webs que hemos *creado*",
-"Two client sites, a redesign, and a sample site.":"Dos webs de clientes, un rediseño y una web de muestra.",
+"A client site, a redesign, and two sample sites.":"Una web de cliente, un rediseño y dos webs de muestra.",
 "Don & John Exterior Cleaning website":"Web de Don & John Exterior Cleaning",
 "Client site":"Web de cliente",
 "Window cleaning, gutters, and pressure washing. A full site with a page for every town they serve, their reviews, and an estimate form that goes straight to their inbox. It runs on their own domain.":"Limpieza de ventanas, canalones y limpieza a presión. Una web completa con una página para cada ciudad donde trabajan, sus reseñas y un formulario de presupuesto que llega directo a su correo. Funciona con su propio dominio.",
@@ -237,7 +237,7 @@ pt:{
 "United Revival Automotive redesign":"Novo design para a United Revival Automotive",
 
 "Sites we've built":"Sites que já *criámos*",
-"Two client sites, a redesign, and a sample site.":"Dois sites de clientes, um redesign e um site de exemplo.",
+"A client site, a redesign, and two sample sites.":"Um site de cliente, um redesign e dois sites de exemplo.",
 "Don & John Exterior Cleaning website":"Site da Don & John Exterior Cleaning",
 "Client site":"Site de cliente",
 "Window cleaning, gutters, and pressure washing. A full site with a page for every town they serve, their reviews, and an estimate form that goes straight to their inbox. It runs on their own domain.":"Limpeza de janelas, caleiras e lavagem à pressão. Um site completo com uma página para cada localidade onde trabalham, as avaliações dos clientes e um formulário de orçamento que chega diretamente ao e-mail deles. Funciona com o domínio próprio da empresa.",
@@ -422,7 +422,7 @@ sv:{
 "The Don & John Exterior Cleaning website":"Webbplatsen för Don & John Exterior Cleaning",
 "United Revival Automotive redesign":"Ny design för United Revival Automotive",
 "Sites we've built":"Webbplatser vi har *byggt*",
-"Two client sites, a redesign, and a sample site.":"Två kundsajter, en omdesign och en exempelsajt.",
+"A client site, a redesign, and two sample sites.":"En kundsajt, en omdesign och två exempelsajter.",
 "Don & John Exterior Cleaning website":"Webbplatsen för Don & John Exterior Cleaning",
 "Client site":"Kundsajt",
 "Window cleaning, gutters, and pressure washing. A full site with a page for every town they serve, their reviews, and an estimate form that goes straight to their inbox. It runs on their own domain.":"Fönsterputs, takrännor och högtryckstvätt. En komplett webbplats med en sida för varje ort de arbetar i, deras omdömen och ett offertformulär som går direkt till deras inkorg. Den ligger på deras egen domän.",
