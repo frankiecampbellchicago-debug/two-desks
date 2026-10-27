@@ -197,7 +197,10 @@ es:{
 "Checkout":"Pago",
 "Split menu":"Carta dividida",
 "Private dining":"Eventos privados",
-"Table reservations":"Reservas de mesa"
+"Table reservations":"Reservas de mesa",
+"Two client sites and two sample sites.":"Dos webs de clientes y dos webs de muestra.",
+"An online store for a clothing brand, with a comet intro and a catalogue that opens like a book.":"Una tienda online para una marca de ropa, con una intro de cometa y un catálogo que se abre como un libro.",
+"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"Una web para un restaurante de alto nivel, con una carta que se abre a comida o bebidas según mueves el cursor."
 },
 pt:{
 "Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
@@ -395,7 +398,10 @@ pt:{
 "Checkout":"Pagamento",
 "Split menu":"Ementa dividida",
 "Private dining":"Eventos privados",
-"Table reservations":"Reservas de mesa"
+"Table reservations":"Reservas de mesa",
+"Two client sites and two sample sites.":"Dois sites de clientes e dois sites de exemplo.",
+"An online store for a clothing brand, with a comet intro and a catalogue that opens like a book.":"Uma loja online para uma marca de roupa, com uma introdução com um cometa e um catálogo que se abre como um livro.",
+"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"Um site para um restaurante de gama alta, com uma ementa que se abre na comida ou nas bebidas conforme move o cursor."
 },
 sv:{
 "Pricing that fits your business.":"Priser som *passar* ditt företag.",
@@ -586,7 +592,10 @@ sv:{
 "Checkout":"Kassa",
 "Split menu":"Delad meny",
 "Private dining":"Privata middagar",
-"Table reservations":"Bordsbokning"
+"Table reservations":"Bordsbokning",
+"Two client sites and two sample sites.":"Två kundsajter och två exempelsajter.",
+"An online store for a clothing brand, with a comet intro and a catalogue that opens like a book.":"En webbutik för ett klädmärke, med ett kometintro och en katalog som öppnas som en bok.",
+"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"En webbplats för en exklusiv restaurang, med en meny som visar mat eller drycker när du för markören."
 }
 };
 
