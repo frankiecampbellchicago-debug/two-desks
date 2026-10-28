@@ -83,7 +83,7 @@ es:{
 "Leila studies finance at Geneva Business School in Madrid. Leila is a dual citizen of Sweden and Mozambique and brings an international perspective to every project. As co-founder of F&L Studio, she leads the business side of the company.":"Leila estudia Finanzas en Geneva Business School, en Madrid. Leila tiene doble nacionalidad, sueca y mozambiqueña, y aporta una perspectiva internacional a cada proyecto. Como cofundadora de F&L Studio, dirige el área de negocio de la empresa.",
 "Photo of Leila":"Foto de Leila",
 
-"Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Cuéntanos sobre tu negocio y lo que necesitas. Te responderemos por correo con un precio y las preguntas que tengamos.",
+"Tell us about your business and pick a time for a free call. We'll confirm it by email, then talk through what you need and send you a price.":"Cuéntanos sobre tu negocio y elige una hora para una llamada gratuita. Te la confirmaremos por correo; después hablamos de lo que necesitas y te enviamos un precio.",
 "Your name":"Tu nombre",
 "Business name":"Nombre del negocio",
 "Email":"Correo electrónico",
@@ -106,7 +106,7 @@ es:{
 "Please fill in {f}.":"Por favor, completa: {f}.",
 "Thanks, {n}.":"Gracias, {n}.",
 "This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us.":"Esto es una vista previa, así que no se ha enviado nada. Cuando conectemos el correo, las solicitudes como esta nos llegarán directamente.",
-"We got your request and will email you at {e} soon.":"Hemos recibido tu solicitud y pronto te escribiremos a {e}.",
+"We got your request and emailed a confirmation to {e}. We'll email you again as soon as your call is approved.":"Hemos recibido tu solicitud y te hemos enviado una confirmación a {e}. Te escribiremos de nuevo en cuanto tu llamada esté aprobada.",
 "Sending…":"Enviando…",
 "Something went wrong. Please try again in a minute.":"Algo salió mal. Inténtalo de nuevo en un minuto.",
 
@@ -200,7 +200,13 @@ es:{
 "Table reservations":"Reservas de mesa",
 "Two client sites and two sample sites.":"Dos webs de clientes y dos webs de muestra.",
 "An online store for a clothing brand, with a comet intro and a catalogue that opens like a book.":"Una tienda online para una marca de ropa, con una intro de cometa y un catálogo que se abre como un libro.",
-"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"Una web para un restaurante de alto nivel, con una carta que se abre a comida o bebidas según mueves el cursor."
+"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"Una web para un restaurante de alto nivel, con una carta que se abre a comida o bebidas según mueves el cursor.",
+"Pick a time for a free call":"Elige una hora para una llamada gratuita",
+"Day":"Día",
+"Time":"Hora",
+"Choose a time":"Elige una hora",
+"Times are in your time zone ({z}). The call is 30 minutes on video, and we'll confirm it by email.":"Las horas están en tu zona horaria ({z}). La llamada dura 30 minutos por videollamada y te la confirmaremos por correo.",
+"Please pick a day and time for the call.":"Elige un día y una hora para la llamada."
 },
 pt:{
 "Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
@@ -284,7 +290,7 @@ pt:{
 "Leila studies finance at Geneva Business School in Madrid. Leila is a dual citizen of Sweden and Mozambique and brings an international perspective to every project. As co-founder of F&L Studio, she leads the business side of the company.":"A Leila estuda Finanças na Geneva Business School, em Madrid. A Leila tem dupla nacionalidade, sueca e moçambicana, e traz uma perspetiva internacional a cada projeto. Como cofundadora da F&L Studio, lidera a área de negócio da empresa.",
 "Photo of Leila":"Fotografia de Leila",
 
-"Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Fale-nos do seu negócio e do que precisa. Respondemos por e-mail com um preço e com as perguntas que tivermos.",
+"Tell us about your business and pick a time for a free call. We'll confirm it by email, then talk through what you need and send you a price.":"Fale-nos do seu negócio e escolha uma hora para uma chamada gratuita. Confirmamos por e-mail e, depois, falamos sobre o que precisa e enviamos-lhe um preço.",
 "Your name":"O seu nome",
 "Business name":"Nome da empresa",
 "Email":"E-mail",
@@ -307,7 +313,7 @@ pt:{
 "Please fill in {f}.":"Por favor, preencha: {f}.",
 "Thanks, {n}.":"Obrigado, {n}.",
 "This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us.":"Isto é uma pré-visualização, por isso nada foi enviado. Quando o e-mail estiver ligado, pedidos como este chegam-nos diretamente.",
-"We got your request and will email you at {e} soon.":"Recebemos o seu pedido e vamos responder em breve para {e}.",
+"We got your request and emailed a confirmation to {e}. We'll email you again as soon as your call is approved.":"Recebemos o seu pedido e enviámos uma confirmação para {e}. Voltamos a escrever-lhe assim que a chamada for aprovada.",
 "Sending…":"A enviar…",
 "Something went wrong. Please try again in a minute.":"Algo correu mal. Tente novamente daqui a um minuto.",
 
@@ -401,7 +407,13 @@ pt:{
 "Table reservations":"Reservas de mesa",
 "Two client sites and two sample sites.":"Dois sites de clientes e dois sites de exemplo.",
 "An online store for a clothing brand, with a comet intro and a catalogue that opens like a book.":"Uma loja online para uma marca de roupa, com uma introdução com um cometa e um catálogo que se abre como um livro.",
-"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"Um site para um restaurante de gama alta, com uma ementa que se abre na comida ou nas bebidas conforme move o cursor."
+"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"Um site para um restaurante de gama alta, com uma ementa que se abre na comida ou nas bebidas conforme move o cursor.",
+"Pick a time for a free call":"Escolha uma hora para uma chamada gratuita",
+"Day":"Dia",
+"Time":"Hora",
+"Choose a time":"Escolha uma hora",
+"Times are in your time zone ({z}). The call is 30 minutes on video, and we'll confirm it by email.":"As horas estão no seu fuso horário ({z}). A chamada dura 30 minutos, por videochamada, e confirmamos por e-mail.",
+"Please pick a day and time for the call.":"Escolha um dia e uma hora para a chamada."
 },
 sv:{
 "Pricing that fits your business.":"Priser som *passar* ditt företag.",
@@ -479,7 +491,7 @@ sv:{
 "Frank has been designing and building websites for over a year. A U.S. citizen now expanding into international business, he co-founded F&L Studio with Leila to bring well-made websites, and the tools behind them, to businesses around the world.":"Frank har designat och byggt webbplatser i över ett år. Som amerikansk medborgare som nu tar steget ut i internationella affärer grundade han F&L Studio tillsammans med Leila, för att ge företag runt om i världen välgjorda webbplatser och verktygen bakom dem.",
 "Leila studies finance at Geneva Business School in Madrid. Leila is a dual citizen of Sweden and Mozambique and brings an international perspective to every project. As co-founder of F&L Studio, she leads the business side of the company.":"Leila studerar finans vid Geneva Business School i Madrid. Leila har dubbelt medborgarskap i Sverige och Moçambique och tillför ett internationellt perspektiv i varje projekt. Som medgrundare av F&L Studio leder hon företagets affärssida.",
 "Photo of Leila":"Foto på Leila",
-"Tell us about your business and what you need. We'll email you back with a price and any questions we have.":"Berätta om ditt företag och vad du behöver. Vi svarar via mejl med ett pris och eventuella frågor.",
+"Tell us about your business and pick a time for a free call. We'll confirm it by email, then talk through what you need and send you a price.":"Berätta om ditt företag och välj en tid för ett kostnadsfritt samtal. Vi bekräftar via mejl, går sedan igenom vad du behöver och skickar ett pris.",
 "Your name":"Ditt namn",
 "Business name":"Företagsnamn",
 "Email":"E-post",
@@ -502,7 +514,7 @@ sv:{
 "Please fill in {f}.":"Fyll i: {f}.",
 "Thanks, {n}.":"Tack, {n}.",
 "This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us.":"Det här är en förhandsvisning, så inget skickades. När inkorgen är kopplad kommer förfrågningar som den här direkt till oss.",
-"We got your request and will email you at {e} soon.":"Vi har tagit emot din förfrågan och mejlar dig snart på {e}.",
+"We got your request and emailed a confirmation to {e}. We'll email you again as soon as your call is approved.":"Vi har fått din förfrågan och skickat en bekräftelse till {e}. Vi mejlar dig igen så snart ditt samtal är godkänt.",
 "Sending…":"Skickar…",
 "Something went wrong. Please try again in a minute.":"Något gick fel. Försök igen om en minut.",
 "More than a website":"Mer än en *webbplats*",
@@ -595,7 +607,13 @@ sv:{
 "Table reservations":"Bordsbokning",
 "Two client sites and two sample sites.":"Två kundsajter och två exempelsajter.",
 "An online store for a clothing brand, with a comet intro and a catalogue that opens like a book.":"En webbutik för ett klädmärke, med ett kometintro och en katalog som öppnas som en bok.",
-"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"En webbplats för en exklusiv restaurang, med en meny som visar mat eller drycker när du för markören."
+"An upscale restaurant site with a menu that opens to food or drinks as you move the cursor.":"En webbplats för en exklusiv restaurang, med en meny som visar mat eller drycker när du för markören.",
+"Pick a time for a free call":"Välj en tid för ett kostnadsfritt samtal",
+"Day":"Dag",
+"Time":"Tid",
+"Choose a time":"Välj en tid",
+"Times are in your time zone ({z}). The call is 30 minutes on video, and we'll confirm it by email.":"Tiderna visas i din tidszon ({z}). Samtalet är ett 30 minuters videosamtal och vi bekräftar det via mejl.",
+"Please pick a day and time for the call.":"Välj en dag och en tid för samtalet."
 }
 };
 

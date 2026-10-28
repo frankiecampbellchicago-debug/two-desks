@@ -215,6 +215,13 @@ input::placeholder,textarea::placeholder{color:#8a8096}
 textarea{min-height:140px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);background:rgba(207,174,114,.06)}
 [aria-invalid="true"]{border-color:#e07a6a}
+.when{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.when legend{font:500 10.5px var(--wide);letter-spacing:.22em;text-transform:uppercase;color:var(--night-muted);padding:0;margin-bottom:12px}
+.when .hint{grid-column:1/-1;margin:0;font-size:14px;line-height:1.5}
+.when input,.when select{color-scheme:dark;min-height:52px}
+select option{background:var(--night);color:var(--night-text)}
+.trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media (max-width:520px){.when{grid-template-columns:1fr}}
 .picks{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
 .picks legend{font:500 10.5px var(--wide);letter-spacing:.22em;text-transform:uppercase;color:var(--night-muted);padding:0;margin-bottom:12px}
 .picks label{display:flex;align-items:center;gap:10px;font:400 14px var(--wide);letter-spacing:0;text-transform:none;color:var(--night-text);padding:10px 14px;border:1px solid var(--night-line);cursor:pointer;transition:border-color .2s,background .2s}

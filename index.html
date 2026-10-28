@@ -122,7 +122,7 @@ if(f!=="original")document.documentElement.classList.add("classic")})();
   <div class="intro">
     <span class="eyebrow">Start a project</span>
     <h2 data-em="Get a *quote*">Get a <em>quote</em></h2>
-    <p>Tell us about your business and what you need. We'll email you back with a price and any questions we have.</p>
+    <p>Tell us about your business and pick a time for a free call. We'll confirm it by email, then talk through what you need and send you a price.</p>
   </div>
   <form id="qform" novalidate>
     <label>Your name<input name="name" autocomplete="name" required></label>
@@ -140,6 +140,12 @@ if(f!=="original")document.documentElement.classList.add("classic")})();
       <label><input type="checkbox" name="services" value="Monthly care plan">Monthly care plan</label>
     </fieldset>
     <label class="full">Budget (optional)<input name="budget" placeholder="A rough number in your currency, or leave blank"></label>
+    <fieldset class="full when"><legend>Pick a time for a free call</legend>
+      <label>Day<input name="day" type="date" required></label>
+      <label>Time<select name="time" required><option value="">Choose a time</option></select></label>
+      <p class="hint" id="tzhint"></p>
+    </fieldset>
+    <label class="trap" aria-hidden="true">Leave empty<input name="_honey" tabindex="-1" autocomplete="off"></label>
     <div class="send"><button class="btn" type="submit">Send</button><span id="msg" aria-live="polite"></span></div>
   </form>
 </div></section>
@@ -150,24 +156,45 @@ if(f!=="original")document.documentElement.classList.add("classic")})();
 <script src="site.js"></script>
 
 <script>
-// quote requests are emailed through FormSubmit (free, no account). Put the inbox address in
-// INBOX; until then the form only shows a preview message and nothing is sent.
-const INBOX="";
+// quote requests go to our Google Apps Script (booking/Code.gs): it emails the visitor and us,
+// and an Approve link puts the call in our Google Calendar. Until ENDPOINT is set, the form is a preview.
+const ENDPOINT="https://script.google.com/macros/s/AKfycbwg-CUnFwFE4AW_YFNKCC00PmMUHl8WDWwQ68AzqUr9h1mgdJ2J7Hkk2k9gn_wMb6X1/exec";
 const form=document.getElementById("qform"),msg=document.getElementById("msg");
-const preview=()=>{if(!INBOX&&!msg.classList.contains("err"))msg.textContent=t("Preview: quote requests aren't being sent anywhere yet.")};
-preview();document.addEventListener("langchange",preview);
+const day=form.elements.day,time=form.elements.time,hint=document.getElementById("tzhint");
+const zone=(Intl.DateTimeFormat().resolvedOptions().timeZone||"").replace(/_/g," ");
+// calls can be booked from tomorrow up to 90 days out, every half hour from 8:00 to 20:00 visitor time
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+day.min=ymd(new Date(Date.now()+864e5));day.max=ymd(new Date(Date.now()+90*864e5));
+const fillTimes=()=>{
+  const keep=time.value,loc=document.documentElement.lang||"en";
+  time.length=1;time.options[0].textContent=t("Choose a time");
+  for(let m=8*60;m<=20*60;m+=30){
+    const hm=String(m/60|0).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
+    time.add(new Option(new Date("2000-01-01T"+hm).toLocaleTimeString(loc,{hour:"numeric",minute:"2-digit"}),hm));
+  }
+  time.value=keep;hint.textContent=t("Times are in your time zone ({z}). The call is 30 minutes on video, and we'll confirm it by email.",{z:zone||"local"});
+};
+const preview=()=>{if(!ENDPOINT&&!msg.classList.contains("err"))msg.textContent=t("Preview: quote requests aren't being sent anywhere yet.")};
+fillTimes();preview();
+document.addEventListener("langchange",()=>{fillTimes();preview()});
 form.addEventListener("submit",e=>{
   e.preventDefault();
   const bad=[...form.querySelectorAll("[required]")].find(f=>!f.value.trim()||(f.type==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())));
   form.querySelectorAll("[aria-invalid]").forEach(f=>f.removeAttribute("aria-invalid"));
-  if(bad){bad.setAttribute("aria-invalid","true");msg.className="err";msg.textContent=bad.type==="email"?t("That email doesn't look right."):t("Please fill in {f}.",{f:bad.closest("label").firstChild.textContent.trim().toLowerCase()});bad.focus();return}
+  if(bad){bad.setAttribute("aria-invalid","true");msg.className="err";
+    msg.textContent=bad.type==="email"?t("That email doesn't look right."):bad===day||bad===time?t("Please pick a day and time for the call."):t("Please fill in {f}.",{f:bad.closest("label").firstChild.textContent.trim().toLowerCase()});
+    bad.focus();return}
+  const start=new Date(day.value+"T"+time.value);
+  if(isNaN(start)||start<Date.now()+3600e3){day.setAttribute("aria-invalid","true");msg.className="err";msg.textContent=t("Please pick a day and time for the call.");day.focus();return}
   const fd=new FormData(form),data=Object.fromEntries(fd);data.services=fd.getAll("services").join(", ")||"Not sure yet";
-  const done=isPreview=>{form.innerHTML='<div class="done"><h3>'+t("Thanks, {n}.",{n:data.name.replace(/[<>&]/g,"")})+'</h3><p>'+(isPreview?t("This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us."):t("We got your request and will email you at {e} soon.",{e:data.email.replace(/[<>&]/g,"")}))+'</p></div>'};
-  if(!INBOX){done(true);return}
+  Object.assign(data,{start:start.toISOString(),tz:Intl.DateTimeFormat().resolvedOptions().timeZone||"",lang:document.documentElement.lang||"en"});
+  delete data.day;delete data.time;
+  const done=isPreview=>{form.innerHTML='<div class="done"><h3>'+t("Thanks, {n}.",{n:data.name.replace(/[<>&]/g,"")})+'</h3><p>'+(isPreview?t("This is a preview, so nothing was sent. Once the inbox is connected, requests like this one go straight to us."):t("We got your request and emailed a confirmation to {e}. We'll email you again as soon as your call is approved.",{e:data.email.replace(/[<>&]/g,"")}))+'</p></div>'};
+  if(!ENDPOINT){done(true);return}
   const btn=form.querySelector("button");btn.disabled=true;msg.className="";msg.textContent=t("Sending…");
-  fetch("https://formsubmit.co/ajax/"+INBOX,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
-    body:JSON.stringify({...data,_subject:"Quote request: "+data.business,_template:"table",_captcha:"false"})})
-    .then(r=>r.json()).then(r=>{if(String(r.success)!=="true")throw 0;done(false)})
+  // Apps Script doesn't send CORS headers, so this is fire-and-forget: a network failure is the only error we can see
+  fetch(ENDPOINT,{method:"POST",mode:"no-cors",body:new URLSearchParams(data)})
+    .then(()=>done(false))
     .catch(()=>{btn.disabled=false;msg.className="err";msg.textContent=t("Something went wrong. Please try again in a minute.")});
 });
 </script>
