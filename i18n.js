@@ -210,7 +210,8 @@ es:{
 "Pick a day first":"Primero elige un día",
 "No times on this day. We take calls Monday to Friday.":"No hay horas libres este día. Hacemos llamadas de lunes a viernes.",
 "Previous month":"Mes anterior",
-"Next month":"Mes siguiente"
+"Next month":"Mes siguiente",
+"Choose a day":"Elige un día"
 },
 pt:{
 "Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
@@ -421,7 +422,8 @@ pt:{
 "Pick a day first":"Escolha primeiro um dia",
 "No times on this day. We take calls Monday to Friday.":"Não há horários neste dia. Fazemos chamadas de segunda a sexta-feira.",
 "Previous month":"Mês anterior",
-"Next month":"Mês seguinte"
+"Next month":"Mês seguinte",
+"Choose a day":"Escolha um dia"
 },
 sv:{
 "Pricing that fits your business.":"Priser som *passar* ditt företag.",
@@ -625,7 +627,8 @@ sv:{
 "Pick a day first":"Välj en dag först",
 "No times on this day. We take calls Monday to Friday.":"Inga tider den här dagen. Vi tar samtal måndag till fredag.",
 "Previous month":"Föregående månad",
-"Next month":"Nästa månad"
+"Next month":"Nästa månad",
+"Choose a day":"Välj en dag"
 }
 };
 

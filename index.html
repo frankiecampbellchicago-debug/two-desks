@@ -141,10 +141,12 @@ if(f!=="original")document.documentElement.classList.add("classic")})();
     </fieldset>
     <label class="full">Budget (optional)<input name="budget" placeholder="A rough number in your currency, or leave blank"></label>
     <fieldset class="full when"><legend>Pick a time for a free call</legend>
-      <div class="cal" id="cal" aria-label="Day">
+      <div class="daypick"><span id="daylbl">Day</span>
+      <button type="button" class="day-btn" id="daybtn" aria-haspopup="true" aria-expanded="false" aria-labelledby="daylbl daybtn"><span>Choose a day</span><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4.5" width="14" height="12.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3 8.5h14M7 2.5v4M13 2.5v4" stroke="currentColor" stroke-width="1.3"/></svg></button>
+      <div class="cal" id="cal" aria-label="Day" hidden>
         <div class="cal-head"><button type="button" class="cal-nav" data-step="-1" aria-label="Previous month">‹</button><span class="cal-month" aria-live="polite"></span><button type="button" class="cal-nav" data-step="1" aria-label="Next month">›</button></div>
         <div class="cal-grid"></div>
-      </div>
+      </div></div>
       <input type="hidden" name="day" required>
       <label>Time<select name="time" required><option value="">Choose a time</option></select></label>
       <p class="hint" id="tzhint"></p>
@@ -209,21 +211,31 @@ const drawCal=()=>{
 cal.addEventListener("click",e=>{
   const nav=e.target.closest(".cal-nav"),b=e.target.closest(".cal-day");
   if(nav&&!nav.disabled){shown=new Date(shown.getFullYear(),shown.getMonth()+ +nav.dataset.step,1);drawCal()}
-  if(b&&!b.disabled){day.value=b.dataset.day;cal.removeAttribute("aria-invalid");drawCal();fillTimes();time.focus()}
+  if(b&&!b.disabled){day.value=b.dataset.day;dayBtn.removeAttribute("aria-invalid");showCal(false);fillTimes();dayText();time.focus()}
 });
-drawCal();
+const dayBtn=document.getElementById("daybtn");
+const dayText=()=>{dayBtn.firstChild.textContent=day.value
+  ?new Date(day.value+"T12:00").toLocaleDateString(document.documentElement.lang||"en",{weekday:"short",day:"numeric",month:"long"})
+  :t("Choose a day")};
+const showCal=o=>{cal.hidden=!o;dayBtn.setAttribute("aria-expanded",o);
+  if(o){if(day.value){const d=new Date(day.value+"T12:00");shown=new Date(d.getFullYear(),d.getMonth(),1)}drawCal();
+    (cal.querySelector('.cal-day[aria-pressed="true"]')||cal.querySelector(".cal-day:not([disabled])")||cal).focus()}};
+dayBtn.addEventListener("click",()=>showCal(cal.hidden));
+document.addEventListener("click",e=>{if(!cal.hidden&&!e.target.closest(".daypick"))showCal(false)});
+cal.addEventListener("keydown",e=>{if(e.key==="Escape"){showCal(false);dayBtn.focus()}});
+drawCal();dayText();
 const preview=()=>{if(!ENDPOINT&&!msg.classList.contains("err"))msg.textContent=t("Preview: quote requests aren't being sent anywhere yet.")};
 fillTimes();preview();
-document.addEventListener("langchange",()=>{drawCal();fillTimes();preview()});
+document.addEventListener("langchange",()=>{drawCal();dayText();fillTimes();preview()});
 form.addEventListener("submit",e=>{
   e.preventDefault();
   const bad=[...form.querySelectorAll("[required]")].find(f=>!f.value.trim()||(f.type==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())));
   form.querySelectorAll("[aria-invalid]").forEach(f=>f.removeAttribute("aria-invalid"));
-  if(bad){(bad===day?cal:bad).setAttribute("aria-invalid","true");msg.className="err";
+  if(bad){(bad===day?dayBtn:bad).setAttribute("aria-invalid","true");msg.className="err";
     msg.textContent=bad.type==="email"?t("That email doesn't look right."):bad===day||bad===time?t("Please pick a day and time for the call."):t("Please fill in {f}.",{f:bad.closest("label").firstChild.textContent.trim().toLowerCase()});
-    (bad===day?cal.querySelector(".cal-day:not([disabled])")||cal:bad).focus();return}
+    (bad===day?dayBtn:bad).focus();return}
   const start=new Date(day.value+"T"+time.value);
-  if(isNaN(start)||start<Date.now()+3600e3){cal.setAttribute("aria-invalid","true");msg.className="err";msg.textContent=t("Please pick a day and time for the call.");return}
+  if(isNaN(start)||start<Date.now()+3600e3){dayBtn.setAttribute("aria-invalid","true");msg.className="err";msg.textContent=t("Please pick a day and time for the call.");return}
   const fd=new FormData(form),data=Object.fromEntries(fd);data.services=fd.getAll("services").join(", ")||"Not sure yet";
   Object.assign(data,{start:start.toISOString(),tz:Intl.DateTimeFormat().resolvedOptions().timeZone||"",lang:document.documentElement.lang||"en"});
   delete data.day;delete data.time;
