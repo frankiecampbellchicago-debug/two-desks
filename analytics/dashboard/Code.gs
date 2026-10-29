@@ -50,6 +50,31 @@ function getData(days) {
     sheets: { analytics: a ? a.getUrl() : '', bookings: b ? b.getUrl() : '' } });
 }
 
+/** Google searches from Search Console (needs the site added and verified there). days 0 = everything Google keeps (16 months). */
+function getSearch(days) {
+  days = Number(days) || 480;
+  var day = function (n) { return Utilities.formatDate(new Date(Date.now() - n * 864e5), 'UTC', 'yyyy-MM-dd'); };
+  var range = { startDate: day(days), endDate: day(0) }, prev = { startDate: day(2 * days), endDate: day(days + 1) };
+  var url = 'https://www.googleapis.com/webmasters/v3/sites/' + encodeURIComponent(SITE) + '/searchAnalytics/query';
+  function q(r, dims, limit) {
+    var body = { startDate: r.startDate, endDate: r.endDate, dimensions: dims, rowLimit: limit || 250, dataState: 'all' };
+    var res = UrlFetchApp.fetch(url, { method: 'post', contentType: 'application/json', payload: JSON.stringify(body),
+      headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() }, muteHttpExceptions: true });
+    var j = JSON.parse(res.getContentText() || '{}');
+    if (res.getResponseCode() !== 200) throw new Error((j.error && j.error.message) || ('HTTP ' + res.getResponseCode()));
+    return j.rows || [];
+  }
+  try {
+    return JSON.stringify({ ok: true, days: days,
+      total: q(range, [], 1), prevTotal: q(prev, [], 1),
+      dates: q(range, ['date'], 500), queries: q(range, ['query'], 250), pages: q(range, ['page'], 50),
+      countries: q(range, ['country'], 50), devices: q(range, ['device'], 5),
+      queryPages: q(range, ['query', 'page'], 250) });
+  } catch (e) {
+    return JSON.stringify({ ok: false, error: String(e.message || e) });
+  }
+}
+
 function open(name) {
   var props = PropertiesService.getScriptProperties(), id = props.getProperty(name);
   if (id) try { return SpreadsheetApp.openById(id); } catch (e) {}

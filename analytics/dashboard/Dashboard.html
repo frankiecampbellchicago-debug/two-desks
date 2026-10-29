@@ -74,7 +74,7 @@ select option{background:var(--panel2)}
 
 <script>
 const SITE=<?!= JSON.stringify(site) ?>;
-const TABS=[["overview","Overview"],["traffic","Traffic sources"],["conversion","Conversion"],["ux","Pages & UX"],["audience","Audience"],["speed","Speed"],["bookings","Bookings"],["links","Links & QR codes"]];
+const TABS=[["overview","Overview"],["traffic","Traffic sources"],["search","Google searches"],["conversion","Conversion"],["ux","Pages & UX"],["audience","Audience"],["speed","Speed"],["bookings","Bookings"],["links","Links & QR codes"]];
 let DATA=null,DAYS=30,TAB="overview",charts=[];
 
 // ---------- helpers ----------
@@ -274,6 +274,56 @@ R.audience=()=>{
   const d=[...group(cur,v=>v.dev)];doughnut("dev",d.map(x=>x[0]),d.map(x=>x[1].length));
 };
 
+let SEARCH={};
+R.search=()=>{
+  const key=DAYS||0;
+  if(!SEARCH[key]){
+    main.innerHTML='<div class="card"><p class="help">Asking Google…</p></div>';
+    google.script.run.withSuccessHandler(s=>{SEARCH[key]=JSON.parse(s);if(TAB==="search")render()})
+      .withFailureHandler(e=>{SEARCH[key]={ok:false,error:e.message};if(TAB==="search")render()}).getSearch(DAYS===1?3:DAYS);
+    return;
+  }
+  const S=SEARCH[key];
+  if(!S.ok){
+    main.innerHTML='<div class="grid">'+card("c12","Not connected to Google yet",
+      "This tab shows the words people type into Google before they find you, how often you appear, and where you rank. Google only shares that through Search Console.",
+      '<p class="help">Once the site is verified in <a href="https://search.google.com/search-console" target="_blank">Search Console</a>, the numbers show up here (Google starts counting from the day you verify, and is about 2 days behind).</p>'+
+      '<p class="help">What Google said: '+esc(S.error)+"</p>")+"</div>";
+    return;
+  }
+  const T=r=>r&&r[0]?r[0]:{clicks:0,impressions:0,ctr:0,position:0};
+  const t=T(S.total),p=T(S.prevTotal);
+  const dl=(a,b,lowerBetter)=>{if(DAYS===0||!b)return"";const d=lowerBetter?b-a:a-b;if(Math.abs(d)<.05)return'<span class="d">no change</span>';
+    return'<span class="d '+(d>0?"up":"down")+'">'+(d>0?"▲ ":"▼ ")+(lowerBetter?Math.abs(a-b).toFixed(1)+" places":Math.round(Math.abs(a-b)/b*100)+"%")+" vs previous</span>"};
+  const k=(l,v,d,h)=>card("c3 kpi",l,"",'<div class="v">'+v+'</div><div class="d">'+(d||"")+"</div>"+(h?'<p class="help" style="margin:6px 0 0">'+h+"</p>":""));
+  const pos=x=>x?x.toFixed(1):"–";
+  const rows=(a,label)=>a.map(r=>[N(r.impressions,label(r.keys)),N(r.impressions),N(r.clicks),{h:fp(r.ctr*100)},{h:pos(r.position)}]);
+  const H=f=>[{t:f},{t:"Shown",n:1},{t:"Clicks",n:1},{t:"Click rate",n:1},{t:"Avg. position",n:1}];
+  const byQ=group(S.queryPages||[],r=>r.keys[0]);
+  const near=(S.queries||[]).filter(r=>r.position>3&&r.position<=20&&r.impressions>=5).sort((a,b)=>b.impressions-a.impressions).slice(0,15);
+  const C3=Object.fromEntries("usa US,can CA,mex MX,bra BR,arg AR,col CO,chl CL,per PE,gbr GB,irl IE,prt PT,esp ES,fra FR,deu DE,ita IT,nld NL,bel BE,che CH,aut AT,swe SE,nor NO,dnk DK,fin FI,pol PL,moz MZ,zaf ZA,ago AO,nga NG,ken KE,egy EG,mar MA,are AE,sau SA,ind IN,pak PK,chn CN,jpn JP,kor KR,sgp SG,phl PH,idn ID,aus AU,nzl NZ".split(",").map(x=>x.split(" ")));
+  const DEV={DESKTOP:"Computer",MOBILE:"Phone",TABLET:"Tablet"};
+  main.innerHTML='<div class="grid">'+
+    k("Shown on Google",num(t.impressions),dl(t.impressions,p.impressions),"Times F&L Studio appeared in someone's results")+
+    k("Clicks from Google",num(t.clicks),dl(t.clicks,p.clicks))+
+    k("Click rate",fp(t.ctr*100),"","Of the people who saw you, how many clicked")+
+    k("Average position",pos(t.position),dl(t.position,p.position,true),"1 = top of the page. Page 1 is roughly 1–10")+
+    card("c12","Google, day by day","Google is about 2 days behind, so the last couple of days fill in later.",'<div class="chart"><canvas id="sc-days"></canvas></div>')+
+    card("c12","What people searched for","The exact words people typed into Google when you showed up. Google hides very rare searches to protect privacy, so the list won't add up to the total.",
+      table(H("Search").concat([{t:"Page they landed on"}]),(S.queries||[]).map(r=>{const pg=(byQ.get(r.keys[0])||[]).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions)[0];
+        return rows([r],x=>esc(x[0]))[0].concat([esc(pg?pageName(new URL(pg.keys[1]).pathname):"–")])}),{bar:1,empty:"No searches recorded yet. New sites usually take a few weeks to start appearing on Google."}))+
+    card("c6","Almost on top","Searches where you show up but rank below the top 3. Improving these pages is the quickest way to get more Google visits.",
+      table(H("Search"),rows(near,x=>esc(x[0])),{bar:1,empty:"Nothing here yet."}))+
+    card("c6","Pages on Google","",table(H("Page"),rows(S.pages||[],x=>esc(pageName(new URL(x[0]).pathname))),{bar:1}))+
+    card("c6","Countries","",table(H("Country"),rows(S.countries||[],x=>esc(C3[x[0]]?regionName(C3[x[0]]):x[0].toUpperCase())),{bar:1}))+
+    card("c6","Devices","",table(H("Device"),rows(S.devices||[],x=>esc(DEV[x[0]]||x[0])),{bar:1}))+"</div>";
+  const d=S.dates||[];
+  chart("sc-days",{data:{labels:d.map(r=>new Date(r.keys[0]+"T12:00").toLocaleDateString(undefined,{month:"short",day:"numeric"})),
+    datasets:[{type:"line",label:"Shown",data:d.map(r=>r.impressions),borderColor:"#8f6bd8",backgroundColor:"rgba(143,107,216,.15)",fill:true,tension:.3,yAxisID:"y"},
+      {type:"bar",label:"Clicks",data:d.map(r=>r.clicks),backgroundColor:"#cfae72",yAxisID:"y1"}]},
+    options:{scales:{y:{beginAtZero:true,position:"left"},y1:{beginAtZero:true,position:"right",grid:{display:false}}}}});
+};
+
 R.speed=()=>{
   const {views}=split();
   const rate=ms=>!ms?"–":ms<=2500?'<span class="up">Good</span>':ms<=4000?"Needs work":'<span class="down">Slow</span>';
@@ -354,11 +404,11 @@ document.getElementById("ranges").onclick=e=>{const b=e.target.closest("button")
 function render(){
   charts.forEach(c=>c.destroy());charts=[];
   if(!DATA)return;
-  if(!DATA.views.length&&!DATA.bookings.length&&TAB!=="links"){main.innerHTML='<div class="card"><h2>No data yet</h2><p class="help">Visits show up here after people browse the site (a few seconds after they leave each page). Bookings show up as soon as they come in.</p></div>';return}
+  if(!DATA.views.length&&!DATA.bookings.length&&TAB!=="links"&&TAB!=="search"){main.innerHTML='<div class="card"><h2>No data yet</h2><p class="help">Visits show up here after people browse the site (a few seconds after they leave each page). Bookings show up as soon as they come in.</p></div>';return}
   R[TAB]();
 }
 function load(){
-  status.textContent="Loading…";
+  SEARCH={};status.textContent="Loading…";
   google.script.run.withSuccessHandler(s=>{DATA=JSON.parse(s);status.textContent="Updated "+new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})+" · "+num(DATA.views.length)+" page views loaded";render()})
     .withFailureHandler(e=>{status.textContent="Couldn't load: "+e.message}).getData(DAYS);
 }
