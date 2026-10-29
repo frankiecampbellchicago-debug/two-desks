@@ -56,7 +56,7 @@ function doPost(e) {
     var sh = sheet();
     sh.appendRow([new Date(), b.id, 'Pending', when(start, TZ, 'en'), when(start, b.tz, 'en') + ' (' + b.tz + ')',
       b.name, b.business, b.email, b.country, b.website, b.services, b.budget, b.details, b.lang, b.tz,
-      start.getTime(), '', '', b.key]);
+      start.getTime(), '', '', b.key, clip(d.source, 80), clip(d.medium, 20), clip(d.campaign, 80), clip(d.visit, 24)]);
 
     tellVisitor('received', b);
     tellUsNew(b);
@@ -384,7 +384,8 @@ function page(title, inner) {
 
 // ---- the bookings sheet ------------------------------------------------------
 var HEAD = ['Received', 'ID', 'Status', 'Call time (ours)', 'Their time', 'Name', 'Business', 'Email', 'Country', 'Website',
-  'Services', 'Budget', 'Details', 'Language', 'Their time zone', 'Start (ms)', 'Calendar event', 'Meet link', 'Key'];
+  'Services', 'Budget', 'Details', 'Language', 'Their time zone', 'Start (ms)', 'Calendar event', 'Meet link', 'Key',
+  'Source', 'Medium', 'Campaign', 'Visit'];   // the last four come from analytics.js on the site
 
 function sheet() {
   var props = PropertiesService.getScriptProperties(), id = props.getProperty('SHEET_ID'), ss = null;
@@ -396,9 +397,13 @@ function sheet() {
     sh.setName('Bookings').appendRow(HEAD);
     sh.getRange(1, 1, 1, HEAD.length).setFontWeight('bold').setBackground(NIGHT).setFontColor(GOLD);
     sh.setFrozenRows(1);
-    sh.hideColumns(HEAD.length);                      // the secret key behind the approve links
+    sh.hideColumns(19);                               // the secret key behind the approve links
   }
-  return ss.getSheets()[0];
+  var first = ss.getSheets()[0];
+  if (first.getLastColumn() < HEAD.length) {        // sheets made before a column was added
+    first.getRange(1, 1, 1, HEAD.length).setValues([HEAD]).setFontWeight('bold').setBackground(NIGHT).setFontColor(GOLD);
+  }
+  return first;
 }
 function all() {
   var v = sheet().getDataRange().getValues();

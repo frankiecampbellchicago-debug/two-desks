@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#100b18;--panel:#1a1226;--panel2:#160f20;--line:rgba(214,190,140,.16);--text:#efe8dc;--muted:#b4aac0;--gold:#cfae72;--good:#8fd19e;--bad:#f0a294}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--panel2);position:sticky;top:0;z-index:5}
+.brand{font-size:13px;letter-spacing:.3em;color:var(--gold);font-weight:600}
+.brand span{color:var(--muted);letter-spacing:.1em;font-weight:400;margin-left:10px}
+.ranges{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.ranges button,.tabs button,.btn{font:inherit;font-size:13px;color:var(--text);background:none;border:1px solid var(--line);padding:7px 12px;cursor:pointer}
+.ranges button[aria-pressed=true],.tabs button[aria-selected=true]{background:var(--gold);color:#160f20;border-color:var(--gold)}
+.tabs{display:flex;gap:6px;padding:14px 24px 0;overflow-x:auto}
+.tabs button{white-space:nowrap}
+main{padding:18px 24px 60px;max-width:1400px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);padding:18px;min-width:0}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+@media (max-width:1100px){.c3{grid-column:span 6}.c4,.c5,.c6,.c7,.c8{grid-column:span 12}}
+@media (max-width:560px){.c3{grid-column:span 12}header,main,.tabs{padding-left:14px;padding-right:14px}}
+h2{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 4px}
+.help{font-size:13px;color:var(--muted);margin:0 0 14px}
+.kpi .v{font-size:30px;font-weight:600;margin-top:6px}
+.kpi .d{font-size:12.5px;color:var(--muted)}
+.up{color:var(--good)}.down{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:8px 8px;border-bottom:1px solid var(--line)}
+td{padding:8px;border-bottom:1px solid rgba(214,190,140,.08);vertical-align:middle}
+td.n,th.n{text-align:right;white-space:nowrap}
+.bar{position:relative}
+.bar i{position:absolute;left:0;top:4px;bottom:4px;background:rgba(207,174,114,.14);z-index:0}
+.bar span{position:relative;z-index:1}
+.empty{color:var(--muted);font-size:14px;padding:12px 0}
+.funnel .step{display:grid;grid-template-columns:190px 1fr 120px;gap:12px;align-items:center;margin:8px 0;font-size:14px}
+.funnel .track{background:rgba(255,255,255,.04);height:30px;position:relative}
+.funnel .fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#cfae72,#a8885a)}
+.funnel .drop{font-size:12px;color:var(--bad)}
+@media (max-width:560px){.funnel .step{grid-template-columns:1fr;gap:4px}}
+.chart{position:relative;height:260px}
+.chart.sm{height:220px}
+.scroll{overflow-x:auto}
+.pill{display:inline-block;font-size:11.5px;padding:2px 8px;border:1px solid var(--line);color:var(--muted)}
+.pill.Approved{color:var(--good);border-color:rgba(143,209,158,.4)}.pill.Declined{color:var(--bad);border-color:rgba(240,162,148,.4)}.pill.Pending{color:var(--gold)}
+label.f{display:grid;gap:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+input,select{font:inherit;font-size:14px;color:var(--text);background:rgba(255,255,255,.04);border:1px solid var(--line);padding:9px 10px;width:100%}
+select option{background:var(--panel2)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.out{word-break:break-all;background:rgba(255,255,255,.04);border:1px solid var(--line);padding:10px;font-size:13px;margin:14px 0}
+#qr{background:#fff;padding:14px;display:inline-block}
+#qr img,#qr canvas{display:block;width:220px;height:220px}
+.status{color:var(--muted);font-size:13px}
+.note{font-size:13px;color:var(--muted);border-left:2px solid var(--gold);padding:4px 12px;margin:0 0 16px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">F&amp;L STUDIO<span>Analytics</span></div>
+  <div class="ranges" id="ranges">
+    <button data-d="1">24 hours</button><button data-d="7">7 days</button><button data-d="30" aria-pressed="true">30 days</button>
+    <button data-d="90">90 days</button><button data-d="365">12 months</button><button data-d="0">All time</button>
+    <button id="refresh" title="Refresh">↻</button>
+  </div>
+  <div class="status" id="status">Loading…</div>
+</header>
+<nav class="tabs" id="tabs" role="tablist"></nav>
+<main id="main"></main>
+
+<script>
+const SITE=<?!= JSON.stringify(site) ?>;
+const TABS=[["overview","Overview"],["traffic","Traffic sources"],["conversion","Conversion"],["ux","Pages & UX"],["audience","Audience"],["speed","Speed"],["bookings","Bookings"],["links","Links & QR codes"]];
+let DATA=null,DAYS=30,TAB="overview",charts=[];
+
+// ---------- helpers ----------
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sum=(a,f=x=>x)=>a.reduce((s,x)=>s+(+f(x)||0),0);
+const med=a=>{a=a.filter(x=>x>0).sort((x,y)=>x-y);return a.length?a[Math.floor(a.length/2)]:0};
+const p75=a=>{a=a.filter(x=>x>0).sort((x,y)=>x-y);return a.length?a[Math.floor(a.length*.75)]:0};
+const pct=(a,b)=>b?Math.round(a/b*1000)/10:0;
+const fp=x=>(Math.round(x*10)/10).toLocaleString()+"%";
+const num=x=>Math.round(x).toLocaleString();
+const dur=s=>{s=Math.round(s);return s<60?s+"s":Math.floor(s/60)+"m "+String(s%60).padStart(2,"0")+"s"};
+const secs=ms=>ms?(ms/1000).toFixed(1)+"s":"–";
+const group=(a,key)=>{const m=new Map();for(const x of a){const k=key(x);if(k===undefined||k===null||k==="")continue;(m.get(k)||m.set(k,[]).get(k)).push(x)}return m};
+const CH={search:"Search (Google, Bing…)",social:"Social media",paid:"Ads",qr:"QR codes",email:"Email",referral:"Other websites",ai:"AI assistants",direct:"Direct / typed in",campaign:"Tagged links"};
+const chName=m=>CH[m]||m||"Unknown";
+const FIELDS={name:"Your name",business:"Business name",email:"Email",country:"Country",website:"Current website",details:"What do you need?",services:"What do you want help with?",budget:"Budget",day:"Day",time:"Time"};
+const PAGES={"/two-desks/":"Home","/two-desks/services.html":"Services","/two-desks/work.html":"Our work","/":"Home","/services.html":"Services","/work.html":"Our work"};
+const pageName=p=>PAGES[p]||p;
+const COLORS=["#cfae72","#8f6bd8","#e9e2d6","#5fa8a0","#d9826b","#7a8fd9","#b4aac0","#e0c25a","#9fc27a","#c77aa8"];
+const TZ="America/New_York US,America/Chicago US,America/Denver US,America/Phoenix US,America/Los_Angeles US,America/Anchorage US,Pacific/Honolulu US,America/Detroit US,America/Boise US,America/Indiana US,America/Kentucky US,America/Toronto CA,America/Vancouver CA,America/Edmonton CA,America/Winnipeg CA,America/Halifax CA,America/St_Johns CA,America/Regina CA,America/Mexico_City MX,America/Cancun MX,America/Monterrey MX,America/Tijuana MX,America/Sao_Paulo BR,America/Manaus BR,America/Fortaleza BR,America/Recife BR,America/Bahia BR,America/Belem BR,America/Argentina AR,America/Bogota CO,America/Lima PE,America/Santiago CL,America/Caracas VE,America/Montevideo UY,America/Asuncion PY,America/La_Paz BO,America/Guayaquil EC,America/Panama PA,America/Costa_Rica CR,America/Guatemala GT,America/El_Salvador SV,America/Tegucigalpa HN,America/Managua NI,America/Havana CU,America/Santo_Domingo DO,America/Puerto_Rico PR,America/Jamaica JM,Europe/London GB,Europe/Dublin IE,Europe/Lisbon PT,Atlantic/Madeira PT,Atlantic/Azores PT,Europe/Madrid ES,Atlantic/Canary ES,Europe/Paris FR,Europe/Brussels BE,Europe/Amsterdam NL,Europe/Luxembourg LU,Europe/Berlin DE,Europe/Zurich CH,Europe/Vienna AT,Europe/Rome IT,Europe/Stockholm SE,Europe/Oslo NO,Europe/Copenhagen DK,Europe/Helsinki FI,Europe/Warsaw PL,Europe/Prague CZ,Europe/Budapest HU,Europe/Bucharest RO,Europe/Sofia BG,Europe/Athens GR,Europe/Istanbul TR,Europe/Kiev UA,Europe/Kyiv UA,Europe/Moscow RU,Europe/Riga LV,Europe/Vilnius LT,Europe/Tallinn EE,Europe/Belgrade RS,Europe/Zagreb HR,Europe/Ljubljana SI,Europe/Bratislava SK,Europe/Malta MT,Europe/Monaco MC,Atlantic/Reykjavik IS,Africa/Maputo MZ,Africa/Johannesburg ZA,Africa/Lagos NG,Africa/Nairobi KE,Africa/Cairo EG,Africa/Casablanca MA,Africa/Accra GH,Africa/Luanda AO,Africa/Harare ZW,Africa/Lusaka ZM,Africa/Kampala UG,Africa/Dar_es_Salaam TZ,Africa/Addis_Ababa ET,Africa/Abidjan CI,Africa/Dakar SN,Africa/Tunis TN,Africa/Algiers DZ,Africa/Kinshasa CD,Africa/Windhoek NA,Africa/Gaborone BW,Africa/Kigali RW,Asia/Dubai AE,Asia/Riyadh SA,Asia/Qatar QA,Asia/Kuwait KW,Asia/Bahrain BH,Asia/Muscat OM,Asia/Jerusalem IL,Asia/Tel_Aviv IL,Asia/Beirut LB,Asia/Amman JO,Asia/Tehran IR,Asia/Karachi PK,Asia/Kolkata IN,Asia/Calcutta IN,Asia/Dhaka BD,Asia/Kathmandu NP,Asia/Colombo LK,Asia/Bangkok TH,Asia/Ho_Chi_Minh VN,Asia/Saigon VN,Asia/Jakarta ID,Asia/Singapore SG,Asia/Kuala_Lumpur MY,Asia/Manila PH,Asia/Hong_Kong HK,Asia/Shanghai CN,Asia/Taipei TW,Asia/Seoul KR,Asia/Tokyo JP,Australia/Sydney AU,Australia/Melbourne AU,Australia/Brisbane AU,Australia/Perth AU,Australia/Adelaide AU,Pacific/Auckland NZ"
+  .split(",").reduce((m,x)=>{const [z,c]=x.split(" ");m[z]=c;return m},{});
+const regionName=(()=>{try{const d=new Intl.DisplayNames(["en"],{type:"region"});return c=>d.of(c)}catch(e){return c=>c}})();
+const country=tz=>{if(!tz)return"Unknown";const c=TZ[tz]||TZ[tz.split("/").slice(0,2).join("/")];return c?regionName(c):tz.replace(/_/g," ")+" (time zone)"};
+
+function table(head,rows,{bar,empty="Nothing yet in this period."}={}){
+  if(!rows.length)return '<p class="empty">'+empty+"</p>";
+  const max=bar!=null?Math.max(...rows.map(r=>+r[bar].v||0),1):0;
+  return '<div class="scroll"><table><thead><tr>'+head.map(h=>'<th class="'+(h.n?"n":"")+'">'+h.t+"</th>").join("")+"</tr></thead><tbody>"+
+    rows.map(r=>"<tr>"+r.map((c,i)=>{const o=typeof c==="object"&&c!==null?c:{h:esc(c)};const n=head[i].n?"n":"";
+      if(i===0&&bar!=null)return '<td class="bar '+n+'"><i style="width:'+((+r[bar].v||0)/max*100)+'%"></i><span>'+o.h+"</span></td>";
+      return '<td class="'+n+'">'+o.h+"</td>"}).join("")+"</tr>").join("")+"</tbody></table></div>";
+}
+const card=(cls,title,help,body)=>'<section class="card '+cls+'"><h2>'+title+"</h2>"+(help?'<p class="help">'+help+"</p>":"")+body+"</section>";
+const N=(v,txt)=>({v,h:txt??num(v)});
+
+// ---------- turning page views into visits ----------
+function visitsOf(views){
+  const m=group(views,v=>v.v),out=[];
+  for(const [id,vs] of m){
+    vs.sort((a,b)=>(a.n-b.n)||(a.t-b.t));
+    const f=vs[0],steps=new Set(vs.flatMap(v=>v.fm||[]));
+    const eng=sum(vs,v=>v.eng),cv=vs.some(v=>v.cv);
+    out.push({id,t:Math.min(...vs.map(v=>v.t)),views:vs,s:f.s,m:f.m,c:f.c,x:f.x,land:f.land||f.path,dev:f.dev,br:f.br,os:f.os,tz:f.tz,lang:vs[vs.length-1].lang,bl:f.bl,
+      pages:vs.length,eng,cv,steps,engaged:eng>=10||vs.length>=2||cv,last:vs[vs.length-1]});
+  }
+  return out;
+}
+function split(){
+  const now=DATA.now,d=DAYS*864e5,cut=DAYS?now-d:0;
+  const V=visitsOf(DATA.views);
+  const cur=V.filter(v=>v.t>=cut),prev=DAYS?V.filter(v=>v.t<cut):null;
+  const views=cur.flatMap(v=>v.views),pviews=prev?prev.flatMap(v=>v.views):null;
+  const B=DATA.bookings.filter(b=>b.t>=cut),PB=DAYS?DATA.bookings.filter(b=>b.t<cut):null;
+  return {cur,prev,views,pviews,B,PB};
+}
+function stats(vs,views,B){
+  const visits=vs.length,conv=vs.filter(v=>v.cv).length;
+  return {visits,views:views.length,ppv:visits?views.length/visits:0,time:visits?sum(vs,v=>v.eng)/visits:0,
+    eng:pct(vs.filter(v=>v.engaged).length,visits),cr:pct(conv,visits),conv,req:B.length,appr:B.filter(b=>b.status==="Approved").length};
+}
+function delta(a,b,isPct){
+  if(b==null||DAYS===0)return "";
+  if(!b&&!a)return '<span class="d">no change</span>';
+  const ch=isPct?a-b:(b?(a-b)/b*100:100),cls=ch>0?"up":ch<0?"down":"";
+  return '<span class="'+cls+'">'+(ch>0?"▲ ":ch<0?"▼ ":"")+(isPct?Math.abs(Math.round(ch*10)/10)+" pts":Math.abs(Math.round(ch))+"%")+"</span> vs previous "+(DAYS===1?"day":DAYS+" days");
+}
+
+// ---------- tabs ----------
+const R={};
+R.overview=()=>{
+  const {cur,prev,views,pviews,B,PB}=split(),s=stats(cur,views,B),p=prev?stats(prev,pviews,PB):null;
+  const k=(t,v,d,help)=>card("c3 kpi",t,"",'<div class="v">'+v+'</div><div class="d">'+(d||"")+"</div>"+(help?'<div class="d">'+help+"</div>":""));
+  let h='<div class="grid">'+
+    k("Visits",num(s.visits),p&&delta(s.visits,p.visits))+k("Page views",num(s.views),p&&delta(s.views,p.views),s.ppv.toFixed(1)+" pages per visit")+
+    k("Time on site",dur(s.time),p&&delta(s.time,p.time),"average per visit, actively looking")+k("Engaged visits",fp(s.eng),p&&delta(s.eng,p.eng,1),"stayed 10s+, saw 2+ pages, or booked")+
+    k("Conversion rate",fp(s.cr),p&&delta(s.cr,p.cr,1),"visits that sent a booking request")+k("Booking requests",num(s.req),p&&delta(s.req,p.req))+
+    k("Approved calls",num(s.appr),p&&delta(s.appr,p.appr),s.req?fp(pct(s.appr,s.req))+" of requests":"")+k("Visits per request",s.conv?(s.visits/s.conv).toFixed(1):"–","",
+      "how many visits it takes to get one request")+
+    card("c8","Visits and booking requests","Each day in this period.",'<div class="chart"><canvas id="trend"></canvas></div>')+
+    card("c4","Where visits come from","",'<div class="chart sm"><canvas id="channels"></canvas></div>')+
+    card("c6","Top sources","",sourcesTable(cur,B,6))+
+    card("c6","Booking funnel","Of all visits, how many reached each step.",funnel(cur,B,true))+"</div>";
+  main.innerHTML=h;
+  // trend
+  const days=DAYS||Math.max(1,Math.ceil((DATA.now-Math.min(DATA.now,...cur.map(v=>v.t)))/864e5));
+  const lab=[],vis=[],req=[];
+  for(let i=days-1;i>=0;i--){const d=new Date(DATA.now-i*864e5);const key=d.toDateString();lab.push(d.toLocaleDateString(undefined,{month:"short",day:"numeric"}));
+    vis.push(cur.filter(v=>new Date(v.t).toDateString()===key).length);req.push(B.filter(b=>new Date(b.t).toDateString()===key).length)}
+  chart("trend",{type:"line",data:{labels:lab,datasets:[{label:"Visits",data:vis,borderColor:COLORS[0],backgroundColor:"rgba(207,174,114,.15)",fill:true,tension:.3},
+    {type:"bar",label:"Booking requests",data:req,backgroundColor:"rgba(143,107,216,.7)",yAxisID:"y1",barPercentage:.5}]},
+    options:{scales:{y:{beginAtZero:true,ticks:{precision:0}},y1:{beginAtZero:true,position:"right",grid:{display:false},ticks:{precision:0}}}}});
+  const ch=[...group(cur,v=>chName(v.m))].sort((a,b)=>b[1].length-a[1].length);
+  doughnut("channels",ch.map(x=>x[0]),ch.map(x=>x[1].length));
+};
+
+function sourcesTable(cur,B,limit){
+  const rows=[...group(cur,v=>v.s+"\u0001"+v.m)].map(([k,vs])=>{const [s,m]=k.split("\u0001");const c=vs.filter(v=>v.cv).length;
+    const bk=B.filter(b=>(b.src||"")===s);
+    return [N(vs.length,esc(s)),chName(m),N(vs.length),N(pct(vs.filter(v=>v.engaged).length,vs.length),fp(pct(vs.filter(v=>v.engaged).length,vs.length))),
+      N(sum(vs,v=>v.eng)/vs.length,dur(sum(vs,v=>v.eng)/vs.length)),N(c),N(pct(c,vs.length),fp(pct(c,vs.length))),N(bk.filter(b=>b.status==="Approved").length)]})
+    .sort((a,b)=>b[2].v-a[2].v).slice(0,limit||999);
+  return table([{t:"Source"},{t:"Type"},{t:"Visits",n:1},{t:"Engaged",n:1},{t:"Avg time",n:1},{t:"Requests",n:1},{t:"Conv. rate",n:1},{t:"Approved",n:1}],rows,{bar:2});
+}
+function funnel(cur,B,short){
+  const steps=[["Visits",v=>true],["Saw the quote form",v=>v.steps.has("view")],["Started the form",v=>v.steps.has("start")],
+    ["Picked a day",v=>v.steps.has("day")],["Picked a time",v=>v.steps.has("time")],["Sent a request",v=>v.cv]];
+  const n=steps.map(([l,f])=>[l,cur.filter(f).length]);
+  n.push(["Call approved",B.filter(b=>b.status==="Approved").length]);
+  const top=Math.max(n[0][1],1);
+  return '<div class="funnel">'+n.map(([l,c],i)=>{const prev=i?n[i-1][1]:0,drop=i&&prev?Math.round((prev-c)/prev*100):0;
+    return '<div class="step"><div>'+l+'</div><div class="track"><div class="fill" style="width:'+(c/top*100)+'%"></div></div><div class="n">'+num(c)+
+      ' <span class="d">('+fp(pct(c,top))+')</span>'+(i&&drop>0&&!short?'<div class="drop">'+drop+"% dropped off</div>":"")+"</div></div>"}).join("")+"</div>"+
+    (short?"":'<p class="help">"Call approved" comes from the bookings sheet, so it can include requests from visits before this period.</p>');
+}
+
+R.traffic=()=>{
+  const {cur,B}=split();
+  const chRows=[...group(cur,v=>v.m)].map(([m,vs])=>{const c=vs.filter(v=>v.cv).length;
+    return [N(vs.length,chName(m)),N(vs.length),N(pct(vs.length,cur.length),fp(pct(vs.length,cur.length))),N(pct(vs.filter(v=>v.engaged).length,vs.length),fp(pct(vs.filter(v=>v.engaged).length,vs.length))),
+      N(sum(vs,v=>v.eng)/vs.length,dur(sum(vs,v=>v.eng)/vs.length)),N(c),N(pct(c,vs.length),fp(pct(c,vs.length)))]}).sort((a,b)=>b[1].v-a[1].v);
+  const camp=[...group(cur.filter(v=>v.c||v.m==="qr"||v.m==="campaign"||v.m==="paid"),v=>[v.c||"(no campaign name)",v.s,v.m,v.x||""].join("\u0001"))].map(([k,vs])=>{
+    const [c,s,m,x]=k.split("\u0001"),cv=vs.filter(v=>v.cv).length;
+    return [N(vs.length,esc(c)),esc(s),chName(m),esc(x),N(vs.length),N(cv),N(pct(cv,vs.length),fp(pct(cv,vs.length)))]}).sort((a,b)=>b[4].v-a[4].v);
+  const land=[...group(cur,v=>v.land)].map(([p,vs])=>{const c=vs.filter(v=>v.cv).length;
+    return [N(vs.length,esc(pageName(p))),N(vs.length),N(pct(vs.filter(v=>v.pages===1&&!v.engaged).length,vs.length),fp(pct(vs.filter(v=>v.pages===1&&!v.engaged).length,vs.length))),N(c),N(pct(c,vs.length),fp(pct(c,vs.length)))]}).sort((a,b)=>b[1].v-a[1].v);
+  main.innerHTML='<div class="grid">'+
+    card("c12","Channels","The type of place people came from.",table([{t:"Channel"},{t:"Visits",n:1},{t:"Share",n:1},{t:"Engaged",n:1},{t:"Avg time",n:1},{t:"Requests",n:1},{t:"Conv. rate",n:1}],chRows,{bar:1}))+
+    card("c12","Sources","Each website, app, search engine or tagged link. \"Approved\" counts approved calls whose request came from that source.",sourcesTable(cur,B))+
+    card("c12","Campaigns, ads and QR codes","Visits that arrived through a tagged link: QR codes, ads, Instagram bio links, email links. Make tagged links on the Links & QR codes tab.",
+      table([{t:"Campaign"},{t:"Source"},{t:"Type"},{t:"Detail"},{t:"Visits",n:1},{t:"Requests",n:1},{t:"Conv. rate",n:1}],camp,{bar:4,empty:"No tagged links used yet. Make one on the Links & QR codes tab."}))+
+    card("c12","Landing pages","The first page people saw.",table([{t:"Page"},{t:"Visits",n:1},{t:"Left without doing anything",n:1},{t:"Requests",n:1},{t:"Conv. rate",n:1}],land,{bar:1}))+
+    '<div class="c12 note">Google Search shows here as "Google". To see which search words people used, connect the site to Google Search Console (free); Google does not pass search words to websites.</div></div>';
+};
+
+R.conversion=()=>{
+  const {cur,views,B}=split();
+  const by=(key,name)=>[...group(cur,key)].map(([k,vs])=>{const c=vs.filter(v=>v.cv).length;return [N(vs.length,esc(name?name(k):k)),N(vs.length),N(c),N(pct(c,vs.length),fp(pct(c,vs.length)))]}).sort((a,b)=>b[1].v-a[1].v);
+  const H=[{t:""},{t:"Visits",n:1},{t:"Requests",n:1},{t:"Conv. rate",n:1}];
+  const started=cur.filter(v=>v.steps.has("start")&&!v.cv);
+  const quit=[...group(started,v=>{const w=[...v.views].reverse().find(x=>x.ff);return w?w.ff:"(none)"})].map(([f,vs])=>[N(vs.length,esc(FIELDS[f]||f)),N(vs.length),N(pct(vs.length,started.length),fp(pct(vs.length,started.length)))]).sort((a,b)=>b[1].v-a[1].v);
+  const errs={};views.forEach(v=>Object.entries(v.fe||{}).forEach(([k,c])=>errs[k]=(errs[k]||0)+c));
+  const errRows=Object.entries(errs).map(([k,c])=>[N(c,esc(k)),N(c)]).sort((a,b)=>b[1].v-a[1].v);
+  const ttc=med(views.map(v=>v.ttc));
+  const ev={};views.forEach(v=>Object.entries(v.ev||{}).forEach(([k,c])=>ev[k]=(ev[k]||0)+c));
+  const cta={};views.forEach(v=>Object.entries(v.ck||{}).forEach(([k,c])=>{if(/quote|book|call|send|enviar|skicka|presupuesto|orçamento|offert/i.test(k))cta[k]=(cta[k]||0)+c}));
+  main.innerHTML='<div class="grid">'+
+    card("c12","Booking funnel","Every visit, step by step to a booking. The biggest drop-off is the step to improve first.",funnel(cur,B))+
+    card("c6","Where people stop on the form","People who started the form but didn't send it, by the last field they touched.",table([{t:"Last field"},{t:"People",n:1},{t:"Share",n:1}],quit,{bar:1,empty:"Nobody has left the form half-filled."}))+
+    card("c6","Form errors shown","Messages the form showed because something was missing or wrong.",table([{t:"Message"},{t:"Times shown",n:1}],errRows,{bar:1,empty:"No errors shown."})+
+      '<p class="help" style="margin-top:14px">Typical time from first field to sending: <b>'+(ttc?dur(ttc):"–")+"</b></p>")+
+    card("c4","Conversion by channel","",table(H,by(v=>v.m,chName),{bar:1}))+card("c4","Conversion by device","",table(H,by(v=>v.dev),{bar:1}))+
+    card("c4","Conversion by site language","",table(H,by(v=>v.lang,l=>({en:"English",es:"Spanish",pt:"Portuguese",sv:"Swedish"}[l]||l)),{bar:1}))+
+    card("c6","Clicks on booking buttons","Every click on a button about quotes, calls or sending.",table([{t:"Button"},{t:"Clicks",n:1}],Object.entries(cta).map(([k,c])=>[N(c,esc(k)),N(c)]).sort((a,b)=>b[1].v-a[1].v),{bar:1}))+
+    card("c6","Other actions","Phone and email taps, and any other tracked actions.",table([{t:"Action"},{t:"Times",n:1}],Object.entries(ev).map(([k,c])=>[N(c,esc(k.replace("contact:","Tapped ").replace("form:",""))),N(c)]).sort((a,b)=>b[1].v-a[1].v),{bar:1,empty:"None yet."}))+"</div>";
+};
+
+R.ux=()=>{
+  const {cur,views}=split();
+  const lastIds=new Set(cur.map(v=>v.last.p));
+  const pages=[...group(views,v=>v.path)].map(([p,vs])=>[N(vs.length,esc(pageName(p))),N(vs.length),N(vs.filter(v=>v.n===1).length),
+    N(sum(vs,v=>v.eng)/vs.length,dur(sum(vs,v=>v.eng)/vs.length)),N(sum(vs,v=>v.sc)/vs.length,Math.round(sum(vs,v=>v.sc)/vs.length)+"%"),
+    N(pct(vs.filter(v=>lastIds.has(v.p)).length,vs.length),fp(pct(vs.filter(v=>lastIds.has(v.p)).length,vs.length)))]).sort((a,b)=>b[1].v-a[1].v);
+  const pagesList=[...new Set(views.map(v=>v.path))];
+  const ORDER={"hero":0,"work":1,"how":2,"pricing":3,"about":4,"quote":5,"services":0,"fit":1,"projects":0,"cta":9};
+  const reach=p=>{const vs=views.filter(v=>v.path===p),c={};vs.forEach(v=>(v.sec||[]).forEach(s=>c[s]=(c[s]||0)+1));
+    const names={hero:"Top of page",work:"Our work",how:"How it works",pricing:"Pricing",about:"About",quote:"Get a quote form",services:"Services list",fit:"Who it's for",projects:"Projects",cta:"Closing call to action"};
+    return table([{t:"Section"},{t:"Seen by",n:1},{t:"Of views",n:1}],Object.entries(c).sort((a,b)=>(ORDER[a[0]]??5)-(ORDER[b[0]]??5)).map(([s,n])=>[N(n,esc(names[s]||s)),N(n),N(pct(n,vs.length),fp(pct(n,vs.length)))]),{bar:1})};
+  const ck={};views.forEach(v=>Object.entries(v.ck||{}).forEach(([k,c])=>{const key=k+"\u0001"+v.path;ck[key]=(ck[key]||0)+c}));
+  const vcount=Object.fromEntries([...group(views,v=>v.path)].map(([p,vs])=>[p,vs.length]));
+  const clickRows=Object.entries(ck).map(([k,c])=>{const [l,p]=k.split("\u0001");return [N(c,esc(l)),esc(pageName(p)),N(c)]}).sort((a,b)=>b[2].v-a[2].v).slice(0,40);
+  const rg={};views.forEach(v=>Object.entries(v.rg||{}).forEach(([k,c])=>rg[k+"\u0001"+v.path]=(rg[k+"\u0001"+v.path]||0)+c));
+  const ob={};views.forEach(v=>Object.keys(v.ob||{}).forEach(k=>ob[k]=(ob[k]||0)+1));
+  const depth=[25,50,75,100].map(d=>[N(d,d===100?"The very bottom":d+"% of the page"),N(pct(views.filter(v=>v.sc>=d).length,views.length),fp(pct(views.filter(v=>v.sc>=d).length,views.length)))]);
+  main.innerHTML='<div class="grid">'+
+    card("c12","Pages","Exit rate: how often this was the last page someone saw before leaving.",table([{t:"Page"},{t:"Views",n:1},{t:"Entrances",n:1},{t:"Avg time",n:1},{t:"Avg scroll",n:1},{t:"Exit rate",n:1}],pages,{bar:1}))+
+    card("c6","How far down people get","Share of page views that reached each point.",table([{t:"Reached"},{t:"Page views",n:1}],depth))+
+    card("c6","Which sections people actually see",'<select id="secpage">'+pagesList.map(p=>'<option value="'+esc(p)+'">'+esc(pageName(p))+"</option>").join("")+"</select>",'<div id="reach">'+(pagesList[0]?reach(pagesList[0]):'<p class="empty">Nothing yet.</p>')+"</div>")+
+    card("c7","What people click","Buttons and links, by their text.",table([{t:"Clicked"},{t:"Page"},{t:"Clicks",n:1}],clickRows,{bar:2}))+
+    card("c5","Rage clicks","Three fast clicks in the same spot: usually something that looks clickable but isn't, or is slow to respond.",
+      table([{t:"Element"},{t:"Page"},{t:"Times",n:1}],Object.entries(rg).map(([k,c])=>{const [l,p]=k.split("\u0001");return [N(c,esc(l)),esc(pageName(p)),N(c)]}).sort((a,b)=>b[2].v-a[2].v),{bar:2,empty:"No rage clicks. Good sign."})+
+      '<h2 style="margin-top:22px">Links to other sites</h2><p class="help">Mostly the portfolio sites.</p>'+
+      table([{t:"Link"},{t:"Page views that clicked it",n:1}],Object.entries(ob).map(([k,c])=>[N(c,esc(k)),N(c)]).sort((a,b)=>b[1].v-a[1].v),{bar:1}))+"</div>";
+  const sel=document.getElementById("secpage");if(sel)sel.onchange=()=>document.getElementById("reach").innerHTML=reach(sel.value);
+};
+
+R.audience=()=>{
+  const {cur}=split();
+  const by=(key,name)=>[...group(cur,key)].map(([k,vs])=>{const c=vs.filter(v=>v.cv).length;return [N(vs.length,esc(name?name(k):k)),N(vs.length),N(pct(vs.length,cur.length),fp(pct(vs.length,cur.length))),N(pct(c,vs.length),fp(pct(c,vs.length)))]}).sort((a,b)=>b[1].v-a[1].v);
+  const H=[{t:""},{t:"Visits",n:1},{t:"Share",n:1},{t:"Conv. rate",n:1}];
+  const lang=l=>({en:"English",es:"Spanish",pt:"Portuguese",sv:"Swedish"}[l]||l);
+  const size=v=>{const w=v.views[0].vw||0;return w<480?"Small phone (<480px)":w<768?"Phone (480–767px)":w<1024?"Tablet (768–1023px)":w<1440?"Laptop (1024–1439px)":"Large screen (1440px+)"};
+  main.innerHTML='<div class="grid">'+
+    card("c4","Devices","",'<div class="chart sm"><canvas id="dev"></canvas></div>'+table(H,by(v=>v.dev)))+
+    card("c8","Countries","Worked out from the visitor's time zone, so neighbouring countries in the same zone can mix.",table(H,by(v=>country(v.tz)).slice(0,30),{bar:1}))+
+    card("c4","Browsers","",table(H,by(v=>v.br),{bar:1}))+card("c4","Operating systems","",table(H,by(v=>v.os),{bar:1}))+card("c4","Screen sizes","",table(H,by(size),{bar:1}))+
+    card("c6","Language they used on the site","",table(H,by(v=>v.lang,lang),{bar:1}))+card("c6","Their browser's language","Hints at languages we might add.",table(H,by(v=>(v.bl||"").slice(0,2).toLowerCase(),l=>{try{return new Intl.DisplayNames(["en"],{type:"language"}).of(l)}catch(e){return l}}),{bar:1}))+"</div>";
+  const d=[...group(cur,v=>v.dev)];doughnut("dev",d.map(x=>x[0]),d.map(x=>x[1].length));
+};
+
+R.speed=()=>{
+  const {views}=split();
+  const rate=ms=>!ms?"–":ms<=2500?'<span class="up">Good</span>':ms<=4000?"Needs work":'<span class="down">Slow</span>';
+  const rows=[...group(views,v=>v.dev)].map(([d,vs])=>[N(vs.length,esc(d)),secs(med(vs.map(v=>v.ld))),secs(med(vs.map(v=>v.lcp))),secs(p75(vs.map(v=>v.lcp))),{h:rate(p75(vs.map(v=>v.lcp)))}]);
+  const prow=[...group(views,v=>v.path)].map(([p,vs])=>[N(vs.length,esc(pageName(p))),secs(med(vs.map(v=>v.ld))),secs(p75(vs.map(v=>v.lcp))),(med(vs.map(v=>v.cls))/1000).toFixed(2)]);
+  const er={};views.filter(v=>v.er).forEach(v=>{const k=(v.erm||"(no message)")+"\u0001"+v.path;er[k]=(er[k]||0)+v.er});
+  main.innerHTML='<div class="grid">'+
+    card("c12","Loading speed by device","\"Main content shown\" is when the biggest thing on screen appears (Google's LCP). Google rates under 2.5s as good, for the slowest 25% of visits.",
+      table([{t:"Device"},{t:"Fully loaded (typical)",n:1},{t:"Main content shown (typical)",n:1},{t:"Main content, slowest 25%",n:1},{t:"Google rating",n:1}],rows))+
+    card("c6","By page","Layout shift: how much things jump around while loading (under 0.10 is good).",table([{t:"Page"},{t:"Fully loaded",n:1},{t:"Main content, slowest 25%",n:1},{t:"Layout shift",n:1}],prow))+
+    card("c6","Errors on the page","JavaScript errors visitors' browsers hit. Anything here is worth fixing.",table([{t:"Error"},{t:"Page"},{t:"Times",n:1}],
+      Object.entries(er).map(([k,c])=>{const [m,p]=k.split("\u0001");return [N(c,esc(m)),esc(pageName(p)),N(c)]}).sort((a,b)=>b[2].v-a[2].v),{empty:"No errors. 👍"}))+"</div>";
+};
+
+R.bookings=()=>{
+  const {B}=split();
+  const st=s=>B.filter(b=>b.status===s).length;
+  const svc={};B.forEach(b=>String(b.services||"").split(",").map(x=>x.trim()).filter(Boolean).forEach(x=>svc[x]=(svc[x]||0)+1));
+  const lead=med(B.filter(b=>b.start).map(b=>(b.start-b.t)/864e5));
+  const by=(key,label)=>[...group(B,key)].map(([k,bs])=>[N(bs.length,esc(label?label(k):k)),N(bs.length),N(bs.filter(b=>b.status==="Approved").length)]).sort((a,b)=>b[1].v-a[1].v);
+  const H=[{t:""},{t:"Requests",n:1},{t:"Approved",n:1}];
+  const k=(t,v,d)=>card("c3 kpi",t,"",'<div class="v">'+v+'</div><div class="d">'+(d||"")+"</div>");
+  main.innerHTML='<div class="grid">'+
+    k("Requests",num(B.length))+k("Approved",num(st("Approved")),B.length?fp(pct(st("Approved"),B.length))+" of requests":"")+k("Declined",num(st("Declined")))+k("Waiting for you",num(st("Pending")),st("Pending")?"check your Gmail":"")+
+    card("c4","What they want help with","",table([{t:"Service"},{t:"Requests",n:1}],Object.entries(svc).map(([k,c])=>[N(c,esc(k)),N(c)]).sort((a,b)=>b[1].v-a[1].v),{bar:1}))+
+    card("c4","Where requests came from","",table(H,by(b=>b.src||"(before tracking)"),{bar:1}))+
+    card("c4","Countries","",table(H,by(b=>b.country||"Not given"),{bar:1}))+
+    card("c4","Language","",table(H,by(b=>b.lang,l=>({en:"English",es:"Spanish",pt:"Portuguese",sv:"Swedish"}[l]||l)),{bar:1}))+
+    card("c4","Habits","",'<p>Typical days between request and call: <b>'+(lead?lead.toFixed(1):"–")+"</b></p><p>Requests that gave a budget: <b>"+fp(pct(B.filter(b=>b.budget).length,B.length))+"</b></p>")+
+    card("c4","Sheets","",'<p><a href="'+esc(DATA.sheets.bookings)+'" target="_blank">Open the bookings sheet</a></p><p><a href="'+esc(DATA.sheets.analytics)+'" target="_blank">Open the raw analytics sheet</a></p>')+
+    card("c12","Latest requests","",table([{t:"Received"},{t:"Business"},{t:"Status"},{t:"Call"},{t:"Source"}],B.slice().sort((a,b)=>b.t-a.t).slice(0,15).map(b=>[
+      new Date(b.t).toLocaleDateString(undefined,{month:"short",day:"numeric"}),esc(b.business||"–"),{h:'<span class="pill '+esc(b.status)+'">'+esc(b.status)+"</span>"},
+      b.start?new Date(b.start).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}):"–",esc(b.src||"–")])))+"</div>";
+};
+
+R.links=()=>{
+  main.innerHTML='<div class="grid">'+card("c12","Make a tracked link or QR code",
+    "Use a different link for every place you share the site: each flyer, business card, ad and social bio. Visits and bookings from each one then show up by name under Traffic sources → Campaigns.",
+    '<div class="form">'+
+    '<label class="f">Page<select id="l-page"><option value="">Home</option><option value="#quote">Get a quote form</option><option value="services.html">Services</option><option value="work.html">Our work</option></select></label>'+
+    '<label class="f">Where it\'s shared<select id="l-med"><option value="qr">QR code (print)</option><option value="social">Social media</option><option value="email">Email</option><option value="paid">Paid ad</option><option value="referral">Partner website</option><option value="campaign">Other</option></select></label>'+
+    '<label class="f">Source<input id="l-src" placeholder="e.g. flyer, instagram, business-card"></label>'+
+    '<label class="f">Campaign name<input id="l-camp" placeholder="e.g. spring-2027, cafe-event"></label>'+
+    '<label class="f">Detail (optional)<input id="l-x" placeholder="e.g. version-a, front-desk"></label></div>'+
+    '<div class="out" id="l-url"></div><button class="btn" id="l-copy">Copy link</button>'+
+    '<div style="margin-top:22px"><div id="qr"></div><p class="help" style="margin-top:10px">Right-click the code → Save image (on a phone: press and hold). Print it at least 2 cm / 0.8 in wide.</p></div>')+
+    card("c12","Don't count your own visits","",'<p class="help">Open this link once on each phone and computer you use, so your own visits stay out of the numbers. It saves a small note in that browser only.</p><p><a href="'+esc(SITE)+'?notrack" target="_blank">'+esc(SITE)+"?notrack</a></p>")+"</div>";
+  let qr=null;
+  const slug=s=>s.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const upd=()=>{
+    const page=document.getElementById("l-page").value,m=document.getElementById("l-med").value;
+    const src=slug(document.getElementById("l-src").value)||(m==="qr"?"qr":m),c=slug(document.getElementById("l-camp").value),x=slug(document.getElementById("l-x").value);
+    const hash=page.startsWith("#")?page:"",path=hash?"":page;
+    const u=SITE+path+"?utm_source="+encodeURIComponent(src)+"&utm_medium="+m+(c?"&utm_campaign="+encodeURIComponent(c):"")+(x?"&utm_content="+encodeURIComponent(x):"")+hash;
+    document.getElementById("l-url").textContent=u;
+    const box=document.getElementById("qr");box.innerHTML="";
+    try{qr=new QRCode(box,{text:u,width:440,height:440,correctLevel:QRCode.CorrectLevel.M})}catch(e){box.textContent="QR code library didn't load."}
+  };
+  ["l-page","l-med","l-src","l-camp","l-x"].forEach(id=>document.getElementById(id).addEventListener("input",upd));
+  document.getElementById("l-copy").onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(document.getElementById("l-url").textContent);document.getElementById("l-copy").textContent="Copied"};
+  upd();
+};
+
+// ---------- charts ----------
+Chart.defaults.color="#b4aac0";Chart.defaults.borderColor="rgba(214,190,140,.1)";Chart.defaults.font.family="Inter,system-ui,Arial,sans-serif";
+Chart.defaults.maintainAspectRatio=false;Chart.defaults.plugins.legend.labels.boxWidth=12;
+function chart(id,cfg){const el=document.getElementById(id);if(el)charts.push(new Chart(el,cfg))}
+function doughnut(id,labels,data){chart(id,{type:"doughnut",data:{labels,datasets:[{data,backgroundColor:COLORS,borderColor:"#1a1226",borderWidth:2}]},
+  options:{cutout:"62%",plugins:{legend:{position:"right"}}}})}
+
+// ---------- app ----------
+const main=document.getElementById("main"),status=document.getElementById("status");
+document.getElementById("tabs").innerHTML=TABS.map(([k,l])=>'<button role="tab" data-t="'+k+'" aria-selected="'+(k===TAB)+'">'+l+"</button>").join("");
+document.getElementById("tabs").onclick=e=>{const b=e.target.closest("[data-t]");if(!b)return;TAB=b.dataset.t;
+  document.querySelectorAll("[data-t]").forEach(x=>x.setAttribute("aria-selected",x===b));render()};
+document.getElementById("ranges").onclick=e=>{const b=e.target.closest("button");if(!b)return;
+  if(b.id!=="refresh"){DAYS=+b.dataset.d;document.querySelectorAll("#ranges [data-d]").forEach(x=>x.setAttribute("aria-pressed",x===b))}load()};
+function render(){
+  charts.forEach(c=>c.destroy());charts=[];
+  if(!DATA)return;
+  if(!DATA.views.length&&!DATA.bookings.length&&TAB!=="links"){main.innerHTML='<div class="card"><h2>No data yet</h2><p class="help">Visits show up here after people browse the site (a few seconds after they leave each page). Bookings show up as soon as they come in.</p></div>';return}
+  R[TAB]();
+}
+function load(){
+  status.textContent="Loading…";
+  google.script.run.withSuccessHandler(s=>{DATA=JSON.parse(s);status.textContent="Updated "+new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})+" · "+num(DATA.views.length)+" page views loaded";render()})
+    .withFailureHandler(e=>{status.textContent="Couldn't load: "+e.message}).getData(DAYS);
+}
+load();
+</script>
+</body>
+</html>
