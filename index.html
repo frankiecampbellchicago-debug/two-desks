@@ -162,18 +162,29 @@ const ENDPOINT="https://script.google.com/macros/s/AKfycbwg-CUnFwFE4AW_YFNKCC00P
 const form=document.getElementById("qform"),msg=document.getElementById("msg");
 const day=form.elements.day,time=form.elements.time,hint=document.getElementById("tzhint");
 const zone=(Intl.DateTimeFormat().resolvedOptions().timeZone||"").replace(/_/g," ");
-// calls can be booked from tomorrow up to 90 days out, every half hour from 8:00 to 20:00 visitor time
+// calls are Monday to Friday, starting 8:00 to 17:30 in OUR time zone (HOURS), shown in the visitor's own time
+const HOURS={tz:"America/Chicago",from:8*60,to:17*60+30};
 const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 day.min=ymd(new Date(Date.now()+864e5));day.max=ymd(new Date(Date.now()+90*864e5));
+const ours=new Intl.DateTimeFormat("en-US",{timeZone:HOURS.tz,weekday:"short",hour:"numeric",minute:"numeric",hourCycle:"h23"});
+const isOpen=d=>{const p=Object.fromEntries(ours.formatToParts(d).map(x=>[x.type,x.value])),m=+p.hour*60+ +p.minute;
+  return !/Sat|Sun/.test(p.weekday)&&m>=HOURS.from&&m<=HOURS.to};
+const HINT="Times are in your time zone ({z}). We take calls Monday to Friday. The call is 30 minutes on video, and we'll confirm it by email.";
 const fillTimes=()=>{
   const keep=time.value,loc=document.documentElement.lang||"en";
-  time.length=1;time.options[0].textContent=t("Choose a time");
-  for(let m=8*60;m<=20*60;m+=30){
-    const hm=String(m/60|0).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
-    time.add(new Option(new Date("2000-01-01T"+hm).toLocaleTimeString(loc,{hour:"numeric",minute:"2-digit"}),hm));
+  time.length=1;
+  let n=0;
+  if(day.value)for(let m=0;m<24*60;m+=30){
+    const hm=String(m/60|0).padStart(2,"0")+":"+String(m%60).padStart(2,"0"),at=new Date(day.value+"T"+hm);
+    if(!isOpen(at)||at<Date.now()+3600e3)continue;
+    time.add(new Option(at.toLocaleTimeString(loc,{hour:"numeric",minute:"2-digit"}),hm));n++;
   }
-  time.value=keep;hint.textContent=t("Times are in your time zone ({z}). The call is 30 minutes on video, and we'll confirm it by email.",{z:zone||"local"});
+  time.options[0].textContent=!day.value?t("Pick a day first"):n?t("Choose a time"):t("No times on this day. We take calls Monday to Friday.");
+  time.disabled=!!day.value&&!n;
+  time.value=[...time.options].some(o=>o.value===keep)?keep:"";
+  hint.textContent=t(HINT,{z:zone||"local"});
 };
+day.addEventListener("change",fillTimes);
 const preview=()=>{if(!ENDPOINT&&!msg.classList.contains("err"))msg.textContent=t("Preview: quote requests aren't being sent anywhere yet.")};
 fillTimes();preview();
 document.addEventListener("langchange",()=>{fillTimes();preview()});

@@ -19,6 +19,8 @@ var CALENDAR_ID = 'primary';          // the calendar calls go into ('primary' =
 var EXTRA_NOTIFY = '';                // more inboxes for our emails, comma separated (e.g. Leila)
 var CALL_MINUTES = 30;                // how long a call is
 var REMINDER_HOUR = 7;                // morning email with the day's calls (in TZ)
+var OPEN_DAYS = [1, 2, 3, 4, 5];       // days calls can be booked, 1 = Monday ... 7 = Sunday (in TZ)
+var FIRST_CALL = '08:00', LAST_CALL = '17:30';   // earliest and latest start time (in TZ); keep in sync with HOURS in index.html
 var SITE = 'https://frankiecampbellchicago-debug.github.io/two-desks/';
 var WEBAPP_URL = '';                  // the /exec URL; left blank, the script works it out
 
@@ -34,6 +36,7 @@ function doPost(e) {
     var now = Date.now();
     if (isNaN(start) || start.getTime() < now + 60 * 60 * 1000 || start.getTime() > now + 180 * 864e5)
       return json({ ok: false, error: 'bad time' });
+    if (!isOpen(start)) return json({ ok: false, error: 'outside hours' });
 
     // at most 3 requests per email address per day
     var props = PropertiesService.getScriptProperties(), key = 'n_' + email.replace(/[^a-z0-9]/g, '');
@@ -328,6 +331,10 @@ function webAppUrl() { return WEBAPP_URL || ScriptApp.getService().getUrl(); }
 function conflicts(start) {
   var cal = CALENDAR_ID === 'primary' ? CalendarApp.getDefaultCalendar() : CalendarApp.getCalendarById(CALENDAR_ID);
   return cal.getEvents(start, new Date(start.getTime() + CALL_MINUTES * 60000)).map(function (e) { return e.getTitle() || 'an event'; });
+}
+function isOpen(date) {
+  var p = Utilities.formatDate(date, TZ, 'u|HH:mm').split('|');
+  return OPEN_DAYS.indexOf(Number(p[0])) > -1 && p[1] >= FIRST_CALL && p[1] <= LAST_CALL;
 }
 function validTz(tz) {
   try { Utilities.formatDate(new Date(), String(tz), 'z'); return /^[A-Za-z_]+\/[A-Za-z_\/+-]+$|^UTC$/.test(tz) ? String(tz) : ''; }
