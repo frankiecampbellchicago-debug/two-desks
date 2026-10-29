@@ -208,7 +208,9 @@ es:{
 "Times are in your time zone ({z}). We take calls Monday to Friday. The call is 30 minutes on video, and we'll confirm it by email.":"Las horas están en tu zona horaria ({z}). Hacemos llamadas de lunes a viernes. La llamada dura 30 minutos por videollamada y te la confirmaremos por correo.",
 "Please pick a day and time for the call.":"Elige un día y una hora para la llamada.",
 "Pick a day first":"Primero elige un día",
-"No times on this day. We take calls Monday to Friday.":"No hay horas libres este día. Hacemos llamadas de lunes a viernes."
+"No times on this day. We take calls Monday to Friday.":"No hay horas libres este día. Hacemos llamadas de lunes a viernes.",
+"Previous month":"Mes anterior",
+"Next month":"Mes siguiente"
 },
 pt:{
 "Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
@@ -417,7 +419,9 @@ pt:{
 "Times are in your time zone ({z}). We take calls Monday to Friday. The call is 30 minutes on video, and we'll confirm it by email.":"As horas estão no seu fuso horário ({z}). Fazemos chamadas de segunda a sexta-feira. A chamada dura 30 minutos, por videochamada, e confirmamos por e-mail.",
 "Please pick a day and time for the call.":"Escolha um dia e uma hora para a chamada.",
 "Pick a day first":"Escolha primeiro um dia",
-"No times on this day. We take calls Monday to Friday.":"Não há horários neste dia. Fazemos chamadas de segunda a sexta-feira."
+"No times on this day. We take calls Monday to Friday.":"Não há horários neste dia. Fazemos chamadas de segunda a sexta-feira.",
+"Previous month":"Mês anterior",
+"Next month":"Mês seguinte"
 },
 sv:{
 "Pricing that fits your business.":"Priser som *passar* ditt företag.",
@@ -619,7 +623,9 @@ sv:{
 "Times are in your time zone ({z}). We take calls Monday to Friday. The call is 30 minutes on video, and we'll confirm it by email.":"Tiderna visas i din tidszon ({z}). Vi tar samtal måndag till fredag. Samtalet är ett 30 minuters videosamtal och vi bekräftar det via mejl.",
 "Please pick a day and time for the call.":"Välj en dag och en tid för samtalet.",
 "Pick a day first":"Välj en dag först",
-"No times on this day. We take calls Monday to Friday.":"Inga tider den här dagen. Vi tar samtal måndag till fredag."
+"No times on this day. We take calls Monday to Friday.":"Inga tider den här dagen. Vi tar samtal måndag till fredag.",
+"Previous month":"Föregående månad",
+"Next month":"Nästa månad"
 }
 };
 
