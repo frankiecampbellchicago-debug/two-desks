@@ -404,12 +404,13 @@ document.getElementById("ranges").onclick=e=>{const b=e.target.closest("button")
 function render(){
   charts.forEach(c=>c.destroy());charts=[];
   if(!DATA)return;
+  if(DATA.denied){main.innerHTML='<div class="card"><h2>No access</h2><p class="help">This dashboard is private to F&amp;L Studio. '+(DATA.who?"You are signed in as "+esc(DATA.who)+". ":"")+"Ask Frank to share the two analytics sheets with this Google account, then reload.</p></div>";return}
   if(!DATA.views.length&&!DATA.bookings.length&&TAB!=="links"&&TAB!=="search"){main.innerHTML='<div class="card"><h2>No data yet</h2><p class="help">Visits show up here after people browse the site (a few seconds after they leave each page). Bookings show up as soon as they come in.</p></div>';return}
   R[TAB]();
 }
 function load(){
   SEARCH={};status.textContent="Loading…";
-  google.script.run.withSuccessHandler(s=>{DATA=JSON.parse(s);status.textContent="Updated "+new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})+" · "+num(DATA.views.length)+" page views loaded";render()})
+  google.script.run.withSuccessHandler(s=>{DATA=JSON.parse(s);status.textContent=DATA.denied?"":"Updated "+new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})+" · "+num(DATA.views.length)+" page views loaded";render()})
     .withFailureHandler(e=>{status.textContent="Couldn't load: "+e.message}).getData(DAYS);
 }
 load();

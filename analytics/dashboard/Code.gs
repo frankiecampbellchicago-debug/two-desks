@@ -1,8 +1,8 @@
 /**
  * F&L Studio — private analytics dashboard.
  *
- * Deployed as a Web App with access "Only myself": Google makes you sign in as the owner,
- * so nobody else can open it. It reads two sheets in the owner's Drive:
+ * Deployed as a Web App that runs as the person viewing it, so it only shows data to people
+ * the two sheets below are shared with (Frank, and Leila once they're shared with her):
  *   "F&L Studio — Analytics" (filled by the collector) and "F&L Studio — Bookings" (the booking script).
  */
 
@@ -46,6 +46,7 @@ function getData(days) {
         src: String(x[19] || ''), med: String(x[20] || ''), camp: String(x[21] || ''), visit: String(x[22] || '') });
     }
   }
+  if (!a && !b) return JSON.stringify({ denied: true, who: Session.getActiveUser().getEmail() });
   return JSON.stringify({ views: list, bookings: bookings, now: Date.now(), days: days,
     sheets: { analytics: a ? a.getUrl() : '', bookings: b ? b.getUrl() : '' } });
 }
@@ -75,14 +76,13 @@ function getSearch(days) {
   }
 }
 
+/** The two sheets, by id. Whoever opens the dashboard needs at least view access to them in Drive. */
+var IDS = {};
+IDS[ANALYTICS] = '1vbFPsTuDInQ0zsoRU_kAyes5wHe9hxuhCVLveoFLLBw';
+IDS[BOOKINGS] = '17dyCD62kPopZnxXzm2Gqdw9PyBKCnDmI8R1tIElALqU';
+
 function open(name) {
-  var props = PropertiesService.getScriptProperties(), id = props.getProperty(name);
-  if (id) try { return SpreadsheetApp.openById(id); } catch (e) {}
-  var files = DriveApp.getFilesByName(name);
-  if (!files.hasNext()) return null;
-  var ss = SpreadsheetApp.open(files.next());
-  props.setProperty(name, ss.getId());
-  return ss;
+  try { return SpreadsheetApp.openById(IDS[name]); } catch (e) { return null; }
 }
 
 /** Run once from the editor to grant access to the sheets. */
