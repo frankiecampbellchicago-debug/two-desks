@@ -8,6 +8,7 @@
 
 var ANALYTICS = 'F&L Studio — Analytics', BOOKINGS = 'F&L Studio — Bookings';
 var SITE = 'https://www.frankandleilastudio.com/';
+var SEARCH_PROPERTY = 'sc-domain:frankandleilastudio.com';   // the Search Console property (a Domain property)
 
 function doGet() {
   var t = HtmlService.createTemplateFromFile('Dashboard');
@@ -56,7 +57,7 @@ function getSearch(days) {
   days = Number(days) || 480;
   var day = function (n) { return Utilities.formatDate(new Date(Date.now() - n * 864e5), 'UTC', 'yyyy-MM-dd'); };
   var range = { startDate: day(days), endDate: day(0) }, prev = { startDate: day(2 * days), endDate: day(days + 1) };
-  var url = 'https://www.googleapis.com/webmasters/v3/sites/' + encodeURIComponent(SITE) + '/searchAnalytics/query';
+  var url = 'https://www.googleapis.com/webmasters/v3/sites/' + encodeURIComponent(SEARCH_PROPERTY) + '/searchAnalytics/query';
   function q(r, dims, limit) {
     var body = { startDate: r.startDate, endDate: r.endDate, dimensions: dims, rowLimit: limit || 250, dataState: 'all' };
     var res = UrlFetchApp.fetch(url, { method: 'post', contentType: 'application/json', payload: JSON.stringify(body),
