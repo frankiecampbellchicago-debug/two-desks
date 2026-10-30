@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.frankandleilastudio.com/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://www.frankandleilastudio.com/services.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://www.frankandleilastudio.com/work.html</loc><lastmod>2026-10-30</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://www.frankandleilastudio.com/</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/es/</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/pt/</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/sv/</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/services.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/services.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/services.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/services.html"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/es/services.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/services.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/services.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/services.html"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/pt/services.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/services.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/services.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/services.html"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/sv/services.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/services.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/services.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/services.html"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/work.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/work.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/work.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/work.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/work.html"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/es/work.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/work.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/work.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/work.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/work.html"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/pt/work.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/work.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/work.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/work.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/work.html"/>
+  </url>
+  <url><loc>https://www.frankandleilastudio.com/sv/work.html</loc><lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/work.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/work.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/work.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/work.html"/>
+  </url>
 </urlset>

@@ -3,10 +3,22 @@
 <head>
 <meta charset="utf-8">
 <script>if(/github\.io$/.test(location.hostname))location.replace("https://www.frankandleilastudio.com"+location.pathname.replace(/^\/two-desks/,"")+location.search+location.hash)</script>
+<script>
+// English pages: send visitors who picked (or whose browser prefers) Spanish, Portuguese or Swedish to that version
+(()=>{if(/github\.io$/.test(location.hostname)||/bot|crawl|spider|lighthouse/i.test(navigator.userAgent))return;
+let l=new URLSearchParams(location.search).get("lang");try{l?localStorage.setItem("lang",l):l=localStorage.getItem("lang")}catch(e){}
+if(!l)l=(navigator.languages||[navigator.language||""]).map(x=>x.slice(0,2).toLowerCase()).find(x=>/^(en|es|pt|sv)$/.test(x));
+if(/^(es|pt|sv)$/.test(l||""))location.replace("/"+l+location.pathname+location.search+location.hash)})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Our work · Websites designed by F&amp;L Studio</title>
 <meta name="description" content="See websites F&amp;L Studio has designed and built: client sites, a redesign, and sample sites for restaurants, real estate, retail and more.">
 <link rel="canonical" href="https://www.frankandleilastudio.com/work.html">
+<link rel="alternate" hreflang="en" href="https://www.frankandleilastudio.com/work.html">
+<link rel="alternate" hreflang="es" href="https://www.frankandleilastudio.com/es/work.html">
+<link rel="alternate" hreflang="pt" href="https://www.frankandleilastudio.com/pt/work.html">
+<link rel="alternate" hreflang="sv" href="https://www.frankandleilastudio.com/sv/work.html">
+<link rel="alternate" hreflang="x-default" href="https://www.frankandleilastudio.com/work.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;L Studio">
 <meta property="og:url" content="https://www.frankandleilastudio.com/work.html">

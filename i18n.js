@@ -2,6 +2,8 @@
 // the English text. Any text without a translation simply stays in English.
 const T={
 es:{
+"What we set up":"Lo que configuramos",
+"Leave empty":"Deja este campo vacío",
 "Pricing that fits your business.":"Precios que se *adaptan* a tu negocio.",
 "Every business is different, so every price is too. You'll receive a full quote, in your currency, before any work begins. Pay up front or in instalments, with an optional monthly plan to keep everything running.":"Cada negocio es distinto, y cada precio también. Recibirás un presupuesto completo, en tu moneda, antes de empezar cualquier trabajo. Paga por adelantado o a plazos, con un plan mensual opcional para que todo siga funcionando.",
 "Included in every project":"Incluido en cada proyecto",
@@ -214,6 +216,8 @@ es:{
 "Choose a day":"Elige un día"
 },
 pt:{
+"What we set up":"O que configuramos",
+"Leave empty":"Deixe este campo vazio",
 "Pricing that fits your business.":"Preços que se *adaptam* ao seu negócio.",
 "Every business is different, so every price is too. You'll receive a full quote, in your currency, before any work begins. Pay up front or in instalments, with an optional monthly plan to keep everything running.":"Cada negócio é diferente, e cada preço também. Recebe um orçamento completo, na sua moeda, antes de começarmos qualquer trabalho. Pague de uma só vez ou em prestações, com um plano mensal opcional para manter tudo a funcionar.",
 "Included in every project":"Incluído em todos os projetos",
@@ -426,6 +430,8 @@ pt:{
 "Choose a day":"Escolha um dia"
 },
 sv:{
+"What we set up":"Det här sätter vi upp",
+"Leave empty":"Lämna fältet tomt",
 "Pricing that fits your business.":"Priser som *passar* ditt företag.",
 "Every business is different, so every price is too. You'll receive a full quote, in your currency, before any work begins. Pay up front or in instalments, with an optional monthly plan to keep everything running.":"Varje företag är unikt, och det är varje pris också. Du får en komplett offert, i din valuta, innan något arbete påbörjas. Betala allt direkt eller delbetala, med ett valfritt månadsabonnemang som håller allt igång.",
 "Included in every project":"Ingår i varje projekt",
@@ -677,13 +683,18 @@ if(menu){
   menu.addEventListener("mouseenter",()=>{menu.classList.remove("closed");toggle.setAttribute("aria-expanded",true)});
   menu.addEventListener("mouseleave",()=>{menu.classList.remove("closed");openMenu(false)});
   toggle.addEventListener("click",()=>{menu.classList.remove("closed");openMenu(!menu.classList.contains("open"))});
-  menu.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{setLang(b.dataset.lang);openMenu(false);menu.classList.add("closed")}));
+  menu.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{openMenu(false);menu.classList.add("closed");go(b.dataset.lang)}));
   document.addEventListener("click",e=>{if(!menu.contains(e.target))openMenu(false)});
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&menu.classList.contains("open")){openMenu(false);toggle.focus()}});
   menu.addEventListener("focusout",e=>{if(!menu.contains(e.relatedTarget))openMenu(false)});
 }
-// first visit: a ?lang= link, then a saved choice, then the browser's own language
-let start=new URLSearchParams(location.search).get("lang");
-if(!start)try{start=localStorage.getItem("lang")}catch(e){}
-if(!start)start=(navigator.languages||[navigator.language||""]).map(l=>l.slice(0,2).toLowerCase()).find(l=>l in T||l==="en");
-setLang(start||"en");
+// each language has its own pages (/es/, /pt/, /sv/; English at the root) so Google can list them all.
+// Those pages are already translated by tools/build-languages.js; this keeps the script-made text in step.
+const PAGE_LANG=(location.pathname.match(/^\/(es|pt|sv)\//)||[])[1]||"en";
+function go(lang){
+  if(lang===PAGE_LANG)return;
+  try{localStorage.setItem("lang",lang)}catch(e){}
+  location.href=(lang==="en"?"":"/"+lang)+location.pathname.replace(/^\/(es|pt|sv)\//,"/")+location.search.replace(/([?&])lang=[^&]*&?/,"$1").replace(/[?&]$/,"")+location.hash;
+}
+window.setLang=setLang;
+setLang(PAGE_LANG);

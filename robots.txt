@@ -3,5 +3,6 @@ Disallow: /proofread.html
 Disallow: /logos.html
 Disallow: /analytics/
 Disallow: /booking/
+Disallow: /tools/
 
 Sitemap: https://www.frankandleilastudio.com/sitemap.xml
