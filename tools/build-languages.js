@@ -5,7 +5,8 @@
 const puppeteer = require("puppeteer-core");
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, ".."), SITE = "https://www.frankandleilastudio.com/";
-const PAGES = ["index.html", "services.html", "work.html"];
+const PAGES = ["index.html", "services.html", "work.html",
+  ...fs.readdirSync(path.join(ROOT, "work")).filter(f => f.endsWith(".html")).map(f => "work/" + f)]; // case studies
 const LOCALE = { es: "es_ES", pt: "pt_PT", sv: "sv_SE" };
 const DESC = {
   "index.html": {
@@ -32,7 +33,7 @@ const BROWSER = process.env.BROWSER || "C:/Program Files (x86)/Microsoft/Edge/Ap
 
   const missing = new Set();
   for (const lang of Object.keys(LOCALE)) {
-    fs.mkdirSync(path.join(ROOT, lang), { recursive: true });
+    fs.mkdirSync(path.join(ROOT, lang, "work"), { recursive: true });
     for (const file of PAGES) {
       // the page's own scripts are parked (given a type browsers don't run) so they stay exactly as written
       const page = await browser.newPage();
@@ -47,13 +48,16 @@ const BROWSER = process.env.BROWSER || "C:/Program Files (x86)/Microsoft/Edge/Ap
         set('meta[property="og:url"]', "content", url);
         set('meta[property="og:locale"]', "content", locale);
         for (const s of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) set(s, "content", document.title);
+        // descriptions: from DESC above, or (case studies) the translation of the English one
+        desc = desc || t($('meta[name="description"]').getAttribute("content"));
         for (const s of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) set(s, "content", desc);
-        set('meta[property="og:image:alt"]', "content", "F&L Studio: " + t("Building websites worth remembering.").replace(/\*/g, ""));
+        const alt = $('meta[property="og:image:alt"]'), altEn = alt && alt.getAttribute("content");
+        if (alt) alt.setAttribute("content", altEn.startsWith("F&L Studio: ") ? "F&L Studio: " + t("Building websites worth remembering.").replace(/\*/g, "") : t(altEn));
         const ld = $('script[type="application/ld+json"]');
         if (ld) ld.textContent = ld.textContent
           .replace('"inLanguage":"en"', '"inLanguage":"' + lang + '"')
-          .replace(/("@type":"ListItem","position":2,"name":"[^"]*","item":")https:\/\/www\.frankandleilastudio\.com\//, "$1" + site + lang + "/")
-          .replace(/("@type":"ListItem","position":1,"name":"Home","item":")https:\/\/www\.frankandleilastudio\.com\//, "$1" + site + lang + "/");
+          // breadcrumbs and a case study's own address point at this language; the studio itself keeps its one address
+          .replace(/("item":"|"url":"(?=https:\/\/www\.frankandleilastudio\.com\/work\/))https:\/\/www\.frankandleilastudio\.com\//g, "$1" + site + lang + "/");
         // assets live at the site root
         for (const el of document.querySelectorAll("[src],[srcset]")) {
           if (el.hasAttribute("src") && !/^(\/|#|[a-z]+:)/i.test(el.getAttribute("src"))) el.setAttribute("src", "/" + el.getAttribute("src"));
@@ -65,7 +69,7 @@ const BROWSER = process.env.BROWSER || "C:/Program Files (x86)/Microsoft/Edge/Ap
         const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
         for (let n; (n = w.nextNode());) { const k = n.nodeValue.trim(); if (k && /[a-z]{3}/i.test(k) && !skip.has(n.parentNode.nodeName) && n._en !== undefined && n.nodeValue === n._en) left.push(k) }
         return { html: "<!doctype html>\n" + document.documentElement.outerHTML + "\n", left };
-      }, i18n, lang, file, SITE, LOCALE[lang], DESC[file][lang]);
+      }, i18n, lang, file, SITE, LOCALE[lang], (DESC[file] || {})[lang]);
       await page.close();
       fs.writeFileSync(path.join(ROOT, lang, file), out.html);
       out.left.forEach(k => missing.add(lang + ": " + k));
