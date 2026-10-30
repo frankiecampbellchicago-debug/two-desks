@@ -7,7 +7,7 @@
  */
 
 var ANALYTICS = 'F&L Studio — Analytics', BOOKINGS = 'F&L Studio — Bookings';
-var SITE = 'https://frankiecampbellchicago-debug.github.io/two-desks/';
+var SITE = 'https://www.frankandleilastudio.com/';
 
 function doGet() {
   var t = HtmlService.createTemplateFromFile('Dashboard');

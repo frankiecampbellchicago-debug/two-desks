@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /proofread.html
+Disallow: /logos.html
+Disallow: /analytics/
+Disallow: /booking/
+
+Sitemap: https://www.frankandleilastudio.com/sitemap.xml

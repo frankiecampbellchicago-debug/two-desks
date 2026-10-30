@@ -17,12 +17,13 @@
 // ---- settings ---------------------------------------------------------------
 var TZ = 'America/Chicago';          // our time zone: emails to us and the calendar use it
 var CALENDAR_ID = 'primary';          // the calendar calls go into ('primary' = your main one)
+var STUDIO_EMAIL = 'frankandleilastudio@gmail.com';  // the studio inbox: gets every notification, and visitors' replies go here
 var EXTRA_NOTIFY = '';                // more inboxes for our emails, comma separated (e.g. Leila)
 var CALL_MINUTES = 30;                // how long a call is
 var REMINDER_HOUR = 7;                // morning email with the day's calls (in TZ)
 var OPEN_DAYS = [1, 2, 3, 4, 5];       // days calls can be booked, 1 = Monday ... 7 = Sunday (in TZ)
 var FIRST_CALL = '08:00', LAST_CALL = '17:30';   // earliest and latest start time (in TZ); keep in sync with HOURS in index.html
-var SITE = 'https://frankiecampbellchicago-debug.github.io/two-desks/';
+var SITE = 'https://www.frankandleilastudio.com/';
 var WEBAPP_URL = '';                  // the /exec URL; left blank, the script works it out
 
 // ---- the form posts here ----------------------------------------------------
@@ -237,7 +238,7 @@ function tellVisitor(kind, b) {
     note: b.note ? '\n\n' + L.note + b.note : '' };
   var subject = fill(L[kind + 'Subj'], v), body = fill(L[kind], v);
   var html = esc(body).replace(/\n/g, '<br>').replace(/(https:\/\/[^\s<]+)/g, '<a href="$1">$1</a>');
-  var mail = { to: b.email, subject: subject, body: body, htmlBody: wrap('<p>' + html + '</p>'), name: 'F&L Studio', replyTo: us() };
+  var mail = { to: b.email, subject: subject, body: body, htmlBody: wrap('<p>' + html + '</p>'), name: 'F&L Studio', replyTo: STUDIO_EMAIL };
   if (link) mail.attachments = [Utilities.newBlob(ics(b, link, L.icsTitle), 'text/calendar', 'call.ics')];
   MailApp.sendEmail(mail);
 }
@@ -421,7 +422,7 @@ function toBooking(r) {
 }
 
 // ---- helpers -------------------------------------------------------------------
-function us() { return [Session.getEffectiveUser().getEmail()].concat(EXTRA_NOTIFY ? EXTRA_NOTIFY.split(',') : []).join(','); }
+function us() { return [Session.getEffectiveUser().getEmail(), STUDIO_EMAIL].concat(EXTRA_NOTIFY ? EXTRA_NOTIFY.split(',') : []).join(','); }
 function webAppUrl() { return WEBAPP_URL || ScriptApp.getService().getUrl(); }
 function conflicts(start) {
   var cal = CALENDAR_ID === 'primary' ? CalendarApp.getDefaultCalendar() : CalendarApp.getCalendarById(CALENDAR_ID);

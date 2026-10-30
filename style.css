@@ -269,6 +269,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
 footer .fl{display:flex;flex-wrap:wrap;gap:24px;letter-spacing:.14em;text-transform:uppercase;font-size:11px}
 footer a{text-decoration:none}
 footer a:hover{color:var(--gold)}
+footer .mail::before{content:"·";margin:0 .6em}
+footer .mail{white-space:nowrap}
+@media (max-width:600px){footer .mail{display:block;margin-top:6px}footer .mail::before{content:none}}
 
 /* ---- Font option: "classic" (serif headings) vs "original" (Inter everywhere, the font above).
    Pick with ?font=classic or ?font=original; the choice is remembered. Default: classic. ---- */
