@@ -6,7 +6,8 @@
  * "F&L Studio — Analytics" sheet; compact() runs nightly and keeps only the latest copy of each.
  * Nothing here identifies a person: no IP addresses (Apps Script never sees them), no cookies.
  *
- * Deployed as a Web App (execute as: me, access: anyone). Run setup() once.
+ * Deployed as a Web App (execute as: me, access: anyone) on the studio account. Opening the /exec URL once
+ * while signed in as the studio asks for permission and then runs setup() by itself.
  */
 
 var SHEET_NAME = 'F&L Studio — Analytics';
@@ -27,7 +28,12 @@ function doPost(e) {
   return done();
 }
 
-function doGet() { return done(); }
+function doGet() {
+  if (PropertiesService.getScriptProperties().getProperty('READY')) return done();
+  setup();
+  return HtmlService.createHtmlOutput('<p style="font:16px sans-serif">Analytics collector is set up. Sheet: <a href="' +
+    sheet().getParent().getUrl() + '" target="_blank">F&amp;L Studio — Analytics</a></p>');
+}
 
 /** Nightly: keep only the newest copy of each page view, so the sheet stays small. */
 function compact() {
@@ -58,6 +64,8 @@ function setup() {
   var ss = sheet().getParent();
   ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === 'compact') ScriptApp.deleteTrigger(t); });
   ScriptApp.newTrigger('compact').timeBased().everyDays(1).atHour(3).create();
+  importOld();
+  PropertiesService.getScriptProperties().setProperty('READY', '1');
   Logger.log('Analytics sheet: ' + ss.getUrl());
 }
 
@@ -76,6 +84,22 @@ function sheet() {
     }
   }
   return ss.getSheets()[0];
+}
+
+/** Copies in the page views recorded before the move (OldData.gs), once, ahead of anything new. */
+function importOld() {
+  var props = PropertiesService.getScriptProperties();
+  if (props.getProperty('IMPORTED') || typeof OLD_ROWS === 'undefined' || !OLD_ROWS.length) return;
+  var rows = OLD_ROWS.map(function (r) {
+    var row = r.slice(0, HEAD.length);
+    row[0] = Utilities.parseDate(r[0], 'America/Chicago', 'MM/dd/yyyy HH:mm:ss');
+    for (var i = 3; i < 14; i++) if (i === 3 || i >= 11) row[i] = Number(row[i]) || 0;
+    return row.map(function (v, i) { return i === 0 || typeof v === 'number' ? v : cell(v, i === 14 ? 20000 : 120); });
+  });
+  var sh = sheet();
+  sh.insertRowsAfter(1, rows.length);
+  sh.getRange(2, 1, rows.length, HEAD.length).setValues(rows);
+  props.setProperty('IMPORTED', '1');
 }
 
 // text that starts like a formula is stored as plain text, so nobody can plant a formula in the sheet

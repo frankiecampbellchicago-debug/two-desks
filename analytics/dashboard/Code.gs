@@ -1,8 +1,8 @@
 /**
  * F&L Studio — private analytics dashboard.
  *
- * Deployed as a Web App that runs as the person viewing it, so it only shows data to people
- * the two sheets below are shared with (Frank, and Leila once they're shared with her):
+ * Deployed as a Web App on the studio account that runs as the person viewing it: sign in as
+ * frankandleilastudio@gmail.com (Frank and Leila both use it) to see the studio's two sheets:
  *   "F&L Studio — Analytics" (filled by the collector) and "F&L Studio — Bookings" (the booking script).
  */
 
@@ -77,13 +77,17 @@ function getSearch(days) {
   }
 }
 
-/** The two sheets, by id. Whoever opens the dashboard needs at least view access to them in Drive. */
-var IDS = {};
-IDS[ANALYTICS] = '1vbFPsTuDInQ0zsoRU_kAyes5wHe9hxuhCVLveoFLLBw';
-IDS[BOOKINGS] = '17dyCD62kPopZnxXzm2Gqdw9PyBKCnDmI8R1tIElALqU';
-
+/** The two sheets, found by name in the Drive of whoever is signed in (the studio account) and remembered. */
 function open(name) {
-  try { return SpreadsheetApp.openById(IDS[name]); } catch (e) { return null; }
+  var props = PropertiesService.getUserProperties(), key = 'id_' + name, id = props.getProperty(key);
+  if (id) try { return SpreadsheetApp.openById(id); } catch (e) { props.deleteProperty(key); }
+  try {
+    var files = DriveApp.getFilesByName(name), best = null;
+    while (files.hasNext()) { var f = files.next(); if (!best || f.getLastUpdated() > best.getLastUpdated()) best = f; }
+    if (!best) return null;
+    props.setProperty(key, best.getId());
+    return SpreadsheetApp.openById(best.getId());
+  } catch (e) { return null; }
 }
 
 /** Run once from the editor to grant access to the sheets. */

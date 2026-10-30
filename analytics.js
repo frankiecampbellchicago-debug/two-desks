@@ -5,7 +5,7 @@
    the latest copy. Other scripts report steps with window.flTrack(type, value).
    ?notrack on any URL stops counting this browser (for us); ?track turns it back on. */
 (function () {
-  var EP = "https://script.google.com/macros/s/AKfycbzaH1aZ8sJ_Iek7SeO-n7g7IxlHVet7JAwVDwI_GdaEv5ivdUHXbIHHaadQp-OGm73t6Q/exec";   // the analytics collector (/exec URL); blank = off
+  var EP = "https://script.google.com/macros/s/AKfycbypDpl9MAysXFKn65Tl5zF1bQx71pUxLIgEMKNuSsOlM1jNPP5449ASJNbRbAyoWr4/exec";   // the analytics collector (/exec URL); blank = off
   var ua = navigator.userAgent;
   try {
     if (/[?&]notrack\b/.test(location.search)) localStorage.setItem("fl_notrack", "1");
