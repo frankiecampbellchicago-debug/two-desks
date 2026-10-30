@@ -11,7 +11,8 @@
  *   5. on Decline: emails the visitor, inviting them to pick another time,
  *   6. every morning at REMINDER_HOUR: emails us the list of today's calls.
  *
- * Deployed as a Web App (execute as: me, access: anyone). Run setup() once.
+ * Runs in the studio Google account (frankandleilastudio@gmail.com): emails come from it and calls go into
+ * its calendar. Deployed as a Web App (execute as: me, access: anyone). Run setup() once.
  */
 
 // ---- settings ---------------------------------------------------------------
@@ -422,7 +423,11 @@ function toBooking(r) {
 }
 
 // ---- helpers -------------------------------------------------------------------
-function us() { return [Session.getEffectiveUser().getEmail(), STUDIO_EMAIL].concat(EXTRA_NOTIFY ? EXTRA_NOTIFY.split(',') : []).join(','); }
+function us() {
+  var list = [Session.getEffectiveUser().getEmail(), STUDIO_EMAIL].concat(EXTRA_NOTIFY ? EXTRA_NOTIFY.split(',') : []);
+  return list.map(function (x) { return x.trim().toLowerCase(); })
+    .filter(function (x, i, a) { return x && a.indexOf(x) === i; }).join(',');
+}
 function webAppUrl() { return WEBAPP_URL || ScriptApp.getService().getUrl(); }
 function conflicts(start) {
   var cal = CALENDAR_ID === 'primary' ? CalendarApp.getDefaultCalendar() : CalendarApp.getCalendarById(CALENDAR_ID);

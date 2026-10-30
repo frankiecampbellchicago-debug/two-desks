@@ -171,7 +171,7 @@ if(f!=="original")document.documentElement.classList.add("classic")})();
 <script>
 // quote requests go to our Google Apps Script (booking/Code.gs): it emails the visitor and us,
 // and an Approve link puts the call in our Google Calendar. Until ENDPOINT is set, the form is a preview.
-const ENDPOINT="https://script.google.com/macros/s/AKfycbwg-CUnFwFE4AW_YFNKCC00PmMUHl8WDWwQ68AzqUr9h1mgdJ2J7Hkk2k9gn_wMb6X1/exec";
+const ENDPOINT="https://script.google.com/macros/s/AKfycbyv6nB3tfHg4tXkvoxJoMi_57xWV0XF_ZBDZ92RjoQr4NsFjBOLScRWJcwAIUn9ExDn9A/exec";
 const form=document.getElementById("qform"),msg=document.getElementById("msg");
 const day=form.elements.day,time=form.elements.time,hint=document.getElementById("tzhint");
 const zone=(Intl.DateTimeFormat().resolvedOptions().timeZone||"").replace(/_/g," ");
